@@ -3,8 +3,35 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_btn_per.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_btn_result.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_btn_scanqr.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_btn_scanqr2.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_result.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_add_image.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_baseline_add_ic_call_36.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_baseline_camera_alt_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_baseline_edit_calendar_36.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_baseline_email_36.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_baseline_image_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_baseline_insert_link_36.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_baseline_local_phone_36.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_baseline_map_36.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_baseline_search_36.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_baseline_share_36.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_baseline_sms_36.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_baseline_wifi_36.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_flash_off.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_flash_on.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_minus_frame.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_rotate_cam.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_zoom_in_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/plus_frame.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/shadow_image.xml" value="0.26614583333333336" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/cus_navigation.xml" value="0.26205128205128203" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_ean_scan.xml" value="0.25" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_result_scan.xml" value="0.264" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/fragment__history.xml" value="0.2359375" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/fragment__scan__home.xml" value="0.25" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/fragment__setting.xml" value="0.25" />
