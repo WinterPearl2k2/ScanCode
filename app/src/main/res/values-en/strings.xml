@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ScanCode</string>
+
+    <string name="settings_control">Controls</string>
+    <string name="setting_sound">Sound</string>
+    <string name="setting_vibrate">Vibrate</string>
+    <string name="setting_copy">Copy into clipboard</string>
+    <string name="setting_chung">General</string>
+    <string name="setting_ligthdark">Dark mode</string>
+    <string name="setting_language">Language</string>
+    <string name="setiing_intro">Introduction</string>
+    <string name="setting_version">Version</string>
+    <string name="setting_huongdan">Instruction</string>
+    <string name="setting_on">Off</string>
+    <string name="setting_off">On</string>
+
+</resources>
