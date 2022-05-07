@@ -4,8 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/cursor.xml" value="0.121" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_add_48.xml" value="0.1" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_add_image.xml" value="0.1" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_baseline_add_ic_call_36.xml" value="0.1" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_call_24.xml" value="0.1" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_contact_24.xml" value="0.1" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_copy_24.xml" value="0.1" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_date_24.xml" value="0.121" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_edit_24.xml" value="0.1" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_event_48.xml" value="0.1" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_mail_24.xml" value="0.1" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/round_drive_file_rename_outline_24.xml" value="0.121" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/ic_baseline_zoom_out_24.xml" value="0.1" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/sound_241.xml" value="0.1" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/vibrate_241.xml" value="0.1" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_contact.xml" value="0.10989583333333333" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_email.xml" value="0.10989583333333333" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_link.xml" value="0.10989583333333333" />
@@ -22,7 +34,7 @@
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/menu/history_menu.xml" value="0.10989583333333333" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/menu/navigation.xml" value="0.10989583333333333" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/xml/root_pre.xml" value="0.1" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/xml/root_preference.xml" value="0.6666666666666666" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/xml/root_preference.xml" value="0.1" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_btn_per.xml" value="0.26614583333333336" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_btn_result.xml" value="0.26614583333333336" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_btn_scanqr.xml" value="0.26614583333333336" />
