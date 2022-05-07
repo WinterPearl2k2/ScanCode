@@ -17,4 +17,16 @@
     <string name="SECONDARY_EMAIL_TYPE">Nhà riêng</string>
     <string name="SECONDARY_PHONE_TYPE">Cơ quan</string>
     <string name="TERTIARY_PHONE_TYPE">Số fax cơ quan</string>
+
+
+    //Ni là của Biên
+
+    <string-array name="strings_type_internet_dropdown">
+        <item>WPA/ WPA2</item>
+        <item>WEP</item>
+        <item>None</item>
+    </string-array>
+
+    //
+
 </resources>

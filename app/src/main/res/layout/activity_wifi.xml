@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    tools:context=".Create.createactivity.WifiActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailAddress"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        app:startIconDrawable="@drawable/ic_wifi_24"
+        app:startIconTint="@color/pink_bold"
+        android:hint="SSID">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputSSID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    //Type
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/typeSecurity"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/emailAddress">
+
+        <AutoCompleteTextView
+            android:id="@+id/dropdownTypeWifi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textAutoComplete"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:text="WEP"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    //Password
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/WifiPass"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/typeSecurity"
+        app:startIconDrawable="@drawable/ic_lock_24"
+        app:startIconTint="@color/pink_bold"
+        android:hint="Password"
+        app:helperTextEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+</RelativeLayout>
