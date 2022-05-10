@@ -10,14 +10,21 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scancode.History.database.DataBase;
+import com.example.scancode.History.listviewhistory.CreateHistoryDatabase;
+import com.example.scancode.History.listviewhistory.CreateHistoryRecycleViewAdapter;
+import com.example.scancode.History.listviewhistory.History;
 import com.example.scancode.R;
 import com.google.zxing.WriterException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
@@ -28,6 +35,8 @@ public class QRImageActivity extends AppCompatActivity {
     private Button generateQrBtn;
     Bitmap bitmap;
     QRGEncoder qrgEncoder;
+    private CreateHistoryRecycleViewAdapter adapter;
+    private List<History> historyList;
 
 
     @Override
@@ -82,8 +91,13 @@ public class QRImageActivity extends AppCompatActivity {
         DataBase dataBase = CreateHistoryActivity.dataBase;
         String qrname = extras.get("QRtitle").toString();
         String qrinfor = extras.get("QRinfor").toString();
-        dataBase.QueryData("INSERT INTO CreateHistory VALUES(null, '" + qrname + "', '" + qrinfor +"', '10/11/2002')");
-        CreateHistoryActivity.GetData();
+        String qrtime = "10/11/2002";
+        adapter = new CreateHistoryRecycleViewAdapter();
+        historyList = new ArrayList<>();
+        adapter.setData(historyList);
+        History history = new History(qrname, qrinfor, qrtime, getIcon(qrname));
+        CreateHistoryDatabase.getInstance(this).historyDAO().insertUser(history);
+        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
         //setting this dimensions inside our qr code encoder to generate our qr code.
         qrgEncoder = new QRGEncoder(txtQrInfor.getText().toString(), null, QRGContents.Type.TEXT, dimen);
         try {
@@ -95,5 +109,23 @@ public class QRImageActivity extends AppCompatActivity {
             //this method is called for exception handling.
             Log.e("Tag", e.toString());
         }
+    }
+
+    private int getIcon(String name) {
+        switch (name){
+            case "Text":
+                return R.drawable.ic_document_48;
+            case "Wifi":
+                return R.drawable.ic_wifi_48;
+            case "Contact":
+                return R.drawable.ic_contact_24;
+            case "SMS":
+                return R.drawable.ic_sms_24;
+            case "Email":
+                return R.drawable.ic_mail_24;
+            case "URL":
+                return R.drawable.ic_global_24;
+        }
+        return 0;
     }
 }

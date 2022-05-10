@@ -7,6 +7,7 @@
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_date_24.xml" value="0.121" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/round_drive_file_rename_outline_24.xml" value="0.121" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_contact.xml" value="0.10989583333333333" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_create_history.xml" value="0.12158054711246201" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_email.xml" value="0.10989583333333333" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_link.xml" value="0.10989583333333333" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_main.xml" value="0.10989583333333333" />
@@ -17,6 +18,7 @@
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/fragment_create.xml" value="0.10989583333333333" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/fragment_history.xml" value="0.10989583333333333" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/fragment_scan_history.xml" value="0.10989583333333333" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/history_item_listview.xml" value="0.12158054711246201" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/menu/history_menu.xml" value="0.10989583333333333" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/menu/navigation.xml" value="0.10989583333333333" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_btn_per.xml" value="0.26614583333333336" />

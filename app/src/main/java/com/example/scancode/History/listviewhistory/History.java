@@ -1,15 +1,36 @@
 package com.example.scancode.History.listviewhistory;
 
+
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "CreateHistory")
 public class History {
-    private String nameItem, desItem, timeItem;
+    @ColumnInfo(name = "qrname")
+    private String nameItem;
+    @ColumnInfo(name = "qrinfor")
+    private String desItem;
+    @ColumnInfo(name = "qrtime")
+    private String timeItem;
+    @ColumnInfo(name = "qricon")
     private int icon;
-    private boolean selected;
+    @PrimaryKey(autoGenerate = true)
+    private int id;
 
     public History(String nameItem, String desItem, String timeItem, int icon) {
         this.nameItem = nameItem;
         this.desItem = desItem;
         this.timeItem = timeItem;
         this.icon = icon;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNameItem() {

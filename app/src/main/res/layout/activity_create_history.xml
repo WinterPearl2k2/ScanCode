@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.create.createactivity.CreateHistoryActivity">
 
-    <ListView
-        android:id="@+id/listviewCreateHistory"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
