@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory app:title="@string/settings_control" >
+        <SwitchPreference
+            app:key="sound"
+            app:icon="@drawable/sound_241"
+            app:title="@string/setting_sound" />
+        <SwitchPreference
+            app:icon="@drawable/vibrate_241"
+            app:key="vi"
+            app:title="@string/setting_vibrate" />
+        <SwitchPreference
+            app:key="copy"
+            app:icon="@drawable/copy_241"
+            app:title="@string/setting_copy" />
+    </PreferenceCategory>
+    <PreferenceCategory app:title="@string/setting_chung">
+        <SwitchPreference
+            app:icon="@drawable/dark_241"
+            app:key="v"
+            app:summaryOn="@string/setting_off"
+            app:summaryOff="@string/setting_on"
+            app:title="@string/setting_ligthdark"
+            app:defaultValue="false"/>
+        <Preference
+            app:icon="@drawable/language_241"
+            app:key="language"
+            app:title="@string/setting_language"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+
+    <PreferenceCategory app:title="@string/setiing_intro">
+        <Preference
+            app:icon="@drawable/introduction_241"
+            app:key="introduc"
+            app:title="@string/setiing_intro" />
+        <Preference
+            app:icon="@drawable/version_242"
+            app:key="version"
+            app:title="@string/setting_version" />
+        <Preference
+            app:icon="@drawable/help_241"
+            app:key="intro"
+            app:title="@string/setting_huongdan" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
