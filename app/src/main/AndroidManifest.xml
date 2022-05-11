@@ -21,6 +21,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ScanCode">
+
+        <activity
+            android:name=".Create.createactivity.QRImageActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".Create.createactivity.EmailActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".Create.createactivity.SMSActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".Create.createactivity.WifiActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".Create.createactivity.LinkActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".Create.createactivity.ContactActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".Create.createactivity.TextActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".Create.createactivity.CreateHistoryActivity"
+            android:exported="false"/>
+
+
         <activity
             android:name=".Scan.ResultScan"
             android:exported="false" />

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    tools:context=".Create.createactivity.SMSActivity">
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailAddress"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        app:startIconDrawable="@drawable/ic_contact_24"
+        app:startIconTint="@color/pink_bold"
+        android:hint="Recipient">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputRecipient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    //Password
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textMessage"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/emailAddress"
+        app:startIconDrawable="@drawable/ic_message_24"
+        app:startIconTint="@color/pink_bold"
+        android:hint="Text Message">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"/>
+    </com.google.android.material.textfield.TextInputLayout>
+</RelativeLayout>

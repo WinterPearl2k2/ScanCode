@@ -88,8 +88,8 @@ public class Fragment_Scan_Home extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        view = inflater.inflate(R.layout.fragment__scan__home, container, false);
+       // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        view = inflater.inflate(R.layout.fragment_scan_home, container, false);
         ORM();
         EventCam();
         EventGallery();

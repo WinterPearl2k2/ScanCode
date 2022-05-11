@@ -17,4 +17,29 @@
     <string name="SECONDARY_EMAIL_TYPE">Nhà riêng</string>
     <string name="SECONDARY_PHONE_TYPE">Cơ quan</string>
     <string name="TERTIARY_PHONE_TYPE">Số fax cơ quan</string>
+
+
+    //Ni là của Biên
+
+    <string-array name="strings_type_internet_dropdown">
+        <item>WPA/ WPA2</item>
+        <item>WEP</item>
+        <item>None</item>
+    </string-array>
+
+    //Ni là của Dương
+
+    <string name="settings_control">Điều khiển</string>
+    <string name="setting_sound">Âm thanh</string>
+    <string name="setting_vibrate">Rung</string>
+    <string name="setting_copy">Sao chép vào bộ nhớ tạm</string>
+    <string name="setting_chung">Chung</string>
+    <string name="setting_ligthdark">Giao diện tối</string>
+    <string name="setting_language">Ngôn ngữ</string>
+    <string name="setiing_intro">Giới thiệu</string>
+    <string name="setting_version">Phiên bản</string>
+    <string name="setting_huongdan">Hướng dẫn</string>
+    <string name="setting_on">Tắt</string>
+    <string name="setting_off">Bật</string>
+
 </resources>

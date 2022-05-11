@@ -6,6 +6,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.Window;
 
 import com.example.scancode.Adapter.MenuAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -18,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if(getSupportActionBar() != null)
-            getSupportActionBar().hide();
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
