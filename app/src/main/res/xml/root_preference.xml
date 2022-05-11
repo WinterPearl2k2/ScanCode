@@ -41,7 +41,7 @@
             app:title="@string/setting_version" />
         <Preference
             app:icon="@drawable/help_241"
-            app:key="intro"
+            app:key="help"
             app:title="@string/setting_huongdan" />
     </PreferenceCategory>
 
