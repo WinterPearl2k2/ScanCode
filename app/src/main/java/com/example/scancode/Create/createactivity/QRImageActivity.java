@@ -16,10 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.scancode.History.Fragment_History;
-import com.example.scancode.History.database.DataBase;
 import com.example.scancode.History.listviewhistory.CreateHistoryDatabase;
-import com.example.scancode.History.listviewhistory.CreateHistoryRecycleViewAdapter;
+import com.example.scancode.History.listviewhistory.HistoryRecycleViewAdapter;
 import com.example.scancode.History.listviewhistory.History;
 import com.example.scancode.R;
 import com.google.zxing.WriterException;
@@ -39,7 +37,7 @@ public class QRImageActivity extends AppCompatActivity {
     private Button generateQrBtn;
     Bitmap bitmap;
     QRGEncoder qrgEncoder;
-    private CreateHistoryRecycleViewAdapter adapter;
+    private HistoryRecycleViewAdapter adapter;
     private List<History> historyList;
 
 
@@ -91,14 +89,14 @@ public class QRImageActivity extends AppCompatActivity {
         txtQrTitle.setText(extras.get("QRtitle").toString());
         txtQrInfor.setText(extras.get("QRinfor").toString());
 
-        String qrname = extras.get("QRtitle").toString();
-        String qrinfor = extras.get("QRinfor").toString();
+        String qrname = extras.get("QRtitle").toString(); // Text, contact
+        String qrinfor = extras.get("QRinfor").toString(); // infor
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
         String qrtime = df.format(Calendar.getInstance().getTime());;
 
-        adapter = new CreateHistoryRecycleViewAdapter();
+        adapter = new HistoryRecycleViewAdapter();
         historyList = new ArrayList<>();
-        adapter.setData(historyList);
+        adapter.setData(this, historyList);
         History history = new History(qrname, qrinfor, qrtime);
         CreateHistoryDatabase.getInstance(this).historyDAO().insertHistory(history);
 

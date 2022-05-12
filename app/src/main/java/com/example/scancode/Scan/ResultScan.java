@@ -33,7 +33,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scancode.History.listviewhistory.CreateHistoryDatabase;
-import com.example.scancode.History.listviewhistory.CreateHistoryRecycleViewAdapter;
+import com.example.scancode.History.listviewhistory.HistoryRecycleViewAdapter;
 import com.example.scancode.History.listviewhistory.History;
 import com.example.scancode.R;
 import com.google.zxing.WriterException;
@@ -59,7 +59,7 @@ public class ResultScan extends AppCompatActivity {
     private TextClock txtClock;
     private Intent intent;
     private LinearLayout llAddContact, button, lnShare;
-    private CreateHistoryRecycleViewAdapter adapter;
+    private HistoryRecycleViewAdapter adapter;
     private List<History> historyList;
 
     @Override
@@ -121,16 +121,15 @@ public class ResultScan extends AppCompatActivity {
         //generating dimension from width and height.
         int dimen = width < height ? width : height;
         dimen = dimen * 3 / 4;
-
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
-        String qrtime = df.format(Calendar.getInstance().getTime());;
-        adapter = new CreateHistoryRecycleViewAdapter();
-        historyList = new ArrayList<>();
-        adapter.setData(historyList);
-        History history = new History(qrname, result, qrtime);
-        CreateHistoryDatabase.getInstance(this).historyDAO().insertHistory(history);
-        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
-
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
+            String qrtime = df.format(Calendar.getInstance().getTime());
+            ;
+            adapter = new HistoryRecycleViewAdapter();
+            historyList = new ArrayList<>();
+            adapter.setData(this, historyList);
+            History history = new History(qrname, result, qrtime);
+            CreateHistoryDatabase.getInstance(this).historyDAO().insertHistory(history);
+            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
         //setting this dimensions inside our qr code encoder to generate our qr code.
         qrgEncoder = new QRGEncoder(result, null, QRGContents.Type.TEXT, dimen);
         try {
@@ -173,7 +172,8 @@ public class ResultScan extends AppCompatActivity {
             }
             int flag = 0;
             switch (ss.toUpperCase()) {
-                case "HTTPS": title = "URL";
+                case "HTTPS" :
+                case"HTTP": title = "URL";
                     txtTitleResult.setText(title);
                     for(int i = d ; i < result.length() ; i++) {
                         link += result.charAt(i);
@@ -349,8 +349,8 @@ public class ResultScan extends AppCompatActivity {
                         Json += result.charAt(i);
                     }
                     if(Json.equals("VCARD")) {
-                        Json = "";
                         title = "VCARD";
+                        Json = "";
                         txtTitleResult.setText(title);
                         for(int i = 0; i < result.length(); i++) {
                             for(int j = i; j < result.length(); j++) {
@@ -585,9 +585,11 @@ public class ResultScan extends AppCompatActivity {
             }
             if (ss.equals("EAN") || ss.equals("UPC")) {
                 txtTitleResult.setText("Product");
+                title = "Product";
                 ClickLink("https://www.google.com/search?q=" + result);
             } else {
                 txtTitleResult.setText("Text");
+                title = "Text";
                 button.setVisibility(View.GONE);
             }
             view.setText(result);
