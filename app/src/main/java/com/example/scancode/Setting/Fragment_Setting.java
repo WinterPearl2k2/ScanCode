@@ -7,19 +7,13 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.fragment.app.Fragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
-
-import android.preference.PreferenceFragment;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.scancode.R;
 
@@ -168,13 +162,13 @@ public class Fragment_Setting extends PreferenceFragmentCompat {
     }
 
     public void Vibrate(){
-        sp_vibrate = getContext().getSharedPreferences("beep",0);
+        sp_vibrate = getContext().getSharedPreferences("vibrate",0);
         sw_vibrate.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 if(sw_vibrate.isChecked()== false){
                     SharedPreferences.Editor editor = sp_vibrate.edit();
-                    editor.putBoolean("beep",true);
+                    editor.putBoolean("vibrate",true);
                     editor.commit();
                 }
                 else{

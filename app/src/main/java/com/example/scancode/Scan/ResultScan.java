@@ -5,6 +5,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
@@ -48,6 +49,7 @@ import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 
 public class ResultScan extends AppCompatActivity {
+    ClipboardManager clipboardManager;
     private Bitmap bitmap;
     private QRGEncoder qrgEncoder;
     private String TO = "", SUB = "", BODY = "", T = "", S = "", P = "", H = "", TEL = "", SMS = "",
@@ -73,6 +75,7 @@ public class ResultScan extends AppCompatActivity {
         setContentView(R.layout.activity_result_scan);
         ORM();
         XuLi();
+        Copy();
         actionBar.setTitle(intent.getStringExtra("title"));
         view.setMovementMethod(new ScrollingMovementMethod());
     }
@@ -712,7 +715,21 @@ public class ResultScan extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    public  void doCopy(){
+        this.clipboardManager= (ClipboardManager) this.getSystemService(Context.CLIPBOARD_SERVICE);
+        Intent intent = getIntent();
+        String copy = intent.getStringExtra("linksp");
+        ClipData clipData = ClipData.newPlainText("copy",copy);
+        clipboardManager.setPrimaryClip(clipData);
+    }
+    public void Copy(){
+        SharedPreferences sharedPreferences = getSharedPreferences("copy",0);
+        boolean check = sharedPreferences.getBoolean("copy",false);
+        if(check==true){
+            doCopy();
+        }
 
+    }
     @Override
     public void finish() {
         super.finish();

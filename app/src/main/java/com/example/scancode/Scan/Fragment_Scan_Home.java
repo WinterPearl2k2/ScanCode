@@ -9,14 +9,18 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -152,6 +156,7 @@ public class Fragment_Scan_Home extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        SOund_Vibrate();
                         Intent intent = new Intent(getActivity(), ResultScan.class);
                         intent.putExtra("linksp", result.getText());
                         intent.putExtra("title", result.getBarcodeFormat().toString());
@@ -167,7 +172,39 @@ public class Fragment_Scan_Home extends Fragment {
             mCodeScanner.setAutoFocusEnabled(true);
         });
     }
+    //Sound and Beep
+    public void SOund_Vibrate(){
+        SharedPreferences vibrate;
+        vibrate = getContext().getSharedPreferences("vibrate",0);
+        boolean check2 = vibrate.getBoolean("vibrate",false);
+        if(check2==true){
+            Viber(getContext(),"on");
+        }
+        Sound();
+    }
+    //Sound
+    public void Sound(){
+        SharedPreferences beep;
+        beep = getContext().getSharedPreferences("beep",0);
+        boolean check1 = beep.getBoolean("beep",false);
+        if(check1 ==true){
+            final ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
+            tg.startTone(ToneGenerator.TONE_PROP_BEEP);
+        }
 
+    }
+    //Vibrate
+    @JavascriptInterface
+    public void Viber(Context cn, String value) {
+        if (value.equals("on")) {
+            // Get instance of Vibrator from current Context
+            Vibrator v = (Vibrator) cn.getSystemService(Context.VIBRATOR_SERVICE);
+
+            // Vibrate for 300 milliseconds
+            v.vibrate(300);
+        }
+
+    }
     private void RotateCamera() {
         btn_Rotate_Cam.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -247,27 +284,40 @@ public class Fragment_Scan_Home extends Fragment {
 
     private void ZoomFrame() {
         zoom_Frame.setMax(80);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                zoom_Frame.setMin(20);
+        zoom_Frame.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+                int min = 0;
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                    min = 20;
+                else
+                    min = 50;
+                if(progress < min) {
+                    seekBar.setProgress(min); //h kiếm cách khác chứ cái seekbar ni hỗ trợ adr 8.0  dổ lên thôi// ta nghi ko ai zooom nhu ta dau
+                }
             }
-        } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                zoom_Frame.setMin(50);
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
             }
-        }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            zoom_Frame.setMin(20);
+//        } else
+//            zoom_Frame.setMin(20);
         btn_QRCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        zoom_Frame.setMin(20);
-                    }
-                } else {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        zoom_Frame.setMin(50);
-                    }
-                }
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                    zoom_Frame.setMin(20);
+//                } else
+//                    zoom_Frame.setMin(20); //đợi mín
                 scannerView.setFrameAspectRatioWidth(1);
                 btn_BarCode.setBackgroundResource(R.drawable.cus_btn_scanqr);
                 btn_QRCode.setBackgroundResource(R.drawable.cus_btn_scanqr2);
