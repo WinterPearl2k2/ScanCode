@@ -43,7 +43,7 @@ public class Fragment_Create extends Fragment {
 
         //Set Adapter
         adapter = new CreateAdapter(getActivity(), arrayCreate);
-        lvCreate.setAdapter(adapter);
+
 
         lvCreate.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -83,6 +83,12 @@ public class Fragment_Create extends Fragment {
     }
     private void AnhXa(){
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        lvCreate.setAdapter(adapter);
     }
 
     private void InitArray(){

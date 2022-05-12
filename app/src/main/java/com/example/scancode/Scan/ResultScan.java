@@ -173,7 +173,10 @@ public class ResultScan extends AppCompatActivity {
             }
             int flag = 0;
             switch (ss.toUpperCase()) {
-                case "HTTPS": title = "URL";
+                case "HTTPS": flag++;
+                case "WWW": flag++;
+                case "HTTP": flag++;
+                    title = "URL";
                     txtTitleResult.setText(title);
                     for(int i = d ; i < result.length() ; i++) {
                         link += result.charAt(i);
@@ -181,17 +184,13 @@ public class ResultScan extends AppCompatActivity {
                     txtSearch.setText("Truy cập liên kết");
                     imgSearch.setImageResource(R.drawable.ic_baseline_insert_link_36);
                     view.setText(result);
-                    ClickLink(link.length() > 0 ? ("https:" + link) : "");
-                    break;
-                case "WWW": title = "URL";
-                    txtTitleResult.setText(title);
-                    for(int i = d ; i < result.length() ; i++) {
-                        link += result.charAt(i);
-                    }
-                    txtSearch.setText("Truy cập liên kết");
-                    imgSearch.setImageResource(R.drawable.ic_baseline_insert_link_36);
-                    view.setText(result);
-                    ClickLink(link.length() > 0 ? ("http:" + link) : "");
+                    String protocol = null;
+                    if(flag == 1)
+                        protocol = "https:";
+                    else if(flag > 1)
+                        protocol = "http:";
+                    String s1 = "https:";
+                    ClickLink(link.length() > 0 ? (protocol + link) : "");
                     break;
                 case "MATMSG": title = "Email";
                     txtTitleResult.setText(title);

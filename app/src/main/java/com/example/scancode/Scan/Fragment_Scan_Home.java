@@ -247,14 +247,26 @@ public class Fragment_Scan_Home extends Fragment {
 
     private void ZoomFrame() {
         zoom_Frame.setMax(80);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            zoom_Frame.setMin(20);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                zoom_Frame.setMin(20);
+            }
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                zoom_Frame.setMin(50);
+            }
         }
         btn_QRCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    zoom_Frame.setMin(20);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        zoom_Frame.setMin(20);
+                    }
+                } else {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        zoom_Frame.setMin(50);
+                    }
                 }
                 scannerView.setFrameAspectRatioWidth(1);
                 btn_BarCode.setBackgroundResource(R.drawable.cus_btn_scanqr);
