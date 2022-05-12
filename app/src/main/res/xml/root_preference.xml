@@ -1,48 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
-    <PreferenceCategory app:title="@string/settings_control" >
+<PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res-auto"
+    tools:ignore="NamespaceTypo">
+    <PreferenceCategory android:title="@string/settings_control" >
         <SwitchPreference
-            app:key="sound"
-            app:icon="@drawable/sound_241"
-            app:title="@string/setting_sound" />
+            android:key="sound"
+            android:icon="@drawable/sound_241"
+            android:title="@string/setting_sound" />
         <SwitchPreference
-            app:icon="@drawable/vibrate_241"
-            app:key="vi"
-            app:title="@string/setting_vibrate" />
+            android:icon="@drawable/vibrate_241"
+            android:key="vi"
+            android:title="@string/setting_vibrate" />
         <SwitchPreference
-            app:key="copy"
-            app:icon="@drawable/copy_241"
-            app:title="@string/setting_copy" />
+            android:key="copy"
+            android:icon="@drawable/copy_241"
+            android:title="@string/setting_copy" />
     </PreferenceCategory>
-    <PreferenceCategory app:title="@string/setting_chung">
+    <PreferenceCategory android:title="@string/setting_chung">
         <SwitchPreference
-            app:icon="@drawable/dark_241"
-            app:key="v"
-            app:summaryOn="@string/setting_off"
-            app:summaryOff="@string/setting_on"
-            app:title="@string/setting_ligthdark"
-            app:defaultValue="false"/>
+            android:icon="@drawable/dark_241"
+            android:key="v"
+            android:summaryOn="@string/setting_off"
+            android:summaryOff="@string/setting_on"
+            android:title="@string/setting_ligthdark"
+            android:defaultValue="false"/>
         <Preference
-            app:icon="@drawable/language_241"
-            app:key="language"
-            app:title="@string/setting_language"
-            app:useSimpleSummaryProvider="true" />
+            android:icon="@drawable/language_241"
+            android:key="language"
+            android:title="@string/setting_language"
+            android:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 
 
-    <PreferenceCategory app:title="@string/setiing_intro">
+    <PreferenceCategory android:title="@string/setiing_intro">
         <Preference
-            app:icon="@drawable/introduction_241"
-            app:key="introduc"
-            app:title="@string/setiing_intro" />
+            android:icon="@drawable/introduction_241"
+            android:key="introduc"
+            android:title="@string/setiing_intro" />
         <Preference
-            app:icon="@drawable/version_242"
-            app:key="version"
-            app:title="@string/setting_version" />
+            android:icon="@drawable/version_242"
+            android:key="version"
+            android:title="@string/setting_version" />
         <Preference
-            app:icon="@drawable/help_241"
-            app:key="help"
-            app:title="@string/setting_huongdan" />
+            android:icon="@drawable/help_241"
+            android:key="help"
+            android:title="@string/setting_huongdan" />
     </PreferenceCategory>
 
 </PreferenceScreen>
