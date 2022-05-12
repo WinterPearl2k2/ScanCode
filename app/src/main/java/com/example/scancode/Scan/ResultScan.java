@@ -572,6 +572,7 @@ public class ResultScan extends AppCompatActivity {
                     button.setVisibility(View.GONE);
                     break;
                 default: txtTitleResult.setText("Text");
+                    title = "Text";
                     view.setText(result);
                     button.setVisibility(View.GONE);
                     break;
