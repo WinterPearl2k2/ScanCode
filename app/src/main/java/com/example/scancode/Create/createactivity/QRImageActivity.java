@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.scancode.History.Fragment_History;
 import com.example.scancode.History.database.DataBase;
 import com.example.scancode.History.listviewhistory.CreateHistoryDatabase;
 import com.example.scancode.History.listviewhistory.CreateHistoryRecycleViewAdapter;
@@ -23,7 +24,10 @@ import com.example.scancode.History.listviewhistory.History;
 import com.example.scancode.R;
 import com.google.zxing.WriterException;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import androidmads.library.qrgenearator.QRGContents;
@@ -84,19 +88,20 @@ public class QRImageActivity extends AppCompatActivity {
         int dimen = width < height ? width : height;
         dimen = dimen * 3 / 4;
         Bundle extras = this.getIntent().getExtras();
-        Log.e("TAG", "8");
         txtQrTitle.setText(extras.get("QRtitle").toString());
-        Log.e("TAG", "9");
         txtQrInfor.setText(extras.get("QRinfor").toString());
-        DataBase dataBase = CreateHistoryActivity.dataBase;
+
         String qrname = extras.get("QRtitle").toString();
         String qrinfor = extras.get("QRinfor").toString();
-        String qrtime = "10/11/2002";
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
+        String qrtime = df.format(Calendar.getInstance().getTime());;
+
         adapter = new CreateHistoryRecycleViewAdapter();
         historyList = new ArrayList<>();
         adapter.setData(historyList);
-        History history = new History(qrname, qrinfor, qrtime, getIcon(qrname));
-        CreateHistoryDatabase.getInstance(this).historyDAO().insertUser(history);
+        History history = new History(qrname, qrinfor, qrtime);
+        CreateHistoryDatabase.getInstance(this).historyDAO().insertHistory(history);
+
         Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
         //setting this dimensions inside our qr code encoder to generate our qr code.
         qrgEncoder = new QRGEncoder(txtQrInfor.getText().toString(), null, QRGContents.Type.TEXT, dimen);
@@ -109,23 +114,5 @@ public class QRImageActivity extends AppCompatActivity {
             //this method is called for exception handling.
             Log.e("Tag", e.toString());
         }
-    }
-
-    private int getIcon(String name) {
-        switch (name){
-            case "Text":
-                return R.drawable.ic_document_48;
-            case "Wifi":
-                return R.drawable.ic_wifi_48;
-            case "Contact":
-                return R.drawable.ic_contact_24;
-            case "SMS":
-                return R.drawable.ic_sms_24;
-            case "Email":
-                return R.drawable.ic_mail_24;
-            case "URL":
-                return R.drawable.ic_global_24;
-        }
-        return 0;
     }
 }

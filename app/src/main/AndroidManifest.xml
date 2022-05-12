@@ -51,11 +51,6 @@
             android:exported="false"/>
 
         <activity
-            android:name=".Create.createactivity.CreateHistoryActivity"
-            android:exported="false"/>
-
-
-        <activity
             android:name=".Scan.ResultScan"
             android:exported="false" />
         <activity

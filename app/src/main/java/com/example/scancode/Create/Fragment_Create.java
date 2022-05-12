@@ -5,8 +5,6 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +14,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.scancode.Create.createactivity.ContactActivity;
-import com.example.scancode.Create.createactivity.CreateHistoryActivity;
 import com.example.scancode.Create.createactivity.EmailActivity;
 import com.example.scancode.Create.createactivity.LinkActivity;
 import com.example.scancode.Create.createactivity.SMSActivity;
@@ -73,9 +70,6 @@ public class Fragment_Create extends Fragment {
                     case "SMS":
                         intent = new Intent(getActivity(), SMSActivity.class);
                         break;
-                    case "Create History":
-                        intent = new Intent(getActivity(), CreateHistoryActivity.class);
-                        break;
                 }
                 startActivity(intent);
                 Log.e("TAG", "3");
@@ -94,13 +88,12 @@ public class Fragment_Create extends Fragment {
     private void InitArray(){
         arrayCreate = new ArrayList<>();
 
-        arrayCreate.add(new Create("Text", R.drawable.ic_document_48));
+        arrayCreate.add(new Create("Text", R.drawable.ic_document_24));
         arrayCreate.add(new Create("Wifi", R.drawable.ic_wifi_48));
         arrayCreate.add(new Create("Contact", R.drawable.ic_contact_24));
         arrayCreate.add(new Create("SMS", R.drawable.ic_sms_24));
         arrayCreate.add(new Create("Email", R.drawable.ic_mail_24));
         arrayCreate.add(new Create("URL", R.drawable.ic_global_48));
-        arrayCreate.add(new Create("Create History", R.drawable.ic_history_24));
     }
 
 

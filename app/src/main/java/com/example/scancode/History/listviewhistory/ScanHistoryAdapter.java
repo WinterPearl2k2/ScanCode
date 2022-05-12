@@ -44,7 +44,7 @@ public class ScanHistoryAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         //Tạo Inflate
         LayoutInflater inflater = activity.getLayoutInflater();
-        view = inflater.inflate(R.layout.history_item_listview, null);
+        view = inflater.inflate(R.layout.history_item_recycleview, null);
 
         //Ánh Xạ
         TextView tvDesc = (TextView ) view.findViewById(R.id.hisDesc);
