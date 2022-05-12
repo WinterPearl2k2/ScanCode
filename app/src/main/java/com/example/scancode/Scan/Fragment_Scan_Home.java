@@ -9,10 +9,14 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,9 +38,19 @@ import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
 import com.example.scancode.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.mlkit.vision.barcode.BarcodeScanner;
+import com.google.mlkit.vision.barcode.BarcodeScannerOptions;
+import com.google.mlkit.vision.barcode.BarcodeScanning;
+import com.google.mlkit.vision.barcode.common.Barcode;
+import com.google.mlkit.vision.common.InputImage;
 import com.google.zxing.BinaryBitmap;
+import com.google.zxing.DecodeHintType;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
 import com.google.zxing.RGBLuminanceSource;
 import com.google.zxing.Reader;
 import com.google.zxing.Result;
@@ -44,6 +58,8 @@ import com.google.zxing.common.HybridBinarizer;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Hashtable;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,6 +88,7 @@ public class Fragment_Scan_Home extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+       // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         view = inflater.inflate(R.layout.fragment_scan_home, container, false);
         ORM();
         EventCam();
@@ -350,51 +367,93 @@ public class Fragment_Scan_Home extends Fragment {
             check = true;
             openScan();
         }else if(requestCode == 101) {
+            if(data == null || data.getData()==null) {
+                Log.e("TAG", "The uri is null, probably the user cancelled the image selection process using the back button.");
+                return;
+            }
+            Uri uri = data.getData();
+
+            InputStream inputStream = null;
             try {
-                /*Sau khi hoàn hành xong 1 activity thì nó sẽ trả về trong biến data
-                    dựa trên action code là requestCode , và xác định bằng resultCode
-                  kết quả trả về sẽ là 1 Uri , từ Uri đó mình sẽ bỏ vào 1 InputStream để convert nó về Bitmap để set
-                * */
-                //Lấy dữ liệu từ data
-                final Uri imageUri = data.getData();
-
-                if(imageUri != null) {
-                    //Lấy trình giải quyết nội dung và mở trình đầu vào
-                    final InputStream imageStream = getActivity().getContentResolver().openInputStream(imageUri);
-                    //Chuyển dữ liệu thành bitmap
-                    final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-
-                    Bitmap bMap = selectedImage;
-
-                    //Lấy diện tích của hình ảnh
-                    int[] intArray = new int[bMap.getWidth() * bMap.getHeight()];
-                    //Đọc toàn bộ điểm ảnh vào 1 số nguyên
-                    bMap.getPixels(intArray, 0, bMap.getWidth(), 0, 0, bMap.getWidth(), bMap.getHeight());
-
-                    //Chuyển các điểm ảnh thành chuỗi nhị phân
-                    LuminanceSource source = new RGBLuminanceSource(bMap.getWidth(), bMap.getHeight(), intArray);
-                    BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-
-                    Reader reader = new MultiFormatReader();
-                    Result result = reader.decode(bitmap);
-
-                    Intent intent = new Intent(getActivity(), ResultScan.class);
-                    intent.putExtra("linksp", result.getText());
-                    intent.putExtra("title", result.getBarcodeFormat().toString());
-                    getActivity().startActivity(intent);
-                }
-
+                inputStream = getActivity().getContentResolver().openInputStream(uri);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_LONG).show();
-            } catch (Exception e) {
-                e.printStackTrace();
             }
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+
+            InputImage inputImage = InputImage.fromBitmap(bitmap, 0);
+
+            scanBarcodes(inputImage);
+
         } else if(requestCode == 100 && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
             check = true;
             openScan();
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void scanBarcodes(InputImage inputImage) {
+        // [START set_detector_options]
+        BarcodeScannerOptions options =
+                new BarcodeScannerOptions.Builder()
+                        .setBarcodeFormats(
+                                Barcode.FORMAT_QR_CODE,
+                                Barcode.FORMAT_AZTEC)
+                        .build();
+        // [END set_detector_options]
+
+        // [START get_detector]
+        BarcodeScanner scanner = BarcodeScanning.getClient();
+        // Or, to specify the formats to recognize:
+        // BarcodeScanner scanner = BarcodeScanning.getClient(options);
+        // [END get_detector]
+
+        // [START run_detector]
+        Task<List<Barcode>> result = scanner.process(inputImage)
+                .addOnSuccessListener(new OnSuccessListener<List<Barcode>>() {
+                    @Override
+                    public void onSuccess(List<Barcode> barcodes) {
+                        // Task completed successfully
+                        // [START_EXCLUDE]
+                        // [START get_barcodes]
+                        for (Barcode barcode: barcodes) {
+                            String rawValue = barcode.getRawValue();
+                            String title = "";
+
+                            Intent intent = new Intent(getActivity(), ResultScan.class);
+                            // See API reference for complete list of supported types
+
+                            switch (barcode.getFormat()) {
+                                case 32:
+                                    title = "EAN_13";
+                                    break;
+                                case 64:
+                                    title = "EAN_8";
+                                    break;
+                                case 1:
+                                    title = "EAN_14";
+                                    break;
+                                case 512:
+                                    title = "UPC_A";
+                                    break;
+                                case 1024:
+                                    title = "UPC_E";
+                                    break;
+                                case 256:
+                                    title = "QR_CODE";
+                                    break;
+                            }
+//                            String title = String.valueOf(barcode.getDisplayValue());
+//
+                            intent.putExtra("linksp", rawValue);
+                            intent.putExtra("title", title);
+                            startActivity(intent);
+                        }
+                        // [END get_barcodes]
+                        // [END_EXCLUDE]
+                    }
+                });
+        // [END run_detector]
     }
 
     private void checkPermission() {

@@ -3,34 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/cursor.xml" value="0.121" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_call_24.xml" value="0.149" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_contact_24.xml" value="0.1185" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_date_24.xml" value="0.121" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_document_48.xml" value="0.1185" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_global_24.xml" value="0.1185" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_mail_24.xml" value="0.1185" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_sms_24.xml" value="0.1185" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_wifi_24.xml" value="0.1185" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/round_drive_file_rename_outline_24.xml" value="0.121" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/ic_event_24.xml" value="0.149" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/ic_map_24.xml" value="0.149" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_contact.xml" value="0.10989583333333333" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_create_history.xml" value="0.12158054711246201" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_email.xml" value="0.10989583333333333" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_link.xml" value="0.10989583333333333" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_main.xml" value="0.10989583333333333" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_qrimage.xml" value="0.10989583333333333" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_text.xml" value="0.10989583333333333" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_wifi.xml" value="0.10989583333333333" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/create_item_listview.xml" value="0.10989583333333333" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/fragment_create.xml" value="0.10989583333333333" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/fragment_history.xml" value="0.10989583333333333" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/fragment_scan_history.xml" value="0.10989583333333333" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/history_item_listview.xml" value="0.12158054711246201" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/history_item_recycleview.xml" value="0.2" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/menu/history_menu.xml" value="0.10989583333333333" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/menu/navigation.xml" value="0.10989583333333333" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_btn_per.xml" value="0.26614583333333336" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_btn_result.xml" value="0.26614583333333336" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_btn_scanqr.xml" value="0.26614583333333336" />
@@ -66,6 +38,7 @@
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/menu/navigation.xml" value="0.24635416666666668" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.26205128205128203" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.26205128205128203" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/xml/root_preference.xml" value="0.11041666666666666" />
       </map>
     </option>
   </component>

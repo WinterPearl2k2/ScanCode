@@ -165,7 +165,7 @@ public class ResultScan extends AppCompatActivity {
         if( s.equals("QR_CODE")) {
             int d = 0;
             for(int i = 0; i < result.length() ; i++) {
-                if(result.charAt(i) == ':') {
+                if(result.charAt(i) == ':' || result.charAt(i) == '.') {
                     d = i;
                     break;
                 }
@@ -183,7 +183,7 @@ public class ResultScan extends AppCompatActivity {
                     view.setText(result);
                     ClickLink(link.length() > 0 ? ("https:" + link) : "");
                     break;
-                case "HTTP": title = "URL";
+                case "WWW": title = "URL";
                     txtTitleResult.setText(title);
                     for(int i = d ; i < result.length() ; i++) {
                         link += result.charAt(i);
