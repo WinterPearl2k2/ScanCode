@@ -14,5 +14,10 @@
     <string name="setting_huongdan">Instruction</string>
     <string name="setting_on">Off</string>
     <string name="setting_off">On</string>
+    <string name="menu_scan">Scan</string>
+    <string name="menu_create">Create</string>
+    <string name="menu_history">History</string>
+    <string name="menu_setting">Settings</string>
+    <string name="hello_blank_fragment">Hihi</string>
 
 </resources>
