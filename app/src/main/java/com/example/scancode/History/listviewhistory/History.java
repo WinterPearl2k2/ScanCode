@@ -18,11 +18,10 @@ public class History {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    public History(String nameItem, String desItem, String timeItem, int icon) {
+    public History(String nameItem, String desItem, String timeItem) {
         this.nameItem = nameItem;
         this.desItem = desItem;
         this.timeItem = timeItem;
-        this.icon = icon;
     }
 
     public int getId() {

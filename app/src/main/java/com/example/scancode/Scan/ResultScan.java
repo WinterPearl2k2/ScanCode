@@ -32,10 +32,17 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.scancode.History.listviewhistory.CreateHistoryDatabase;
+import com.example.scancode.History.listviewhistory.CreateHistoryRecycleViewAdapter;
+import com.example.scancode.History.listviewhistory.History;
 import com.example.scancode.R;
 import com.google.zxing.WriterException;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
@@ -52,6 +59,8 @@ public class ResultScan extends AppCompatActivity {
     private TextClock txtClock;
     private Intent intent;
     private LinearLayout llAddContact, button, lnShare;
+    private CreateHistoryRecycleViewAdapter adapter;
+    private List<History> historyList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +108,7 @@ public class ResultScan extends AppCompatActivity {
         });
     }
 
-    private void seeCode(String result) {
+    private void seeCode(String qrname, String result) {
         WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
         //initializing a variable for default display.
         Display display = manager.getDefaultDisplay();
@@ -112,6 +121,15 @@ public class ResultScan extends AppCompatActivity {
         //generating dimension from width and height.
         int dimen = width < height ? width : height;
         dimen = dimen * 3 / 4;
+
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
+        String qrtime = df.format(Calendar.getInstance().getTime());;
+        adapter = new CreateHistoryRecycleViewAdapter();
+        historyList = new ArrayList<>();
+        adapter.setData(historyList);
+        History history = new History(qrname, result, qrtime);
+        CreateHistoryDatabase.getInstance(this).historyDAO().insertHistory(history);
+        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
 
         //setting this dimensions inside our qr code encoder to generate our qr code.
         qrgEncoder = new QRGEncoder(result, null, QRGContents.Type.TEXT, dimen);
@@ -208,7 +226,7 @@ public class ResultScan extends AppCompatActivity {
                         }
                     });
                     break;
-                case "WIFI": title = "WIFI";
+                case "WIFI": title = "Wifi";
                     txtTitleResult.setText(title);
                     for(int i = d + 1 ; i < result.length() ; i++) {
                         if(result.charAt(i) == ':') {
@@ -575,7 +593,7 @@ public class ResultScan extends AppCompatActivity {
         }
 
         shareOtherApp();
-        seeCode(result);
+        seeCode(title, result);
     }
 
     private void accessToMap() {
