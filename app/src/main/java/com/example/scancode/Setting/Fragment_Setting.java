@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.Preference;
@@ -33,6 +34,7 @@ public class Fragment_Setting extends PreferenceFragmentCompat {
         Copy();
         Vibrate();
         Beep();
+        Introduction();
     }
     public void initUI(){
         sw_beep     = findPreference("sound");
@@ -176,6 +178,17 @@ public class Fragment_Setting extends PreferenceFragmentCompat {
                     editor.putBoolean("beep",false);
                     editor.commit();
                 }
+                return true;
+            }
+        });
+    }
+
+    public void Introduction(){
+        p_introduction.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(@NonNull Preference preference) {
+                Intent intent = new Intent(getContext(),Main_introduction.class);
+                startActivity(intent);
                 return true;
             }
         });
