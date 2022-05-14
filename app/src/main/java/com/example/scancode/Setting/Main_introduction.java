@@ -3,7 +3,6 @@ package com.example.scancode.Setting;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,8 +23,7 @@ public class Main_introduction extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-         getSupportActionBar().hide();
+
 
         setContentView(R.layout.activity_main_introduction);
         initUI();

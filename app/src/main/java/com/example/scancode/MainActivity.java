@@ -1,11 +1,5 @@
 package com.example.scancode;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.viewpager2.widget.ViewPager2;
-
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -13,7 +7,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
-import android.view.Window;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.scancode.Adapter.MenuAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -25,11 +23,10 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView navigation;
     public static ViewPager2 viewPager2;
     MenuAdapter menuAdapter;
-
+   Locale locale;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getSupportActionBar().hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -37,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         SetUpViewPager2(); //Cài đặt View
         EventButtonNavigation(); //Bắt sự kiện của button navigation
         DarkMode();//darkmode
-        Language();//language
     }
 
     private void EventButtonNavigation() {
@@ -103,18 +99,21 @@ public class MainActivity extends AppCompatActivity {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         else
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        Language();
     }
     public void Language(){
-        Locale locale;
-        SharedPreferences sharedPreferences = getSharedPreferences("language",0);
-        int item = sharedPreferences.getInt("language",1);
+
+        SharedPreferences sharedPreferences1 = getSharedPreferences("language",0);
+        int item = sharedPreferences1.getInt("language",1);
         if(item == 1){
             locale = new Locale("vi","VN");
+            ChangeLanguage(locale);
         }
         else {
             locale = new Locale("en","US");
+            ChangeLanguage(locale);
         }
-        ChangeLanguage(locale);
+
     }
     public void ChangeLanguage(Locale locale) {
         Resources resources = this.getResources();
