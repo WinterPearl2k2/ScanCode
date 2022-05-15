@@ -87,7 +87,6 @@ public class HistoryRecycleViewAdapter extends RecyclerView.Adapter<HistoryRecyc
                 mBundle.putString("QRinfor", history.getDesItem());
                 intent.putExtras(mBundle);
                 context.startActivity(intent);
-
             }
         });
     }
