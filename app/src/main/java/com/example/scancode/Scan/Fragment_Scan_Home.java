@@ -160,6 +160,7 @@ public class Fragment_Scan_Home extends Fragment {
                         Intent intent = new Intent(getActivity(), ResultScan.class);
                         intent.putExtra("linksp", result.getText());
                         intent.putExtra("title", result.getBarcodeFormat().toString());
+                        intent.putExtra("type", "1");
                         startActivity(intent);
 //                        result.getBarcodeFormat().toString()
 //                        Toast.makeText(getActivity(), result.getText()+"", Toast.LENGTH_SHORT).show();
@@ -282,19 +283,14 @@ public class Fragment_Scan_Home extends Fragment {
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void ZoomFrame() {
         zoom_Frame.setMax(80);
+        zoom_Frame.setMin(20);
         zoom_Frame.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-                int min = 0;
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-                    min = 20;
-                else
-                    min = 50;
-                if(progress < min) {
-                    seekBar.setProgress(min); //h kiếm cách khác chứ cái seekbar ni hỗ trợ adr 8.0  dổ lên thôi// ta nghi ko ai zooom nhu ta dau
-                }
+                zoom_Frame.setMin(20);
             }
 
             @Override
@@ -492,8 +488,10 @@ public class Fragment_Scan_Home extends Fragment {
                             }
 //                            String title = String.valueOf(barcode.getDisplayValue());
 //
+                            SOund_Vibrate();
                             intent.putExtra("linksp", rawValue);
                             intent.putExtra("title", title);
+                            intent.putExtra("type", "1");
                             startActivity(intent);
                         }
                         // [END get_barcodes]
