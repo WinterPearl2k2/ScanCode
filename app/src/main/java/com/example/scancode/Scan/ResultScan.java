@@ -1,5 +1,6 @@
 package com.example.scancode.Scan;
 
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -9,10 +10,12 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.provider.Settings;
@@ -21,7 +24,10 @@ import android.util.Log;
 import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextClock;
@@ -33,18 +39,23 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.scancode.Create.listviewcreate.CreateRecycleViewAdapter;
 import com.example.scancode.History.listviewhistory.CreateHistoryDatabase;
 import com.example.scancode.History.listviewhistory.History;
 import com.example.scancode.History.listviewhistory.HistoryRecycleViewAdapter;
 import com.example.scancode.R;
 import com.google.zxing.WriterException;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
@@ -57,7 +68,7 @@ public class ResultScan extends AppCompatActivity {
             Json = "", link = "", LATITUDE = "", LONGITUDE = "",
             FN = "", ORG = "", TITLE = "", ADR = "", WORK = "", CELL = "", FAX = "", EMAIL1 = "", EMAIL2 = "", URL = "",
             SUMMARY = "", DTSTART = "", DTEND = "", LOCATION = "", DESCRIPTION = "";
-    private TextView view, txtTitleResult, txtSearch, txtAddContact;
+    private TextView txtResult, txtTitleResult, txtSearch, txtAddContact;
     private ImageView imgSearch,imgAddContact, qrCodeIV;
     private TextClock txtClock;
     private Intent intent;
@@ -87,7 +98,71 @@ public class ResultScan extends AppCompatActivity {
         }
         XuLi(s, result);
         Copy();
-        view.setMovementMethod(new ScrollingMovementMethod());
+        CopyResult();
+        SaveImage();
+        txtResult.setMovementMethod(new ScrollingMovementMethod());
+    }
+
+    private void SaveImage() {
+        qrCodeIV.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ResultScan.this);
+                    builder.setMessage("Bạn có muốn lưu ảnh về máy không?")
+                            .setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                }
+                            })
+                            .setPositiveButton("Chấp nhận", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    String root = Environment.getExternalStoragePublicDirectory(
+                                            Environment.DIRECTORY_PICTURES).toString();
+                                    File myDir = new File(root + "/saved_images");
+                                    myDir.mkdirs();
+
+                                    Random generator = new Random();
+                                    int n = 10000;
+                                    n = generator.nextInt(n);
+                                    String fname = "Image-"+ n +".jpg";
+                                    File file = new File(myDir, fname);
+                                    if (file.exists ()) file.delete ();
+
+                                    try {
+                                        FileOutputStream outputStream = new FileOutputStream(file);
+                                        bitmap.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
+                                        outputStream.flush();
+                                        outputStream.close();
+//                            dialog.dismiss();
+//                            Toast.makeText(ResultScan.this, "Save successfully", Toast.LENGTH_SHORT).show();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                    MediaScannerConnection.scanFile(ResultScan.this, new String[]{file.toString()}, null,
+                                            new MediaScannerConnection.OnScanCompletedListener() {
+                                                public void onScanCompleted(String path, Uri uri) {
+                                                    Log.i("ExternalStorage", "Scanned " + path + ":");
+                                                    Log.i("ExternalStorage", "-> uri=" + uri);
+                                                }
+                                            });
+                                    Toast.makeText(ResultScan.this, "Save successfully", Toast.LENGTH_SHORT).show();
+                                }
+                            }).show();
+                return true;
+            }
+        });
+    }
+
+    private void CopyResult() {
+        txtResult.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                copyTextToClipboard(txtResult.getText().toString());
+                return true;
+            }
+        });
     }
 
     private void ORM() {
@@ -96,7 +171,7 @@ public class ResultScan extends AppCompatActivity {
         txtAddContact = findViewById(R.id.txt_add_contact);
         imgAddContact = findViewById(R.id.img_add_contact);
         llAddContact = findViewById(R.id.add_contact);
-        view = findViewById(R.id.txtResult);
+        txtResult = findViewById(R.id.txtResult);
         txtTitleResult = findViewById(R.id.txtTitleResult);
         button = findViewById(R.id.button);
         txtClock = findViewById(R.id.txtClock);
@@ -194,7 +269,7 @@ public class ResultScan extends AppCompatActivity {
                     }
                     txtSearch.setText("Truy cập liên kết");
                     imgSearch.setImageResource(R.drawable.ic_baseline_insert_link_36);
-                    view.setText(result);
+                    txtResult.setText(result);
                     String protocol = null;
                     if(flag == 1)
                         protocol = "https:";
@@ -225,7 +300,7 @@ public class ResultScan extends AppCompatActivity {
                     }
                     txtSearch.setText("Gửi email từ " + TO);
                     imgSearch.setImageResource(R.drawable.ic_baseline_email_36);
-                    view.setText((TO.length() > 0 ? ("To: " + TO): "")
+                    txtResult.setText((TO.length() > 0 ? ("To: " + TO): "")
                             + (SUB.length() > 0 ? ("\nSubject: " + SUB): "")
                             + (BODY.length() > 0 ? ("\nMessage: " + BODY): ""));
 
@@ -259,7 +334,7 @@ public class ResultScan extends AppCompatActivity {
                     }
                     txtSearch.setText("Chuyển hướng tới mạng Wifi");
                     imgSearch.setImageResource(R.drawable.ic_baseline_wifi_36);
-                    view.setText((S.length() > 0 ? ("Network Name: " + S): "")
+                    txtResult.setText((S.length() > 0 ? ("Network Name: " + S): "")
                             + (P.length() > 0 ? ("\nPassword: " + P): "")
                             + (T.length() > 0 ? ("\nEncrytion: " + T): "")
                             + "\nHidden: " + (H.equals("true")? H.toUpperCase() : "NO"));
@@ -293,7 +368,7 @@ public class ResultScan extends AppCompatActivity {
                             accessToPhone();
                         }
                     });
-                    view.setText((TEL.length() > 0 ? ("Phone: " + TEL): ""));
+                    txtResult.setText((TEL.length() > 0 ? ("Phone: " + TEL): ""));
                     break;
                 case "SMSTO": title = "SMS";
                     txtTitleResult.setText(title);
@@ -318,7 +393,7 @@ public class ResultScan extends AppCompatActivity {
                             addContact(TEL);
                         }
                     });
-                    view.setText((TEL.length() > 0 ? ("Phone: " + TEL): "")
+                    txtResult.setText((TEL.length() > 0 ? ("Phone: " + TEL): "")
                             + (SMS.length() > 0 ? ("\nMessage: " + SMS): ""));
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -341,7 +416,7 @@ public class ResultScan extends AppCompatActivity {
                     }
                     txtSearch.setText("Truy cập vị trí");
                     imgSearch.setImageResource(R.drawable.ic_baseline_map_36);
-                    view.setText((LATITUDE.length() > 0 ? ("LATITUDE: " + LATITUDE): "")
+                    txtResult.setText((LATITUDE.length() > 0 ? ("LATITUDE: " + LATITUDE): "")
                             + (LONGITUDE.length() > 0 ? ("\nLONGITUDE: " + LONGITUDE): ""));
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -472,7 +547,7 @@ public class ResultScan extends AppCompatActivity {
                             Json = "";
                         }
 //                        (EMAIL1.length() > 0 ? ("\nEmail: " + EMAIL1): ""
-                        view.setText((FN.length() > 0 ? ("Full name: " + FN): "")
+                        txtResult.setText((FN.length() > 0 ? ("Full name: " + FN): "")
                                 + (ORG.length() > 0 ? ("\nCompany: " + ORG): "")
                                 + (TITLE.length() > 0 ? ("\nJob: " + TITLE): "")
                                 + (ADR.length() > 0 ? ("\nAddress: " + ADR): "")
@@ -554,7 +629,7 @@ public class ResultScan extends AppCompatActivity {
                             Json = "";
                         }
 
-                        view.setText((SUMMARY.length() > 0 ? ("Tiêu đề: " + SUMMARY): "")
+                        txtResult.setText((SUMMARY.length() > 0 ? ("Tiêu đề: " + SUMMARY): "")
                                 + (DTSTART.length() > 0 ? ("\nNgày bắt đầu: " + DTSTART): "")
                                 + (DTEND.length() > 0 ? ("\nNgày kết thúc: " + DTEND): "")
                                 + (LOCATION.length() > 0 ? ("\nĐịa điểm: " + LOCATION): "")
@@ -583,7 +658,7 @@ public class ResultScan extends AppCompatActivity {
                     break;
                 default: txtTitleResult.setText("Text");
                     title = "Text";
-                    view.setText(result);
+                    txtResult.setText(result);
                     button.setVisibility(View.GONE);
                     break;
             }
@@ -600,7 +675,7 @@ public class ResultScan extends AppCompatActivity {
                 txtTitleResult.setText("Text");
                 button.setVisibility(View.GONE);
             }
-            view.setText(result);
+            txtResult.setText(result);
         }
 
         shareOtherApp();
@@ -730,6 +805,7 @@ public class ResultScan extends AppCompatActivity {
         ClipData clipData = ClipData.newPlainText("copy",copy);
         clipboardManager.setPrimaryClip(clipData);
     }
+
     public void Copy(){
         SharedPreferences sharedPreferences = getSharedPreferences("copy",0);
         boolean check = sharedPreferences.getBoolean("copy",false);
