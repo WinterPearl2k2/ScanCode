@@ -34,9 +34,13 @@
 
     <PreferenceCategory android:title="@string/setiing_intro">
         <Preference
-            android:icon="@drawable/introduction_241"
+            android:icon="@drawable/dark_241"
             android:key="introduc"
             android:title="@string/setiing_intro" />
+        <Preference
+            android:icon="@drawable/feedback"
+            android:key="feedback"
+            android:title="@string/settings_feedback"/>
         <Preference
             android:icon="@drawable/version_242"
             android:key="version"

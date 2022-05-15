@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/imageview1"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+
+        android:layout_marginStart="141dp"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="190dp"
+        android:layout_marginEnd="120dp"
+        app:srcCompat="@drawable/qrcode"
+        tools:ignore="MissingClass" />
+
+    <TextView
+        android:id="@+id/textview1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageview1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="25dp"
+        android:text="zkoko"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/imageview1" />
+
+</RelativeLayout>
