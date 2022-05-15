@@ -7,19 +7,14 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.fragment.app.Fragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
-
-import android.preference.PreferenceFragment;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.scancode.R;
 
@@ -28,17 +23,19 @@ import java.util.Locale;
 public class Fragment_Setting extends PreferenceFragmentCompat {
     static  Locale locale;
     SwitchPreference sw_ligth,sw_beep,sw_copy,sw_vibrate;
-    Preference p_language,p_introduction,p_help;
+    Preference p_language,p_introduction,p_help,p_feedback;
     SharedPreferences sp_ligth,sp_beep,sp_copy,sp_vibrate,sp_language;
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.root_preference, rootKey);
         initUI();
+        Beep();
+        Vibrate();
+        Copy();
         DarkMode();
         Language();
-        Copy();
-        Vibrate();
-        Beep();
+        Introduction();
+        Feedback();
     }
     public void initUI(){
         sw_beep     = findPreference("sound");
@@ -48,9 +45,10 @@ public class Fragment_Setting extends PreferenceFragmentCompat {
         p_language  = findPreference("language");
         p_introduction= findPreference("introduc");
         p_help      = findPreference("help");
+        p_feedback  = findPreference("feedback");
     }
     public void DarkMode(){
-        sp_ligth = getContext().getSharedPreferences("darkmode",0);
+        sp_ligth = getActivity().getSharedPreferences("darkmode",0);
 
         sw_ligth.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
@@ -75,7 +73,7 @@ public class Fragment_Setting extends PreferenceFragmentCompat {
         });
     }
     public void Language(){
-        sp_language = getContext().getSharedPreferences("language",0);
+        sp_language = getActivity().getSharedPreferences("language",0);
         p_language.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
@@ -168,13 +166,13 @@ public class Fragment_Setting extends PreferenceFragmentCompat {
     }
 
     public void Vibrate(){
-        sp_vibrate = getContext().getSharedPreferences("beep",0);
+        sp_vibrate = getContext().getSharedPreferences("vibrate",0);
         sw_vibrate.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 if(sw_vibrate.isChecked()== false){
                     SharedPreferences.Editor editor = sp_vibrate.edit();
-                    editor.putBoolean("beep",true);
+                    editor.putBoolean("vibrate",true);
                     editor.commit();
                 }
                 else{
@@ -182,6 +180,27 @@ public class Fragment_Setting extends PreferenceFragmentCompat {
                     editor.putBoolean("beep",false);
                     editor.commit();
                 }
+                return true;
+            }
+        });
+    }
+
+    public void Introduction(){
+        p_introduction.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(@NonNull Preference preference) {
+                Intent intent = new Intent(getContext(),Main_introduction.class);
+                startActivity(intent);
+                return true;
+            }
+        });
+    }
+    public  void Feedback(){
+        p_feedback.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(@NonNull Preference preference) {
+                Intent intent = new Intent(getContext(),Feebback.class);
+                startActivity(intent);
                 return true;
             }
         });

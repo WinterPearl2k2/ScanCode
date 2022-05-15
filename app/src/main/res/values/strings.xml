@@ -41,5 +41,12 @@
     <string name="setting_huongdan">Hướng dẫn</string>
     <string name="setting_on">Tắt</string>
     <string name="setting_off">Bật</string>
+    <string name="feedback_edit">Hãy cho chúng tôi biết vấn đề mà bạn đã gặp</string>
+    <string name="feeback1">Quét không hoạt động</string>
+    <string name="feedback2">Cần thêm thông tin khi quét</string>
+    <string name="feedback3">Khác</string>
+    <string name="feedbackedit">Vui lòng cho chúng tôi biết thêm chi tiết để chúng tôi có thể giải quết vấn đề của bạn nhanh hơn.</string>
+    <string name="feebackbtn">Gửi đi</string>
+    <string name="settings_feedback">Feedback</string>
 
 </resources>

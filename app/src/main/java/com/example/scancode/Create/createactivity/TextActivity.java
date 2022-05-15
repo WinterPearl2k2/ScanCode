@@ -11,6 +11,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scancode.R;
+import com.example.scancode.Scan.ResultScan;
 
 public class TextActivity extends AppCompatActivity {
     EditText edtxt;
@@ -41,10 +42,12 @@ public class TextActivity extends AppCompatActivity {
                 if( edtxt.getText().toString().length() == 0 )
                     edtxt.setError( "Please enter text!" );
                 else {
-                    Intent intent = new Intent(TextActivity.this, QRImageActivity.class);
+                    Intent intent = new Intent(TextActivity.this, ResultScan.class);
                     Bundle mBundle = new Bundle();
+                    mBundle.putString("QRFormal", "QR_CODE");
                     mBundle.putString("QRtitle", "Text");
                     mBundle.putString("QRinfor", edtxt.getText().toString());
+                    mBundle.putString("type", "2");
                     intent.putExtras(mBundle);
                     startActivity(intent);
                     overridePendingTransition(R.anim.to_left_1, R.anim.to_left_2);

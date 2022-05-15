@@ -5,6 +5,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
@@ -32,9 +33,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.scancode.Create.listviewcreate.CreateRecycleViewAdapter;
 import com.example.scancode.History.listviewhistory.CreateHistoryDatabase;
-import com.example.scancode.History.listviewhistory.HistoryRecycleViewAdapter;
 import com.example.scancode.History.listviewhistory.History;
+import com.example.scancode.History.listviewhistory.HistoryRecycleViewAdapter;
 import com.example.scancode.R;
 import com.google.zxing.WriterException;
 
@@ -48,6 +50,7 @@ import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 
 public class ResultScan extends AppCompatActivity {
+    ClipboardManager clipboardManager;
     private Bitmap bitmap;
     private QRGEncoder qrgEncoder;
     private String TO = "", SUB = "", BODY = "", T = "", S = "", P = "", H = "", TEL = "", SMS = "",
@@ -72,8 +75,18 @@ public class ResultScan extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_result_scan);
         ORM();
-        XuLi();
-        actionBar.setTitle(intent.getStringExtra("title"));
+        String s = "", result = "";
+        if(intent.getStringExtra("type").equals("1")) {
+            s = intent.getStringExtra("title");
+            result = intent.getStringExtra("linksp");
+            actionBar.setTitle(intent.getStringExtra("title"));
+        } else if(intent.getStringExtra("type").equals("2")) {
+            s = intent.getStringExtra("QRFormal");
+            result = intent.getStringExtra("QRinfor");
+            actionBar.setTitle(intent.getStringExtra("QRFormal"));
+        }
+        XuLi(s, result);
+        Copy();
         view.setMovementMethod(new ScrollingMovementMethod());
     }
 
@@ -121,15 +134,16 @@ public class ResultScan extends AppCompatActivity {
         //generating dimension from width and height.
         int dimen = width < height ? width : height;
         dimen = dimen * 3 / 4;
-            DateFormat df = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
-            String qrtime = df.format(Calendar.getInstance().getTime());
-            ;
-            adapter = new HistoryRecycleViewAdapter();
-            historyList = new ArrayList<>();
-            adapter.setData(this, historyList);
-            History history = new History(qrname, result, qrtime);
-            CreateHistoryDatabase.getInstance(this).historyDAO().insertHistory(history);
-            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
+        String qrtime = df.format(Calendar.getInstance().getTime());;
+        adapter = new HistoryRecycleViewAdapter();
+        historyList = new ArrayList<>();
+        adapter.setData(this, historyList);
+        History history = new History(qrname, result, qrtime);
+        CreateHistoryDatabase.getInstance(this).historyDAO().insertHistory(history);
+        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+
         //setting this dimensions inside our qr code encoder to generate our qr code.
         qrgEncoder = new QRGEncoder(result, null, QRGContents.Type.TEXT, dimen);
         try {
@@ -156,9 +170,7 @@ public class ResultScan extends AppCompatActivity {
         });
     }
 
-    public void XuLi() {
-        String s = intent.getStringExtra("title");
-        String result = intent.getStringExtra("linksp");
+    public void XuLi(String s, String result) {
         String title = "";
         String ss = "";
         if( s.equals("QR_CODE")) {
@@ -172,8 +184,10 @@ public class ResultScan extends AppCompatActivity {
             }
             int flag = 0;
             switch (ss.toUpperCase()) {
-                case "HTTPS" :
-                case"HTTP": title = "URL";
+                case "HTTPS": flag++;
+                case "WWW": flag++;
+                case "HTTP": flag++;
+                    title = "URL";
                     txtTitleResult.setText(title);
                     for(int i = d ; i < result.length() ; i++) {
                         link += result.charAt(i);
@@ -181,17 +195,13 @@ public class ResultScan extends AppCompatActivity {
                     txtSearch.setText("Truy cập liên kết");
                     imgSearch.setImageResource(R.drawable.ic_baseline_insert_link_36);
                     view.setText(result);
-                    ClickLink(link.length() > 0 ? ("https:" + link) : "");
-                    break;
-                case "WWW": title = "URL";
-                    txtTitleResult.setText(title);
-                    for(int i = d ; i < result.length() ; i++) {
-                        link += result.charAt(i);
-                    }
-                    txtSearch.setText("Truy cập liên kết");
-                    imgSearch.setImageResource(R.drawable.ic_baseline_insert_link_36);
-                    view.setText(result);
-                    ClickLink(link.length() > 0 ? ("http:" + link) : "");
+                    String protocol = null;
+                    if(flag == 1)
+                        protocol = "https:";
+                    else if(flag > 1)
+                        protocol = "http:";
+                    String s1 = "https:";
+                    ClickLink(link.length() > 0 ? (protocol + link) : "");
                     break;
                 case "MATMSG": title = "Email";
                     txtTitleResult.setText(title);
@@ -349,8 +359,8 @@ public class ResultScan extends AppCompatActivity {
                         Json += result.charAt(i);
                     }
                     if(Json.equals("VCARD")) {
-                        title = "VCARD";
                         Json = "";
+                        title = "VCARD";
                         txtTitleResult.setText(title);
                         for(int i = 0; i < result.length(); i++) {
                             for(int j = i; j < result.length(); j++) {
@@ -585,11 +595,9 @@ public class ResultScan extends AppCompatActivity {
             }
             if (ss.equals("EAN") || ss.equals("UPC")) {
                 txtTitleResult.setText("Product");
-                title = "Product";
                 ClickLink("https://www.google.com/search?q=" + result);
             } else {
                 txtTitleResult.setText("Text");
-                title = "Text";
                 button.setVisibility(View.GONE);
             }
             view.setText(result);
@@ -715,7 +723,21 @@ public class ResultScan extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    public  void doCopy(){
+        this.clipboardManager= (ClipboardManager) this.getSystemService(Context.CLIPBOARD_SERVICE);
+        Intent intent = getIntent();
+        String copy = intent.getStringExtra("linksp");
+        ClipData clipData = ClipData.newPlainText("copy",copy);
+        clipboardManager.setPrimaryClip(clipData);
+    }
+    public void Copy(){
+        SharedPreferences sharedPreferences = getSharedPreferences("copy",0);
+        boolean check = sharedPreferences.getBoolean("copy",false);
+        if(check==true){
+            doCopy();
+        }
 
+    }
     @Override
     public void finish() {
         super.finish();

@@ -1,5 +1,6 @@
 package com.example.scancode.Create.createactivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import com.example.scancode.History.listviewhistory.CreateHistoryDatabase;
 import com.example.scancode.History.listviewhistory.HistoryRecycleViewAdapter;
 import com.example.scancode.History.listviewhistory.History;
 import com.example.scancode.R;
+import com.example.scancode.Scan.ResultScan;
 import com.google.zxing.WriterException;
 
 import java.text.DateFormat;
@@ -112,5 +114,6 @@ public class QRImageActivity extends AppCompatActivity {
             //this method is called for exception handling.
             Log.e("Tag", e.toString());
         }
+
     }
 }
