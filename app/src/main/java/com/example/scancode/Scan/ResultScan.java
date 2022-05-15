@@ -33,9 +33,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.scancode.Create.listviewcreate.CreateRecycleViewAdapter;
 import com.example.scancode.History.listviewhistory.CreateHistoryDatabase;
-import com.example.scancode.History.listviewhistory.CreateHistoryRecycleViewAdapter;
 import com.example.scancode.History.listviewhistory.History;
+import com.example.scancode.History.listviewhistory.HistoryRecycleViewAdapter;
 import com.example.scancode.R;
 import com.google.zxing.WriterException;
 
@@ -61,7 +62,7 @@ public class ResultScan extends AppCompatActivity {
     private TextClock txtClock;
     private Intent intent;
     private LinearLayout llAddContact, button, lnShare;
-    private CreateHistoryRecycleViewAdapter adapter;
+    private HistoryRecycleViewAdapter adapter;
     private List<History> historyList;
 
     @Override
@@ -74,9 +75,18 @@ public class ResultScan extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_result_scan);
         ORM();
-        XuLi();
+        String s = "", result = "";
+        if(intent.getStringExtra("type").equals("1")) {
+            s = intent.getStringExtra("title");
+            result = intent.getStringExtra("linksp");
+            actionBar.setTitle(intent.getStringExtra("title"));
+        } else if(intent.getStringExtra("type").equals("2")) {
+            s = intent.getStringExtra("QRFormal");
+            result = intent.getStringExtra("QRinfor");
+            actionBar.setTitle(intent.getStringExtra("QRFormal"));
+        }
+        XuLi(s, result);
         Copy();
-        actionBar.setTitle(intent.getStringExtra("title"));
         view.setMovementMethod(new ScrollingMovementMethod());
     }
 
@@ -127,9 +137,9 @@ public class ResultScan extends AppCompatActivity {
 
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
         String qrtime = df.format(Calendar.getInstance().getTime());;
-        adapter = new CreateHistoryRecycleViewAdapter();
+        adapter = new HistoryRecycleViewAdapter();
         historyList = new ArrayList<>();
-        adapter.setData(historyList);
+        adapter.setData(this, historyList);
         History history = new History(qrname, result, qrtime);
         CreateHistoryDatabase.getInstance(this).historyDAO().insertHistory(history);
         Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
@@ -160,9 +170,7 @@ public class ResultScan extends AppCompatActivity {
         });
     }
 
-    public void XuLi() {
-        String s = intent.getStringExtra("title");
-        String result = intent.getStringExtra("linksp");
+    public void XuLi(String s, String result) {
         String title = "";
         String ss = "";
         if( s.equals("QR_CODE")) {

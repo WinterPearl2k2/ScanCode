@@ -1,5 +1,8 @@
 package com.example.scancode.History.listviewhistory;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,16 +11,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.scancode.Create.createactivity.QRImageActivity;
 import com.example.scancode.R;
+import com.example.scancode.Scan.ResultScan;
 
 import java.util.List;
 
-public class CreateHistoryRecycleViewAdapter extends RecyclerView.Adapter<CreateHistoryRecycleViewAdapter.CreateHistoryViewHolder>{
+public class HistoryRecycleViewAdapter extends RecyclerView.Adapter<HistoryRecycleViewAdapter.CreateHistoryViewHolder>{
 
     private List<History> historyList;
-    public void setData(List<History> list){
+    private Context context;
+    private Intent intent;
+    public void setData(Context context, List<History> list){
+        this.context = context;
         this.historyList = list;
         notifyDataSetChanged();
     }
@@ -45,8 +54,10 @@ public class CreateHistoryRecycleViewAdapter extends RecyclerView.Adapter<Create
                 holder.imgQrtype.setImageResource(R.drawable.ic_wifi_24);
                 break;
             case "Contact":
-            case "VCARD":
                 holder.imgQrtype.setImageResource(R.drawable.ic_contact_24);
+                break;
+            case "VCARD":
+                holder.imgQrtype.setImageResource(R.drawable.ic_contact_mail_24);
                 break;
             case "SMS":
                 holder.imgQrtype.setImageResource(R.drawable.ic_sms_24);
@@ -66,8 +77,19 @@ public class CreateHistoryRecycleViewAdapter extends RecyclerView.Adapter<Create
             case "EVENT":
                 holder.imgQrtype.setImageResource(R.drawable.ic_event_24);
                 break;
-
         }
+        holder.layoutItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, QRImageActivity.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putString("QRtitle", history.getNameItem());
+                mBundle.putString("QRinfor", history.getDesItem());
+                intent.putExtras(mBundle);
+                context.startActivity(intent);
+
+            }
+        });
     }
 
     @Override
@@ -82,6 +104,7 @@ public class CreateHistoryRecycleViewAdapter extends RecyclerView.Adapter<Create
         private TextView tvQrinfor, tvQrtime;
         private ImageView imgQrtype;
         private CheckBox cbQrselect;
+        private ConstraintLayout layoutItem;
 
         public CreateHistoryViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -89,6 +112,7 @@ public class CreateHistoryRecycleViewAdapter extends RecyclerView.Adapter<Create
             tvQrtime= itemView.findViewById(R.id.hisTime);
             imgQrtype = itemView.findViewById(R.id.hisIcon);
             cbQrselect = itemView.findViewById(R.id.checkboxHistory);
+            layoutItem = itemView.findViewById(R.id.history_recycleView_item);
         }
     }
 }
