@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.scancode.Create.createactivity.QRImageActivity;
 import com.example.scancode.R;
 import com.example.scancode.Scan.ResultScan;
 
@@ -80,7 +81,7 @@ public class HistoryRecycleViewAdapter extends RecyclerView.Adapter<HistoryRecyc
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ResultScan.class);
+                Intent intent = new Intent(context, QRImageActivity.class);
                 Bundle mBundle = new Bundle();
                 mBundle.putString("QRtitle", history.getNameItem());
                 mBundle.putString("QRinfor", history.getDesItem());
