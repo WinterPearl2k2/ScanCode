@@ -63,7 +63,6 @@
         android:text="@string/feebackbtn"
         android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
-        android:backgroundTint="@color/primary_icon"
         android:background="@drawable/cusbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
