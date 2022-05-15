@@ -62,7 +62,7 @@ public class Fragment_Scan_Home extends Fragment {
     public final static String CAMERA_PREF = "camera_pref";
     private ConstraintLayout noScan;
     private FrameLayout scan;
-    private boolean check = false, Flash = true, Switch = true;
+    private boolean mCheck = false, mFlash = true, mSwitch = true;
     private View view;
     private CodeScanner mCodeScanner;
     private LinearLayout btn_Cam, btn_Gallery;
@@ -72,6 +72,7 @@ public class Fragment_Scan_Home extends Fragment {
             btn_Rotate_Cam, btn_Scan_Gallery;
     private CodeScannerView scannerView;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -89,7 +90,7 @@ public class Fragment_Scan_Home extends Fragment {
         RotateCamera();
         ScanGallery();
         if(ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-            check = true;
+            mCheck = true;
             openScan();
         }
         return view;
@@ -210,14 +211,14 @@ public class Fragment_Scan_Home extends Fragment {
         btn_Rotate_Cam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Switch == true) {
+                if(mSwitch == true) {
                     mCodeScanner.setCamera(1);
                     mCodeScanner.setAutoFocusEnabled(true);
-                    Switch = false;
+                    mSwitch = false;
                 }else {
                     mCodeScanner.setCamera(0);
                     mCodeScanner.setAutoFocusEnabled(true);
-                    Switch = true;
+                    mSwitch = true;
                 }
             }
         });
@@ -228,13 +229,13 @@ public class Fragment_Scan_Home extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View view) {
-                if(Flash == true) {
+                if(mFlash == true) {
                     mCodeScanner.setFlashEnabled(true);
-                    Flash = false;
+                    mFlash = false;
                     btn_Flash.setImageResource(R.drawable.ic_flash_off);
                 }else {
                     mCodeScanner.setFlashEnabled(false);
-                    Flash = true;
+                    mFlash = true;
                     btn_Flash.setImageResource(R.drawable.ic_flash_on);
                 }
             }
@@ -283,14 +284,18 @@ public class Fragment_Scan_Home extends Fragment {
         });
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     private void ZoomFrame() {
         zoom_Frame.setMax(80);
-        zoom_Frame.setMin(20);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            zoom_Frame.setMin(20);
+        }
         zoom_Frame.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-                zoom_Frame.setMin(20);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    zoom_Frame.setMin(20);
+                }
             }
 
             @Override
@@ -379,13 +384,13 @@ public class Fragment_Scan_Home extends Fragment {
     public void onResume() {
         super.onResume();
         mCodeScanner.setAutoFocusEnabled(true);
-        if (check == true)
+        if (mCheck == true)
             mCodeScanner.startPreview();
     }
 
     @Override
     public void onPause() {
-        if(check == true)
+        if(mCheck == true)
             mCodeScanner.releaseResources();
         super.onPause();
     }
@@ -407,7 +412,7 @@ public class Fragment_Scan_Home extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 //        super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 200 && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-            check = true;
+            mCheck = true;
             openScan();
         }else if(requestCode == 101) {
             if(data == null || data.getData()==null) {
@@ -429,7 +434,7 @@ public class Fragment_Scan_Home extends Fragment {
             scanBarcodes(inputImage);
 
         } else if(requestCode == 100 && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-            check = true;
+            mCheck = true;
             openScan();
         }
         super.onActivityResult(requestCode, resultCode, data);
@@ -520,11 +525,11 @@ public class Fragment_Scan_Home extends Fragment {
                     }
                 }
             } else {
-                check = true;
+                mCheck = true;
                 openScan();
             }
         } else {
-            check = true;
+            mCheck = true;
             openScan();
         }
     }
@@ -536,7 +541,7 @@ public class Fragment_Scan_Home extends Fragment {
             case REQUEST_PER: {
 
                 if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    check = true;
+                    mCheck = true;
                     openScan();
                     break;
                 }
