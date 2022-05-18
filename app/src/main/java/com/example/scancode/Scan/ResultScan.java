@@ -212,12 +212,7 @@ public class ResultScan extends AppCompatActivity {
 
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
         String qrtime = df.format(Calendar.getInstance().getTime());;
-        adapter = new HistoryRecycleViewAdapter(new HistoryRecycleViewAdapter.InterfaceItemClick() {
-            @Override
-            public void deleteHistory(History history) {
-
-            }
-        });
+        adapter = new HistoryRecycleViewAdapter();
         historyList = new ArrayList<>();
         adapter.setData(this, historyList);
         History history = new History(qrname, result, qrtime);
@@ -675,11 +670,9 @@ public class ResultScan extends AppCompatActivity {
             }
             if (ss.equals("EAN") || ss.equals("UPC")) {
                 txtTitleResult.setText("Product");
-                title = "Product";
                 ClickLink("https://www.google.com/search?q=" + result);
             } else {
                 txtTitleResult.setText("Text");
-                title = "Text";
                 button.setVisibility(View.GONE);
             }
             txtResult.setText(result);

@@ -14,6 +14,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scancode.R;
+import com.example.scancode.Scan.ResultScan;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -76,10 +77,10 @@ public class WifiActivity extends AppCompatActivity {
                 return true;
             case R.id.icon_accept:
                 if(CheckNull())  {
-                    Intent intent = new Intent(WifiActivity.this, QRImageActivity.class);
+                    Intent intent = new Intent(WifiActivity.this, ResultScan.class);
                     Bundle mBundle = new Bundle();
                     String Qrtxt = "WIFI:T:" + TypeWifi() + ";S:" + edSSID.getText() + ";P:" + edPass.getText() + ";H:;";
-                    mBundle.putString("QRtitle", "Wifi");
+                    mBundle.putString("QRtitle", "QR_CODE");
                     mBundle.putString("QRinfor", Qrtxt);
                     intent.putExtras(mBundle);
                     startActivity(intent);

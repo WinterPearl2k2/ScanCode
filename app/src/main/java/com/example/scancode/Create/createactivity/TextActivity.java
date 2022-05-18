@@ -44,10 +44,8 @@ public class TextActivity extends AppCompatActivity {
                 else {
                     Intent intent = new Intent(TextActivity.this, ResultScan.class);
                     Bundle mBundle = new Bundle();
-                    mBundle.putString("QRFormal", "QR_CODE");
-                    mBundle.putString("QRtitle", "Text");
+                    mBundle.putString("QRtitle", "QR_CODE");
                     mBundle.putString("QRinfor", edtxt.getText().toString());
-                    mBundle.putString("type", "2");
                     intent.putExtras(mBundle);
                     startActivity(intent);
                     overridePendingTransition(R.anim.to_left_1, R.anim.to_left_2);

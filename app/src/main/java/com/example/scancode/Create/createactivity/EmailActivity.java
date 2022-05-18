@@ -10,6 +10,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scancode.R;
+import com.example.scancode.Scan.ResultScan;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class EmailActivity extends AppCompatActivity {
@@ -43,12 +44,12 @@ public class EmailActivity extends AppCompatActivity {
                 return true;
             case R.id.icon_accept:
                 if(CheckNull()) {
-                    Intent intent = new Intent(EmailActivity.this, QRImageActivity.class);
+                    Intent intent = new Intent(EmailActivity.this, ResultScan.class);
                     Bundle mBundle = new Bundle();
                     String Qrtxt = "MATMSG:TO:" + edEmail.getText()
                             + ((edTitle.getText().toString().length() == 0 )?"":";SUB:") + edTitle.getText()
                             + ((edMess.getText().toString().length() == 0)?"":";BODY:") + edMess.getText() + ";";
-                    mBundle.putString("QRtitle", "Email");
+                    mBundle.putString("QRtitle", "QR_CODE");
                     mBundle.putString("QRinfor", Qrtxt);
                     intent.putExtras(mBundle);
                     startActivity(intent);

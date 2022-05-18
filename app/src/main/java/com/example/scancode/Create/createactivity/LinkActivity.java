@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.scancode.R;
+import com.example.scancode.Scan.ResultScan;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LinkActivity extends AppCompatActivity {
@@ -42,9 +43,9 @@ public class LinkActivity extends AppCompatActivity {
                 return true;
             case R.id.icon_accept:
                 if(CheckNull()) {
-                    Intent intent = new Intent(LinkActivity.this, QRImageActivity.class);
+                    Intent intent = new Intent(LinkActivity.this, ResultScan.class);
                     Bundle mBundle = new Bundle();
-                    mBundle.putString("QRtitle", "URL");
+                    mBundle.putString("QRtitle", "QR_CODE");
                     mBundle.putString("QRinfor", edURL.getText().toString());
                     intent.putExtras(mBundle);
                     startActivity(intent);

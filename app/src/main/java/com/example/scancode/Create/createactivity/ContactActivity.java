@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scancode.R;
+import com.example.scancode.Scan.ResultScan;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class ContactActivity extends AppCompatActivity {
@@ -51,7 +52,7 @@ public class ContactActivity extends AppCompatActivity {
                 return true;
             case R.id.icon_accept:
                 if(CheckNull()) {
-                    Intent intent = new Intent(ContactActivity.this, QRImageActivity.class);
+                    Intent intent = new Intent(ContactActivity.this, ResultScan.class);
                     Bundle mBundle = new Bundle();
 //                    "BEGIN:VCARD"
 //                    "\nVERSION:2.1"
@@ -77,7 +78,7 @@ public class ContactActivity extends AppCompatActivity {
                         ((edAddress.getText().toString().length() == 0)?"":"\nADR:" + edAddress.getText()) +
                         ((edWeb.getText().toString().length() == 0)?"":"\nURL:" + edWeb.getText()) +
                         "\nEND:VCARD";
-                    mBundle.putString("QRtitle", "Email");
+                    mBundle.putString("QRtitle", "QR_CODE");
                     mBundle.putString("QRinfor", Qrtxt);
                     intent.putExtras(mBundle);
                     startActivity(intent);

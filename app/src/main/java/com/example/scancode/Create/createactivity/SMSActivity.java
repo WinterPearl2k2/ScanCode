@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.scancode.R;
+import com.example.scancode.Scan.ResultScan;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class SMSActivity extends AppCompatActivity {
@@ -41,10 +42,10 @@ public class SMSActivity extends AppCompatActivity {
                 return true;
             case R.id.icon_accept:
                 if(CheckNull()) {
-                    Intent intent = new Intent(SMSActivity.this, QRImageActivity.class);
+                    Intent intent = new Intent(SMSActivity.this, ResultScan.class);
                     Bundle mBundle = new Bundle();
                     String Qrtxt = "SMSTO:" + edRecipient.getText() + ":" + edMess.getText();
-                    mBundle.putString("QRtitle", "SMS");
+                    mBundle.putString("QRtitle", "QR_CODE");
                     mBundle.putString("QRinfor", Qrtxt);
                     intent.putExtras(mBundle);
                     startActivity(intent);

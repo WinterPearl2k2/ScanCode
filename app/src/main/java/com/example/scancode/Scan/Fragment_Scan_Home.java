@@ -159,9 +159,8 @@ public class Fragment_Scan_Home extends Fragment {
                     public void run() {
                         SOund_Vibrate();
                         Intent intent = new Intent(getActivity(), ResultScan.class);
-                        intent.putExtra("linksp", result.getText());
-                        intent.putExtra("title", result.getBarcodeFormat().toString());
-                        intent.putExtra("type", "1");
+                        intent.putExtra("QRinfor", result.getText());
+                        intent.putExtra("QRtitle", result.getBarcodeFormat().toString());
                         startActivity(intent);
 //                        result.getBarcodeFormat().toString()
 //                        Toast.makeText(getActivity(), result.getText()+"", Toast.LENGTH_SHORT).show();
@@ -494,9 +493,8 @@ public class Fragment_Scan_Home extends Fragment {
 //                            String title = String.valueOf(barcode.getDisplayValue());
 //
                             SOund_Vibrate();
-                            intent.putExtra("linksp", rawValue);
-                            intent.putExtra("title", title);
-                            intent.putExtra("type", "1");
+                            intent.putExtra("QRinfor", rawValue);
+                            intent.putExtra("QRtitle", title);
                             startActivity(intent);
                         }
                         // [END get_barcodes]
