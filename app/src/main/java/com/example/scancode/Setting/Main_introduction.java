@@ -27,7 +27,10 @@ public class Main_introduction extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main_introduction);
-        initUI();
+        //initUI();
+        slide_Viewpaper = findViewById(R.id.view_paper);
+        mDolayout = findViewById(R.id.dotshot);
+        next=findViewById(R.id.button3);
         slide_layout = new Slide_layout(this);
         slide_Viewpaper.setAdapter(slide_layout);
         addDot(0);
@@ -36,9 +39,7 @@ public class Main_introduction extends AppCompatActivity {
     }
 
     private void initUI() {
-        slide_Viewpaper = findViewById(R.id.view_paper);
-        mDolayout = findViewById(R.id.dotshot);
-        next=findViewById(R.id.button3);
+
     }
 
     public void addDot(int position){

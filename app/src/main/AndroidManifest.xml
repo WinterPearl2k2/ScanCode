@@ -31,20 +31,6 @@
             android:name=".Create.createactivity.QRImageActivity"
             android:exported="false" />
         <activity
-            android:name=".Setting.Main_introduction"
-            android:exported="false">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".Setting.Feebback"
-            android:exported="false">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".Create.createactivity.EmailActivity"
             android:exported="false" />
         <activity
@@ -65,6 +51,10 @@
         <activity
             android:name=".Scan.ResultScan"
             android:exported="false" />
+        <activity android:name=".Setting.Feebback"
+            android:exported="false"/>
+        <activity android:name=".Setting.Main_introduction"
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
