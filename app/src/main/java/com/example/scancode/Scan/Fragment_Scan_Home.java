@@ -25,6 +25,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,6 +37,9 @@ import androidx.fragment.app.Fragment;
 import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
+import com.example.scancode.History.listviewhistory.CreateHistoryDatabase;
+import com.example.scancode.History.listviewhistory.History;
+import com.example.scancode.History.listviewhistory.HistoryRecycleViewAdapter;
 import com.example.scancode.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -48,6 +52,10 @@ import com.google.zxing.Result;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -71,6 +79,8 @@ public class Fragment_Scan_Home extends Fragment {
             btn_Plus_Frame, btn_Minus_Frame, btn_Flash,
             btn_Rotate_Cam, btn_Scan_Gallery;
     private CodeScannerView scannerView;
+    private HistoryRecycleViewAdapter adapter;
+    private List<History> historyList;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
@@ -158,6 +168,7 @@ public class Fragment_Scan_Home extends Fragment {
                     @Override
                     public void run() {
                         SOund_Vibrate();
+                        addHistory(result.getText(), result.getBarcodeFormat().toString());
                         Intent intent = new Intent(getActivity(), ResultScan.class);
                         intent.putExtra("QRinfor", result.getText());
                         intent.putExtra("QRtitle", result.getBarcodeFormat().toString());
@@ -173,6 +184,88 @@ public class Fragment_Scan_Home extends Fragment {
             mCodeScanner.setAutoFocusEnabled(true);
         });
     }
+
+    private void addHistory(String result, String format) {
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
+        String qrtime = df.format(Calendar.getInstance().getTime());
+        adapter = new HistoryRecycleViewAdapter(new HistoryRecycleViewAdapter.InterfaceItemClick() {
+            @Override
+            public void deleteHistory(History history) {
+
+            }
+        });
+        historyList = new ArrayList<>();
+        adapter.setData(getActivity(), historyList);
+        History history = new History(getTITLE(result, format), result, qrtime);
+        CreateHistoryDatabase.getInstance(getActivity()).historyDAO().insertHistory(history);
+        Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
+    }
+
+    private String getTITLE(String result, String format) {
+        String title = "";
+        String ss = "", Json = "";
+
+        if( format.equals("QR_CODE")) {
+            int d = 0;
+            for(int i = 0; i < result.length() ; i++) {
+                if(result.charAt(i) == ':' || result.charAt(i) == '.') {
+                    d = i;
+                    break;
+                }
+                ss += result.charAt(i);
+            }
+            int count = 0;
+            switch (ss.toUpperCase()) {
+                case "HTTPS": count++;
+                case "WWW": count++;
+                case "HTTP": count++;
+                    title = "URL";
+                    break;
+                case "MATMSG": title = "Email";
+                    break;
+                case "WIFI": title = "Wifi";
+                    break;
+                case "TEL": title = "TELEPHONE";
+                    break;
+                case "SMSTO": title = "SMS";
+                    break;
+                case "GEO" : title = "GEO";
+                    break;
+                case "BEGIN":
+                    for(int i = d + 1; i < result.length(); i++) {
+                        if(result.charAt(i) == '\n') {
+                            d = i+1;
+                            break;
+                        }
+                        Json += result.charAt(i);
+                    }
+                    if(Json.equals("VCARD")) {
+                        Json = "";
+                        title = "VCARD";
+                    } else if(Json.equals("VEVENT")) {
+                        title = "EVENT";
+                    }
+                    break;
+                default:
+                    title = "Text";
+                    break;
+            }
+        } else {
+            for (int i = 0; i < format.length(); i++) {
+                if (format.charAt(i) == '_')
+                    break;
+                ss += format.charAt(i);
+            }
+            if (ss.equals("EAN") || ss.equals("UPC")) {
+                title = "Product";
+            } else {
+                title = "Text";
+            }
+        }
+
+        return title;
+    }
+
     //Sound and Beep
     public void SOund_Vibrate(){
         SharedPreferences vibrate;
@@ -493,6 +586,8 @@ public class Fragment_Scan_Home extends Fragment {
 //                            String title = String.valueOf(barcode.getDisplayValue());
 //
                             SOund_Vibrate();
+
+                            addHistory(rawValue, title);
                             intent.putExtra("QRinfor", rawValue);
                             intent.putExtra("QRtitle", title);
                             startActivity(intent);

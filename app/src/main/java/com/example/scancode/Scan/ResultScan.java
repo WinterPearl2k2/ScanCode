@@ -313,7 +313,7 @@ public class ResultScan extends AppCompatActivity {
         });
     }
     String title = "";
-    public void XuLi() {//
+    public void XuLi() {
         String s, result;
         s = intent.getStringExtra("QRtitle");
         result = intent.getStringExtra("QRinfor");
