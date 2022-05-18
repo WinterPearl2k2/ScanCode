@@ -44,12 +44,12 @@ public class EmailActivity extends AppCompatActivity {
                 return true;
             case R.id.icon_accept:
                 if(CheckNull()) {
-                    Intent intent = new Intent(EmailActivity.this, ResultScan.class);
+                    Intent intent = new Intent(EmailActivity.this, QRImageActivity.class);
                     Bundle mBundle = new Bundle();
                     String Qrtxt = "MATMSG:TO:" + edEmail.getText()
                             + ((edTitle.getText().toString().length() == 0 )?"":";SUB:") + edTitle.getText()
                             + ((edMess.getText().toString().length() == 0)?"":";BODY:") + edMess.getText() + ";";
-                    mBundle.putString("QRtitle", "QR_CODE");
+                    mBundle.putString("QRtitle", "Email");
                     mBundle.putString("QRinfor", Qrtxt);
                     intent.putExtras(mBundle);
                     startActivity(intent);

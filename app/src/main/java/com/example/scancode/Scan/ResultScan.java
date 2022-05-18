@@ -207,7 +207,12 @@ public class ResultScan extends AppCompatActivity {
 
 //            DateFormat df = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
 //            String qrtime = df.format(Calendar.getInstance().getTime());
-//            adapter = new HistoryRecycleViewAdapter();
+//            adapter = new HistoryRecycleViewAdapter(new HistoryRecycleViewAdapter.InterfaceItemClick() {
+//                @Override
+//                public void deleteHistory(History history) {
+//
+//                }
+//            });
 //            historyList = new ArrayList<>();
 //            adapter.setData(this, historyList);
 //            History history = new History(qrname, result, qrtime);
@@ -230,6 +235,19 @@ public class ResultScan extends AppCompatActivity {
                 qrCodeIV.getLayoutParams().width = 660;
                 qrCodeIV.getLayoutParams().height = 300;
                 qrCodeIV.setImageBitmap(CreateImage(result));
+//                DateFormat df = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
+//                String qrtime = df.format(Calendar.getInstance().getTime());
+//                adapter = new HistoryRecycleViewAdapter(new HistoryRecycleViewAdapter.InterfaceItemClick() {
+//                    @Override
+//                    public void deleteHistory(History history) {
+//
+//                    }
+//                });
+//                historyList = new ArrayList<>();
+//                adapter.setData(this, historyList);
+//                History history = new History(qrname, result, qrtime);
+//                CreateHistoryDatabase.getInstance(this).historyDAO().insertHistory(history);
+//                Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
             } catch (WriterException e) {
                 e.printStackTrace();
             }
@@ -294,12 +312,12 @@ public class ResultScan extends AppCompatActivity {
             }
         });
     }
-
+    String title = "";
     public void XuLi() {
         String s, result;
         s = intent.getStringExtra("QRtitle");
         result = intent.getStringExtra("QRinfor");
-        String title = "";
+//        String title = "";
         String ss = "";
         boolean flag = false;
         if( s.equals("QR_CODE")) {

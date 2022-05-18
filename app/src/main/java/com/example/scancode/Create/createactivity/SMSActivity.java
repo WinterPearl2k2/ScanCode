@@ -42,10 +42,10 @@ public class SMSActivity extends AppCompatActivity {
                 return true;
             case R.id.icon_accept:
                 if(CheckNull()) {
-                    Intent intent = new Intent(SMSActivity.this, ResultScan.class);
+                    Intent intent = new Intent(SMSActivity.this, QRImageActivity.class);
                     Bundle mBundle = new Bundle();
                     String Qrtxt = "SMSTO:" + edRecipient.getText() + ":" + edMess.getText();
-                    mBundle.putString("QRtitle", "QR_CODE");
+                    mBundle.putString("QRtitle", "SMS");
                     mBundle.putString("QRinfor", Qrtxt);
                     intent.putExtras(mBundle);
                     startActivity(intent);

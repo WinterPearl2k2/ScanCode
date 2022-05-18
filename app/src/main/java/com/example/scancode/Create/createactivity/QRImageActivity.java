@@ -96,11 +96,16 @@ public class QRImageActivity extends AppCompatActivity {
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
         String qrtime = df.format(Calendar.getInstance().getTime());;
 
-//        adapter = new HistoryRecycleViewAdapter();
-//        historyList = new ArrayList<>();
-//        adapter.setData(this, historyList);
-//        History history = new History(qrname, qrinfor, qrtime);
-//        CreateHistoryDatabase.getInstance(this).historyDAO().insertHistory(history);
+        adapter = new HistoryRecycleViewAdapter(new HistoryRecycleViewAdapter.InterfaceItemClick() {
+            @Override
+            public void deleteHistory(History history) {
+
+            }
+        });
+        historyList = new ArrayList<>();
+        adapter.setData(this, historyList);
+        History history = new History(qrname, qrinfor, qrtime);
+        CreateHistoryDatabase.getInstance(this).historyDAO().insertHistory(history);
 
         Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
         //setting this dimensions inside our qr code encoder to generate our qr code.

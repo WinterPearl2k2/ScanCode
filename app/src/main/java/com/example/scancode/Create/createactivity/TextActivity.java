@@ -42,9 +42,9 @@ public class TextActivity extends AppCompatActivity {
                 if( edtxt.getText().toString().length() == 0 )
                     edtxt.setError( "Please enter text!" );
                 else {
-                    Intent intent = new Intent(TextActivity.this, ResultScan.class);
+                    Intent intent = new Intent(TextActivity.this, QRImageActivity.class);
                     Bundle mBundle = new Bundle();
-                    mBundle.putString("QRtitle", "QR_CODE");
+                    mBundle.putString("QRtitle", "Text");
                     mBundle.putString("QRinfor", edtxt.getText().toString());
                     intent.putExtras(mBundle);
                     startActivity(intent);

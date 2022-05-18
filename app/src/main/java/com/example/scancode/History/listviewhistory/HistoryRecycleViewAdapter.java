@@ -98,9 +98,9 @@ public class HistoryRecycleViewAdapter extends RecyclerView.Adapter<HistoryRecyc
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, QRImageActivity.class);
+                Intent intent = new Intent(context, ResultScan.class);
                 Bundle mBundle = new Bundle();
-                mBundle.putString("QRtitle", history.getNameItem());
+                mBundle.putString("QRtitle", "EAN_13");
                 mBundle.putString("QRinfor", history.getDesItem());
                 intent.putExtras(mBundle);
                 context.startActivity(intent);
