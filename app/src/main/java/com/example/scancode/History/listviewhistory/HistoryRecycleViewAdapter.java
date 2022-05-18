@@ -1,6 +1,7 @@
 package com.example.scancode.History.listviewhistory;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,12 +10,15 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.scancode.Create.createactivity.QRImageActivity;
+import com.example.scancode.Create.listviewcreate.CreateRecycleViewAdapter;
 import com.example.scancode.R;
 import com.example.scancode.Scan.ResultScan;
 
@@ -25,6 +29,15 @@ public class HistoryRecycleViewAdapter extends RecyclerView.Adapter<HistoryRecyc
     private List<History> historyList;
     private Context context;
     private Intent intent;
+    private InterfaceItemClick interfaceItemClick;
+
+    public interface InterfaceItemClick{
+        void deleteHistory(History history);
+    }
+
+    public HistoryRecycleViewAdapter(InterfaceItemClick interfaceItemClick) {
+        this.interfaceItemClick = interfaceItemClick;
+    }
     public void setData(Context context, List<History> list){
         this.context = context;
         this.historyList = list;
@@ -41,6 +54,7 @@ public class HistoryRecycleViewAdapter extends RecyclerView.Adapter<HistoryRecyc
     @Override
     public void onBindViewHolder(@NonNull CreateHistoryViewHolder holder, int position) {
         History history = historyList.get(position);
+        int i = historyList.size()-position;
         if (history == null)
             return;
 
@@ -77,6 +91,9 @@ public class HistoryRecycleViewAdapter extends RecyclerView.Adapter<HistoryRecyc
             case "EVENT":
                 holder.imgQrtype.setImageResource(R.drawable.ic_event_24);
                 break;
+            case "Product":
+                holder.imgQrtype.setImageResource(R.drawable.icon_barcode_32);
+                break;
         }
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +104,13 @@ public class HistoryRecycleViewAdapter extends RecyclerView.Adapter<HistoryRecyc
                 mBundle.putString("QRinfor", history.getDesItem());
                 intent.putExtras(mBundle);
                 context.startActivity(intent);
+            }
+        });
+        holder.layoutItem.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                interfaceItemClick.deleteHistory(history);
+                return true;
             }
         });
     }

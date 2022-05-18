@@ -15,4 +15,6 @@ public interface HistoryDAO {
     @Query("SELECT * FROM CreateHistory ORDER BY id DESC")
     List<History> getListHistory();
 
+    @Delete
+    void deleteHistory(History history);
 }

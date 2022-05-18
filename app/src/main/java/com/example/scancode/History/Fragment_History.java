@@ -1,10 +1,12 @@
 package com.example.scancode.History;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,7 +17,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.scancode.Create.listviewcreate.CreateRecycleViewAdapter;
 import com.example.scancode.History.listviewhistory.CreateHistoryDatabase;
 import com.example.scancode.History.listviewhistory.HistoryRecycleViewAdapter;
 import com.example.scancode.History.listviewhistory.History;
@@ -32,9 +36,6 @@ public class Fragment_History extends Fragment {
     Intent intent;
     private List<History> historyList;
     RecyclerView recyclerView;
-    public static ArrayList<History> arraySelected = new ArrayList<>();
-    public static boolean isActionMode = false;
-    public static ActionMode actionmode = null;
 
 
     @Nullable
@@ -45,7 +46,12 @@ public class Fragment_History extends Fragment {
         //AnhXa
         recyclerView = view.findViewById(R.id.recycleviewScanHistory);
 
-        adapter = new HistoryRecycleViewAdapter();
+        adapter = new HistoryRecycleViewAdapter(new HistoryRecycleViewAdapter.InterfaceItemClick() {
+            @Override
+            public void deleteHistory(History history) {
+                onLongClicktoDelete(history);
+            }
+        });
         historyList = new ArrayList<>();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -53,14 +59,30 @@ public class Fragment_History extends Fragment {
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
         recyclerView.setAdapter(adapter);
-        historyList = CreateHistoryDatabase.getInstance(getActivity()).historyDAO().getListHistory();
-        adapter.setData(getActivity(), historyList);
+        loadData();
         return view;
+    }
+
+    private void onLongClicktoDelete(History history) {
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Delete History")
+                .setMessage("Bạn có chắc chắn muốn xóa ?"). setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                CreateHistoryDatabase.getInstance(getActivity()).historyDAO().deleteHistory(history);
+                loadData();
+            }
+        }).setNegativeButton("No", null).show();
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        loadData();
+    }
+
+    private void loadData() {
         historyList = CreateHistoryDatabase.getInstance(getActivity()).historyDAO().getListHistory();
         adapter.setData(getActivity(), historyList);
     }
