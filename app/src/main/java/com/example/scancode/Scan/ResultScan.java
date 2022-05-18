@@ -43,7 +43,10 @@ import com.example.scancode.History.listviewhistory.CreateHistoryDatabase;
 import com.example.scancode.History.listviewhistory.History;
 import com.example.scancode.History.listviewhistory.HistoryRecycleViewAdapter;
 import com.example.scancode.R;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -86,17 +89,8 @@ public class ResultScan extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_result_scan);
         ORM();
-        String s = "", result = "";
-        if(intent.getStringExtra("type").equals("1")) {
-            s = intent.getStringExtra("title");
-            result = intent.getStringExtra("linksp");
-            actionBar.setTitle(intent.getStringExtra("title"));
-        } else if(intent.getStringExtra("type").equals("2")) {
-            s = intent.getStringExtra("QRFormal");
-            result = intent.getStringExtra("QRinfor");
-            actionBar.setTitle(intent.getStringExtra("QRFormal"));
-        }
-        XuLi(s, result);
+        actionBar.setTitle(intent.getStringExtra("QRtitle"));
+        XuLi();
         Copy();
         CopyResult();
         SaveImage();
@@ -196,41 +190,97 @@ public class ResultScan extends AppCompatActivity {
         });
     }
 
-    private void seeCode(String qrname, String result) {
-        WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
-        //initializing a variable for default display.
-        Display display = manager.getDefaultDisplay();
-        //creating a variable for point which is to be displayed in QR Code.
-        Point point = new Point();
-        display.getSize(point);
-        //getting width and height of a point
-        int width = point.x;
-        int height = point.y;
-        //generating dimension from width and height.
-        int dimen = width < height ? width : height;
-        dimen = dimen * 3 / 4;
+    private void seeCode(String qrname, String result, boolean flag) {
+        if(flag == true) {
+            WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
+            //initializing a variable for default display.
+            Display display = manager.getDefaultDisplay();
+            //creating a variable for point which is to be displayed in QR Code.
+            Point point = new Point();
+            display.getSize(point);
+            //getting width and height of a point
+            int width = point.x;
+            int height = point.y;
+            //generating dimension from width and height.
+            int dimen = width < height ? width : height;
+            dimen = dimen * 3 / 4;
 
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
-        String qrtime = df.format(Calendar.getInstance().getTime());;
-        adapter = new HistoryRecycleViewAdapter();
-        historyList = new ArrayList<>();
-        adapter.setData(this, historyList);
-        History history = new History(qrname, result, qrtime);
-        CreateHistoryDatabase.getInstance(this).historyDAO().insertHistory(history);
-        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+//            DateFormat df = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
+//            String qrtime = df.format(Calendar.getInstance().getTime());
+//            adapter = new HistoryRecycleViewAdapter();
+//            historyList = new ArrayList<>();
+//            adapter.setData(this, historyList);
+//            History history = new History(qrname, result, qrtime);
+//            CreateHistoryDatabase.getInstance(this).historyDAO().insertHistory(history);
+//            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
 
-        //setting this dimensions inside our qr code encoder to generate our qr code.
-        qrgEncoder = new QRGEncoder(result, null, QRGContents.Type.TEXT, dimen);
-        try {
-            //getting our qrcode in the form of bitmap.
-            bitmap = qrgEncoder.encodeAsBitmap();
-            // the bitmap is set inside our image view using .setimagebitmap method.
-            qrCodeIV.setImageBitmap(bitmap);
-        } catch (WriterException e) {
-            //this method is called for exception handling.
-            Log.e("Tag", e.toString());
+            //setting this dimensions inside our qr code encoder to generate our qr code.
+            qrgEncoder = new QRGEncoder(result, null, QRGContents.Type.TEXT, dimen);
+            try {
+                //getting our qrcode in the form of bitmap.
+                bitmap = qrgEncoder.encodeAsBitmap();
+                // the bitmap is set inside our image view using .setimagebitmap method.
+                qrCodeIV.setImageBitmap(bitmap);
+            } catch (WriterException e) {
+                //this method is called for exception handling.
+                Log.e("Tag", e.toString());
+            }
+        } else {
+            try {
+                qrCodeIV.getLayoutParams().width = 660;
+                qrCodeIV.getLayoutParams().height = 300;
+                qrCodeIV.setImageBitmap(CreateImage(result));
+            } catch (WriterException e) {
+                e.printStackTrace();
+            }
         }
 
+    }
+
+    public Bitmap CreateImage(String message) throws WriterException
+    {
+        int size_width = 660;
+        int size_height = 264;
+        BitMatrix bitMatrix;
+        // BitMatrix bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.QR_CODE, size, size);
+        String title = intent.getStringExtra("QRtitle");
+        switch (title) {
+            case "EAN_13":
+                bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.EAN_13, size_width, size_height);
+                break;
+            case "EAN_8":
+                bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.EAN_8, size_width, size_height);
+                break;
+            case "UPC_A":
+                bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.UPC_A, size_width, size_height);
+                break;
+            case "UPC_E":
+                bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.UPC_E, size_width, size_height);
+                break;
+            default:
+                bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.CODE_128, size_width, size_height);
+                break;
+        }
+        int width = bitMatrix.getWidth();
+        int height = bitMatrix.getHeight();
+        int [] pixels = new int [width * height];
+        for (int i = 0 ; i < height ; i++)
+        {
+            for (int j = 0 ; j < width ; j++)
+            {
+                if (bitMatrix.get(j, i))
+                {
+                    pixels[i * width + j] = 0xff000000;
+                }
+                else
+                {
+                    pixels[i * width + j] = 0xffffffff;
+                }
+            }
+        }
+        bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
+        return bitmap;
     }
 
     private void ClickLink(String s) {
@@ -245,10 +295,15 @@ public class ResultScan extends AppCompatActivity {
         });
     }
 
-    public void XuLi(String s, String result) {
+    public void XuLi() {
+        String s, result;
+        s = intent.getStringExtra("QRtitle");
+        result = intent.getStringExtra("QRinfor");
         String title = "";
         String ss = "";
+        boolean flag = false;
         if( s.equals("QR_CODE")) {
+            flag = true;
             int d = 0;
             for(int i = 0; i < result.length() ; i++) {
                 if(result.charAt(i) == ':' || result.charAt(i) == '.') {
@@ -257,11 +312,11 @@ public class ResultScan extends AppCompatActivity {
                 }
                 ss += result.charAt(i);
             }
-            int flag = 0;
+            int count = 0;
             switch (ss.toUpperCase()) {
-                case "HTTPS": flag++;
-                case "WWW": flag++;
-                case "HTTP": flag++;
+                case "HTTPS": count++;
+                case "WWW": count++;
+                case "HTTP": count++;
                     title = "URL";
                     txtTitleResult.setText(title);
                     for(int i = d ; i < result.length() ; i++) {
@@ -271,9 +326,9 @@ public class ResultScan extends AppCompatActivity {
                     imgSearch.setImageResource(R.drawable.ic_baseline_insert_link_36);
                     txtResult.setText(result);
                     String protocol = null;
-                    if(flag == 1)
+                    if(count == 1)
                         protocol = "https:";
-                    else if(flag > 1)
+                    else if(count > 1)
                         protocol = "http:";
                     String s1 = "https:";
                     ClickLink(link.length() > 0 ? (protocol + link) : "");
@@ -286,14 +341,14 @@ public class ResultScan extends AppCompatActivity {
                             for(int j = i + 1 ; j < result.length() ; j++) {
                                 if(result.charAt(j) == ';') {
                                     d = j;
-                                    flag++;
+                                    count++;
                                     break;
                                 }
-                                if(flag == 0)
+                                if(count == 0)
                                     TO += result.charAt(j);
-                                else if (flag == 1)
+                                else if (count == 1)
                                     SUB += result.charAt(j);
-                                else if (flag == 2)
+                                else if (count == 2)
                                     BODY += result.charAt(j);
                             }
                         }else d = i;
@@ -318,16 +373,16 @@ public class ResultScan extends AppCompatActivity {
                             for(int j = i + 1 ; j < result.length() ; j++) {
                                 if(result.charAt(j) == ';') {
                                     d = j;
-                                    flag++;
+                                    count++;
                                     break;
                                 }
-                                if(flag == 0)
+                                if(count == 0)
                                     T += result.charAt(j);
-                                else if (flag == 1)
+                                else if (count == 1)
                                     S += result.charAt(j);
-                                else if (flag == 2)
+                                else if (count == 2)
                                     P += result.charAt(j);
-                                else if(flag == 3)
+                                else if(count == 3)
                                     H += result.charAt(j);
                             }
                         }else d = i;
@@ -375,11 +430,11 @@ public class ResultScan extends AppCompatActivity {
                     for(int i = d + 1 ; i < result.length() ; i++) {
                         if(result.charAt(i) == ':') {
                             i++;
-                            flag++;
+                            count++;
                         }
-                        if(flag == 0)
+                        if(count == 0)
                             TEL += result.charAt(i);
-                        else if (flag == 1)
+                        else if (count == 1)
                             SMS += result.charAt(i);
                     }
                     txtSearch.setText("Gửi tin nhắn");
@@ -407,11 +462,11 @@ public class ResultScan extends AppCompatActivity {
                     for(int i = d + 1 ; i < result.length() ; i++) {
                         if(result.charAt(i) == ',') {
                             i++;
-                            flag++;
+                            count++;
                         }
-                        if(flag == 0)
+                        if(count == 0)
                             LATITUDE += result.charAt(i);
-                        else if (flag == 1)
+                        else if (count == 1)
                             LONGITUDE += result.charAt(i);
                     }
                     txtSearch.setText("Truy cập vị trí");
@@ -474,7 +529,7 @@ public class ResultScan extends AppCompatActivity {
                                 for(int j = i + 1; j < result.length(); j++) {
                                     if(result.charAt(j-1) == '\n') {
                                         i = j;
-                                        flag++;
+                                        count++;
                                         break;
                                     }
                                     if(result.charAt(j) == ';' || result.charAt(j) == '\n') {
@@ -663,6 +718,7 @@ public class ResultScan extends AppCompatActivity {
                     break;
             }
         } else {
+            flag = false;
             for (int i = 0; i < s.length(); i++) {
                 if (s.charAt(i) == '_')
                     break;
@@ -679,7 +735,7 @@ public class ResultScan extends AppCompatActivity {
         }
 
         shareOtherApp();
-        seeCode(title, result);
+        seeCode(title, result, flag);
     }
 
     private void accessToMap() {
