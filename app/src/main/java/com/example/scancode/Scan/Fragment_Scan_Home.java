@@ -167,14 +167,17 @@ public class Fragment_Scan_Home extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        SOund_Vibrate();
-                        addHistory(result.getText(), result.getBarcodeFormat().toString());
-                        Intent intent = new Intent(getActivity(), ResultScan.class);
-                        intent.putExtra("QRinfor", result.getText());
-                        intent.putExtra("QRtitle", result.getBarcodeFormat().toString());
-                        startActivity(intent);
-//                        result.getBarcodeFormat().toString()
-//                        Toast.makeText(getActivity(), result.getText()+"", Toast.LENGTH_SHORT).show();
+                        if(result.getText().length() > 0) {
+                            SOund_Vibrate();
+                            addHistory(result.getText(), result.getBarcodeFormat().toString());
+                            Intent intent = new Intent(getActivity(), ResultScan.class);
+                            intent.putExtra("QRinfor", result.getText());
+                            intent.putExtra("QRtitle", result.getBarcodeFormat().toString());
+                            Toast.makeText(getActivity(), "Scan successful", Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(getActivity(), "Unable to scan", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
             }
@@ -198,7 +201,6 @@ public class Fragment_Scan_Home extends Fragment {
         adapter.setData(getActivity(), historyList);
         History history = new History(getTITLE(result, format), result, qrtime);
         CreateHistoryDatabase.getInstance(getActivity()).historyDAO().insertHistory(history);
-        Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
     }
 
     private String getTITLE(String result, String format) {
@@ -325,10 +327,12 @@ public class Fragment_Scan_Home extends Fragment {
                     mCodeScanner.setFlashEnabled(true);
                     mFlash = false;
                     btn_Flash.setImageResource(R.drawable.ic_flash_off);
+                    Toast.makeText(getActivity(), "Flash on", Toast.LENGTH_SHORT).show();
                 }else {
                     mCodeScanner.setFlashEnabled(false);
                     mFlash = true;
                     btn_Flash.setImageResource(R.drawable.ic_flash_on);
+                    Toast.makeText(getActivity(), "Flash off", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -378,39 +382,82 @@ public class Fragment_Scan_Home extends Fragment {
 
 
     private void ZoomFrame() {
-        zoom_Frame.setMax(80);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            zoom_Frame.setMin(20);
-        }
-        zoom_Frame.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    zoom_Frame.setMin(20);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            zoom_Frame.setMax(80);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                zoom_Frame.setMin(20);
+            }
+            zoom_Frame.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        zoom_Frame.setMin(20);
+                    }
                 }
-            }
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
 
-            }
+                }
 
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
 
-            }
-        });
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            zoom_Frame.setMin(20);
-//        } else
-//            zoom_Frame.setMin(20);
+                }
+            });
+
+            btn_Plus_Frame.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (zoom_Frame.getProgress() >= 80) {
+                        scannerView.setFrameSize(zoom_Frame.getProgress() / 100F);
+                    } else {
+                        zoom_Frame.setProgress(zoom_Frame.getProgress() + 6);
+                        scannerView.setFrameSize(zoom_Frame.getProgress() / 100F);
+                    }
+                }
+            });
+
+            btn_Minus_Frame.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (zoom_Frame.getProgress() <= 20) {
+                        scannerView.setFrameSize(zoom_Frame.getProgress() / 100F);
+                    } else {
+                        zoom_Frame.setProgress(zoom_Frame.getProgress() - 6);
+                        scannerView.setFrameSize(zoom_Frame.getProgress() / 100F);
+                    }
+                }
+            });
+
+            zoom_Frame.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                    scannerView.setFrameSize(i / 100F);
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+//                scannerView.setFrameSize(zoom_Frame.getProgress()/100F);
+                }
+            });
+        } else {
+            zoom_Frame.setVisibility(View.GONE);
+            btn_Plus_Frame.setVisibility(View.GONE);
+            btn_Minus_Frame.setVisibility(View.GONE);
+        }
         btn_QRCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                    zoom_Frame.setMin(20);
-//                } else
-//                    zoom_Frame.setMin(20); //đợi mín
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    zoom_Frame.setMin(20);
+                }
+
                 scannerView.setFrameAspectRatioWidth(1);
                 btn_BarCode.setBackgroundResource(R.drawable.cus_btn_scanqr);
                 btn_QRCode.setBackgroundResource(R.drawable.cus_btn_scanqr2);
@@ -427,47 +474,6 @@ public class Fragment_Scan_Home extends Fragment {
                 scannerView.setFrameAspectRatioWidth(3);
                 btn_BarCode.setBackgroundResource(R.drawable.cus_btn_scanqr2);
                 btn_QRCode.setBackgroundResource(R.drawable.cus_btn_scanqr);
-            }
-        });
-
-        btn_Plus_Frame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (zoom_Frame.getProgress() >= 80) {
-                    scannerView.setFrameSize(zoom_Frame.getProgress()/100F);
-                }else {
-                    zoom_Frame.setProgress(zoom_Frame.getProgress() + 6);
-                    scannerView.setFrameSize(zoom_Frame.getProgress() / 100F);
-                }
-            }
-        });
-
-        btn_Minus_Frame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (zoom_Frame.getProgress() <= 20) {
-                    scannerView.setFrameSize(zoom_Frame.getProgress()/100F);
-                }else {
-                    zoom_Frame.setProgress(zoom_Frame.getProgress() - 6);
-                    scannerView.setFrameSize(zoom_Frame.getProgress() / 100F);
-                }
-            }
-        });
-
-        zoom_Frame.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                scannerView.setFrameSize(i/100F);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-//                scannerView.setFrameSize(zoom_Frame.getProgress()/100F);
             }
         });
     }
@@ -533,14 +539,6 @@ public class Fragment_Scan_Home extends Fragment {
     }
 
     private void scanBarcodes(InputImage inputImage) {
-        // [START set_detector_options]
-        BarcodeScannerOptions options =
-                new BarcodeScannerOptions.Builder()
-                        .setBarcodeFormats(
-                                Barcode.FORMAT_QR_CODE,
-                                Barcode.FORMAT_AZTEC)
-                        .build();
-        // [END set_detector_options]
 
         // [START get_detector]
         BarcodeScanner scanner = BarcodeScanning.getClient();
@@ -556,11 +554,11 @@ public class Fragment_Scan_Home extends Fragment {
                         // Task completed successfully
                         // [START_EXCLUDE]-
                         // [START get_barcodes]
+                        String title = "";
+                        String rawValue = "";
                         for (Barcode barcode: barcodes) {
-                            String rawValue = barcode.getRawValue();
-                            String title = "";
+                            rawValue = barcode.getRawValue();
 
-                            Intent intent = new Intent(getActivity(), ResultScan.class);
                             // See API reference for complete list of supported types
 
                             switch (barcode.getFormat()) {
@@ -570,27 +568,35 @@ public class Fragment_Scan_Home extends Fragment {
                                 case 64:
                                     title = "EAN_8";
                                     break;
-                                case 1:
-                                    title = "EAN_14";
-                                    break;
                                 case 512:
                                     title = "UPC_A";
                                     break;
                                 case 1024:
                                     title = "UPC_E";
                                     break;
+                                case 1:
+                                    title = "CODE_128";
+                                    break;
                                 case 256:
                                     title = "QR_CODE";
+                                    break;
+                                default:
+                                    title = "CODE_128";
                                     break;
                             }
 //                            String title = String.valueOf(barcode.getDisplayValue());
 //
                             SOund_Vibrate();
-
+                        }
+                        if(rawValue.length() > 0) {
                             addHistory(rawValue, title);
+                            Intent intent = new Intent(getActivity(), ResultScan.class);
                             intent.putExtra("QRinfor", rawValue);
                             intent.putExtra("QRtitle", title);
                             startActivity(intent);
+                            Toast.makeText(getActivity(), "Image scan successful", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity(), "Unable to scan image", Toast.LENGTH_SHORT).show();
                         }
                         // [END get_barcodes]
                         // [END_EXCLUDE]

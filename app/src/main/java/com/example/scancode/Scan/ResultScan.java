@@ -129,8 +129,6 @@ public class ResultScan extends AppCompatActivity {
                                         bitmap.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
                                         outputStream.flush();
                                         outputStream.close();
-//                            dialog.dismiss();
-//                            Toast.makeText(ResultScan.this, "Save successfully", Toast.LENGTH_SHORT).show();
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
@@ -205,20 +203,6 @@ public class ResultScan extends AppCompatActivity {
             int dimen = width < height ? width : height;
             dimen = dimen * 3 / 4;
 
-//            DateFormat df = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
-//            String qrtime = df.format(Calendar.getInstance().getTime());
-//            adapter = new HistoryRecycleViewAdapter(new HistoryRecycleViewAdapter.InterfaceItemClick() {
-//                @Override
-//                public void deleteHistory(History history) {
-//
-//                }
-//            });
-//            historyList = new ArrayList<>();
-//            adapter.setData(this, historyList);
-//            History history = new History(qrname, result, qrtime);
-//            CreateHistoryDatabase.getInstance(this).historyDAO().insertHistory(history);
-//            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
-
             //setting this dimensions inside our qr code encoder to generate our qr code.
             qrgEncoder = new QRGEncoder(result, null, QRGContents.Type.TEXT, dimen);
             try {
@@ -235,19 +219,6 @@ public class ResultScan extends AppCompatActivity {
                 qrCodeIV.getLayoutParams().width = 660;
                 qrCodeIV.getLayoutParams().height = 300;
                 qrCodeIV.setImageBitmap(CreateImage(result));
-//                DateFormat df = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
-//                String qrtime = df.format(Calendar.getInstance().getTime());
-//                adapter = new HistoryRecycleViewAdapter(new HistoryRecycleViewAdapter.InterfaceItemClick() {
-//                    @Override
-//                    public void deleteHistory(History history) {
-//
-//                    }
-//                });
-//                historyList = new ArrayList<>();
-//                adapter.setData(this, historyList);
-//                History history = new History(qrname, result, qrtime);
-//                CreateHistoryDatabase.getInstance(this).historyDAO().insertHistory(history);
-//                Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
             } catch (WriterException e) {
                 e.printStackTrace();
             }
@@ -348,12 +319,10 @@ public class ResultScan extends AppCompatActivity {
                         protocol = "https:";
                     else if(count > 1)
                         protocol = "http:";
-                    String s1 = "https:";
                     ClickLink(link.length() > 0 ? (protocol + link) : "");
                     break;
                 case "MATMSG": title = "Email";
                     txtTitleResult.setText(title);
-//                    String TO = "", SUB = "", BODY = "";
                     for(int i = d + 1 ; i < result.length() ; i++) {
                         if(result.charAt(i) == ':') {
                             for(int j = i + 1 ; j < result.length() ; j++) {
