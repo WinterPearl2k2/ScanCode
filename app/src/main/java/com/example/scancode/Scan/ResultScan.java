@@ -20,6 +20,7 @@ import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.method.ScrollingMovementMethod;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.MenuItem;
@@ -230,8 +231,13 @@ public class ResultScan extends AppCompatActivity {
             }
         } else {
             try {
-                qrCodeIV.getLayoutParams().width = 660;
-                qrCodeIV.getLayoutParams().height = 300;
+                Display display = getWindowManager().getDefaultDisplay();
+                DisplayMetrics metrics = new DisplayMetrics();
+                display.getMetrics(metrics);
+                int widthImage = metrics.widthPixels;
+                int heightImage = metrics.heightPixels;
+                qrCodeIV.getLayoutParams().width = widthImage - 340;
+                qrCodeIV.getLayoutParams().height = heightImage - 1930;
                 qrCodeIV.setImageBitmap(CreateImage(result));
             } catch (WriterException e) {
                 e.printStackTrace();
