@@ -120,7 +120,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/share"
+                android:id="@+id/shareImage"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
@@ -140,6 +140,33 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="Chia sẻ mã QR"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/white"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/shareResult"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/cus_btn_result"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:elevation="4dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_format_shapes_24"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Chia sẻ kết quả quét"
                     android:textSize="16sp"
                     android:textColor="@android:color/white"
                     android:layout_marginLeft="20dp"
