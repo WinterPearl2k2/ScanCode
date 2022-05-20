@@ -858,7 +858,7 @@ public class ResultScan extends AppCompatActivity {
     public  void doCopy(){
         this.clipboardManager= (ClipboardManager) this.getSystemService(Context.CLIPBOARD_SERVICE);
         Intent intent = getIntent();
-        String copy = intent.getStringExtra("linksp");
+        String copy = intent.getStringExtra("QRinfor");
         ClipData clipData = ClipData.newPlainText("copy",copy);
         clipboardManager.setPrimaryClip(clipData);
     }
@@ -868,6 +868,7 @@ public class ResultScan extends AppCompatActivity {
         boolean check = sharedPreferences.getBoolean("copy",false);
         if(check==true){
             doCopy();
+            Toast.makeText(this, "Copy success", Toast.LENGTH_SHORT).show();
         }
 
     }

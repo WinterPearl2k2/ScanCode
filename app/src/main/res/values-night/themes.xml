@@ -3,16 +3,35 @@
     <style name="Theme.ScanCode" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary_icon</item>
-        <item name="colorPrimaryVariant">@color/primary_icon</item><!--ta sua-->
-        <item name="colorOnPrimary">@color/black</item>
-        <item name="android:backgroundTint">@color/navi</item>
+        <item name="colorPrimaryVariant">@color/navi</item><!--ta sua-->
+        <item name="colorOnPrimary">@color/primary_icon</item>
+
+        <item name="android:windowBackground">@color/navi</item>
+
+        <!--Actionbar-->
+        <item name="android:actionBarStyle">@style/Myactionbar</item>
+        <!-- Support library compatibility -->
+        <item name="actionBarStyle">@style/Myactionbar</item>
         <!-- Secondary brand color. -->
+
         <item name="colorSecondary">@color/icon</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondary">@color/primary_icon</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/pink_light</item>
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Myactionbar" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/primary_icon</item>
+
+        <!-- Support library compatibility -->
+        <item name="background">@color/primary_icon</item>
+    </style>
+    <style name="Mybackground" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/navi</item>
+
+        <!-- Support library compatibility -->
+        <item name="background">@color/navi</item>
+    </style>
 </resources>

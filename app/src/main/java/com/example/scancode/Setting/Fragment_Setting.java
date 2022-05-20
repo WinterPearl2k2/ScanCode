@@ -176,7 +176,7 @@ public class Fragment_Setting extends PreferenceFragmentCompat {
                 }
                 else{
                     SharedPreferences.Editor editor = sp_vibrate.edit();
-                    editor.putBoolean("beep",false);
+                    editor.putBoolean("vibrate",false);
                     editor.commit();
                 }
                 return true;

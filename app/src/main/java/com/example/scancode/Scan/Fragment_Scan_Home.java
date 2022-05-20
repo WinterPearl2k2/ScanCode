@@ -44,7 +44,6 @@ import com.example.scancode.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.mlkit.vision.barcode.BarcodeScanner;
-import com.google.mlkit.vision.barcode.BarcodeScannerOptions;
 import com.google.mlkit.vision.barcode.BarcodeScanning;
 import com.google.mlkit.vision.barcode.common.Barcode;
 import com.google.mlkit.vision.common.InputImage;
@@ -168,7 +167,8 @@ public class Fragment_Scan_Home extends Fragment {
                     @Override
                     public void run() {
                         if(result.getText().length() > 0) {
-                            SOund_Vibrate();
+                            Vibrate();
+                            Sound();
                             addHistory(result.getText(), result.getBarcodeFormat().toString());
                             Intent intent = new Intent(getActivity(), ResultScan.class);
                             intent.putExtra("QRinfor", result.getText());
@@ -268,14 +268,16 @@ public class Fragment_Scan_Home extends Fragment {
     }
 
     //Sound and Beep
-    public void SOund_Vibrate(){
+    public void Vibrate(){
         SharedPreferences vibrate;
         vibrate = getContext().getSharedPreferences("vibrate",0);
         boolean check2 = vibrate.getBoolean("vibrate",false);
         if(check2==true){
             Viber(getContext(),"on");
         }
-        Sound();
+        else
+            Viber(getContext(),"off");
+
     }
     //Sound
     public void Sound(){
@@ -294,7 +296,6 @@ public class Fragment_Scan_Home extends Fragment {
         if (value.equals("on")) {
             // Get instance of Vibrator from current Context
             Vibrator v = (Vibrator) cn.getSystemService(Context.VIBRATOR_SERVICE);
-
             // Vibrate for 300 milliseconds
             v.vibrate(300);
         }
@@ -585,7 +586,7 @@ public class Fragment_Scan_Home extends Fragment {
                             }
 //                            String title = String.valueOf(barcode.getDisplayValue());
 //
-                            SOund_Vibrate();
+                            Vibrate();
                         }
                         if(rawValue.length() > 0) {
                             addHistory(rawValue, title);
