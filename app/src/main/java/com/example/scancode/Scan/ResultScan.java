@@ -1,6 +1,5 @@
 package com.example.scancode.Scan;
 
-import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -14,6 +13,7 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.ContactsContract;
@@ -24,10 +24,7 @@ import android.util.Log;
 import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextClock;
@@ -39,7 +36,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.scancode.History.listviewhistory.CreateHistoryDatabase;
 import com.example.scancode.History.listviewhistory.History;
 import com.example.scancode.History.listviewhistory.HistoryRecycleViewAdapter;
 import com.example.scancode.R;
@@ -49,16 +45,11 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
@@ -75,7 +66,7 @@ public class ResultScan extends AppCompatActivity {
     private ImageView imgSearch,imgAddContact, qrCodeIV;
     private TextClock txtClock;
     private Intent intent;
-    private LinearLayout llAddContact, button, lnShare;
+    private LinearLayout llAddContact, button, lnShareImage, lnShareResult;
     private HistoryRecycleViewAdapter adapter;
     private List<History> historyList;
 
@@ -167,7 +158,8 @@ public class ResultScan extends AppCompatActivity {
         txtTitleResult = findViewById(R.id.txtTitleResult);
         button = findViewById(R.id.button);
         txtClock = findViewById(R.id.txtClock);
-        lnShare = findViewById(R.id.share);
+        lnShareImage = findViewById(R.id.shareImage);
+        lnShareResult = findViewById(R.id.shareResult);
         qrCodeIV = findViewById(R.id.imageQR);
         String formatdate = "dd/MM/yyyy HH:mm";
         txtClock.setFormat24Hour(formatdate);
@@ -175,15 +167,37 @@ public class ResultScan extends AppCompatActivity {
     }
 
     private void shareOtherApp() {
-        lnShare.setOnClickListener(new View.OnClickListener() {
+        lnShareImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    Intent share = new Intent(Intent.ACTION_SEND);
+                    String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "Image Description", null);
+                    Uri screen = Uri.parse(path);
+                    share.setType("image/jpeg");
+                    share.putExtra(Intent.EXTRA_STREAM, screen);
+                    startActivity(Intent.createChooser(share, "Share image"));
+                } else {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(ResultScan.this);
+                    dialog.setMessage("Xin lỗi phiên bản android hiện tại của bạn không hổ trợ tính năng này :'(")
+                            .setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                }
+                            }).show();
+                }
+            }
+        });
+
+        lnShareResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent share = new Intent(Intent.ACTION_SEND);
-                String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "Image Description", null);
-                Uri screen = Uri.parse(path);
-                share.setType("image/jpeg");
-                share.putExtra(Intent.EXTRA_STREAM, screen);
-                startActivity(Intent.createChooser(share, "Share image"));
+                share.setType("text/plain");
+                share.putExtra(Intent.EXTRA_TEXT, intent.getStringExtra("QRinfor"));
+                startActivity(Intent.createChooser(share, "Share via"));
+
             }
         });
     }
