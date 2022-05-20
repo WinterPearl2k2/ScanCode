@@ -5,7 +5,7 @@
         <item name="colorPrimary">@color/primary_icon</item>
         <item name="colorPrimaryVariant">@color/primary_icon</item><!--ta sua-->
         <item name="colorOnPrimary">@color/black</item>
-        <item name="bottomNavigationStyle">@color/grey</item>
+        <item name="android:backgroundTint">@color/navi</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/icon</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
