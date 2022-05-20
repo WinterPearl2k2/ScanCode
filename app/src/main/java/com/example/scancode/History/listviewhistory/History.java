@@ -3,6 +3,7 @@ package com.example.scancode.History.listviewhistory;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "CreateHistory")
@@ -17,11 +18,26 @@ public class History {
     private int icon;
     @PrimaryKey(autoGenerate = true)
     private int id;
-
-    public History(String nameItem, String desItem, String timeItem) {
+    @ColumnInfo(name = "qrformat")
+    private String format = "";
+//    public History(String nameItem, String desItem, String timeItem) {
+//        this.nameItem = nameItem;
+//        this.desItem = desItem;
+//        this.timeItem = timeItem;
+//    }
+    public History(String format, String nameItem, String desItem, String timeItem) {
+        this.format = format;
         this.nameItem = nameItem;
         this.desItem = desItem;
         this.timeItem = timeItem;
+    }
+
+    public String getFormat() {
+        return format;
+    }
+
+    public void setFormat(String format) {
+        this.format = format;
     }
 
     public int getId() {

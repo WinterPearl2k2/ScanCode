@@ -80,6 +80,7 @@ public class WifiActivity extends AppCompatActivity {
                     Intent intent = new Intent(WifiActivity.this, QRImageActivity.class);
                     Bundle mBundle = new Bundle();
                     String Qrtxt = "WIFI:T:" + TypeWifi() + ";S:" + edSSID.getText() + ";P:" + edPass.getText() + ";H:;";
+                    mBundle.putString("QRformat", "QR_CODE");
                     mBundle.putString("QRtitle", "Wifi");
                     mBundle.putString("QRinfor", Qrtxt);
                     intent.putExtras(mBundle);

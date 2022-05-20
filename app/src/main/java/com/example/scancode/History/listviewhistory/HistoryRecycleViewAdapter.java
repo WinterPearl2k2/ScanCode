@@ -100,10 +100,11 @@ public class HistoryRecycleViewAdapter extends RecyclerView.Adapter<HistoryRecyc
             public void onClick(View v) {
                 Intent intent = new Intent(context, ResultScan.class);
                 Bundle mBundle = new Bundle();
-                mBundle.putString("QRtitle", "EAN_13");
+                mBundle.putString("QRtitle", history.getFormat());
                 mBundle.putString("QRinfor", history.getDesItem());
                 intent.putExtras(mBundle);
                 context.startActivity(intent);
+//                Toast.makeText(context, history.getFormat(), Toast.LENGTH_SHORT).show();
             }
         });
         holder.layoutItem.setOnLongClickListener(new View.OnLongClickListener() {

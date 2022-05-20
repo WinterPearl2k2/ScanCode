@@ -44,6 +44,7 @@ public class TextActivity extends AppCompatActivity {
                 else {
                     Intent intent = new Intent(TextActivity.this, QRImageActivity.class);
                     Bundle mBundle = new Bundle();
+                    mBundle.putString("QRformat", "QR_CODE");
                     mBundle.putString("QRtitle", "Text");
                     mBundle.putString("QRinfor", edtxt.getText().toString());
                     intent.putExtras(mBundle);

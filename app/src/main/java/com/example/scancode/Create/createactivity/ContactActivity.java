@@ -78,6 +78,7 @@ public class ContactActivity extends AppCompatActivity {
                         ((edAddress.getText().toString().length() == 0)?"":"\nADR:" + edAddress.getText()) +
                         ((edWeb.getText().toString().length() == 0)?"":"\nURL:" + edWeb.getText()) +
                         "\nEND:VCARD";
+                    mBundle.putString("QRformat", "QR_CODE");
                     mBundle.putString("QRtitle", "Contact");
                     mBundle.putString("QRinfor", Qrtxt);
                     intent.putExtras(mBundle);

@@ -45,6 +45,7 @@ public class LinkActivity extends AppCompatActivity {
                 if(CheckNull()) {
                     Intent intent = new Intent(LinkActivity.this, QRImageActivity.class);
                     Bundle mBundle = new Bundle();
+                    mBundle.putString("QRformat", "QR_CODE");
                     mBundle.putString("QRtitle", "URL");
                     mBundle.putString("QRinfor", edURL.getText().toString());
                     intent.putExtras(mBundle);

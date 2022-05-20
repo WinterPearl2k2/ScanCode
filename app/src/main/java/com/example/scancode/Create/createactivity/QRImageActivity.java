@@ -90,7 +90,7 @@ public class QRImageActivity extends AppCompatActivity {
         Bundle extras = this.getIntent().getExtras();
         txtQrTitle.setText(extras.get("QRtitle").toString());
         txtQrInfor.setText(extras.get("QRinfor").toString());
-
+        String format = extras.get("QRformat").toString();
         String qrname = extras.get("QRtitle").toString(); // Text, contact
         String qrinfor = extras.get("QRinfor").toString(); // infor
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
@@ -104,10 +104,8 @@ public class QRImageActivity extends AppCompatActivity {
         });
         historyList = new ArrayList<>();
         adapter.setData(this, historyList);
-        History history = new History(qrname, qrinfor, qrtime);
+        History history = new History(format, qrname, qrinfor, qrtime);
         CreateHistoryDatabase.getInstance(this).historyDAO().insertHistory(history);
-
-        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
         //setting this dimensions inside our qr code encoder to generate our qr code.
         qrgEncoder = new QRGEncoder(txtQrInfor.getText().toString(), null, QRGContents.Type.TEXT, dimen);
         try {

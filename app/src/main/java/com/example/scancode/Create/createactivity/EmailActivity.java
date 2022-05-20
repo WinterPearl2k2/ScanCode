@@ -49,6 +49,7 @@ public class EmailActivity extends AppCompatActivity {
                     String Qrtxt = "MATMSG:TO:" + edEmail.getText()
                             + ((edTitle.getText().toString().length() == 0 )?"":";SUB:") + edTitle.getText()
                             + ((edMess.getText().toString().length() == 0)?"":";BODY:") + edMess.getText() + ";";
+                    mBundle.putString("QRformat", "QR_CODE");
                     mBundle.putString("QRtitle", "Email");
                     mBundle.putString("QRinfor", Qrtxt);
                     intent.putExtras(mBundle);
