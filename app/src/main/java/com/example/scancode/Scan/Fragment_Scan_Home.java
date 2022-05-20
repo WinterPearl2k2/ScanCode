@@ -173,7 +173,6 @@ public class Fragment_Scan_Home extends Fragment {
                             Intent intent = new Intent(getActivity(), ResultScan.class);
                             intent.putExtra("QRinfor", result.getText());
                             intent.putExtra("QRtitle", result.getBarcodeFormat().toString());
-                            Toast.makeText(getActivity(), "Scan successful", Toast.LENGTH_SHORT).show();
                             startActivity(intent);
                         } else {
                             Toast.makeText(getActivity(), "Unable to scan", Toast.LENGTH_SHORT).show();
@@ -199,7 +198,7 @@ public class Fragment_Scan_Home extends Fragment {
         });
         historyList = new ArrayList<>();
         adapter.setData(getActivity(), historyList);
-        History history = new History(getTITLE(result, format), result, qrtime);
+        History history = new History(format, getTITLE(result, format), result, qrtime);
         CreateHistoryDatabase.getInstance(getActivity()).historyDAO().insertHistory(history);
     }
 
