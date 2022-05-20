@@ -101,7 +101,6 @@ public class Fragment_Setting extends PreferenceFragmentCompat {
                         }
 
                         ChangeLanguage(locale);
-
                     }
                 });
 
@@ -121,11 +120,11 @@ public class Fragment_Setting extends PreferenceFragmentCompat {
             configuration.setLocale(locale);
         resources.updateConfiguration(configuration, displayMetrics);
 
-        Intent intent = new Intent(getContext(),getContext().getClass());
-        startActivity(intent);
-        getActivity().finish();
+         onCreate(null);
+
 
     }
+
     public void Copy(){
         sp_copy = getContext().getSharedPreferences("copy",0);
         sw_copy.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
