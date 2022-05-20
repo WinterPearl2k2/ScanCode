@@ -173,7 +173,6 @@ public class Fragment_Scan_Home extends Fragment {
                             Intent intent = new Intent(getActivity(), ResultScan.class);
                             intent.putExtra("QRinfor", result.getText());
                             intent.putExtra("QRtitle", result.getBarcodeFormat().toString());
-                            Toast.makeText(getActivity(), "Scan successful", Toast.LENGTH_SHORT).show();
                             startActivity(intent);
                         } else {
                             Toast.makeText(getActivity(), "Unable to scan", Toast.LENGTH_SHORT).show();
@@ -594,7 +593,6 @@ public class Fragment_Scan_Home extends Fragment {
                             intent.putExtra("QRinfor", rawValue);
                             intent.putExtra("QRtitle", title);
                             startActivity(intent);
-                            Toast.makeText(getActivity(), "Image scan successful", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(getActivity(), "Unable to scan image", Toast.LENGTH_SHORT).show();
                         }
