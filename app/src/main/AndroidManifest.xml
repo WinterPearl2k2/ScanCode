@@ -10,9 +10,11 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-    <permission android:name="android.permission.FLASHLIGHT"/>
-    <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
+    <permission android:name="android.permission.FLASHLIGHT" />
 
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -26,7 +28,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ScanCode">
-
+        <activity
+            android:name=".Setting.Help.ErrorLink"
+            android:exported="false" />
+        <activity
+            android:name=".Setting.Help.CantAccessWifi"
+            android:exported="false" />
+        <activity
+            android:name=".Setting.Help.CantReadQR"
+            android:exported="false" />
+        <activity
+            android:name=".Setting.Help.Tips"
+            android:exported="false" />
+        <activity
+            android:name=".Setting.Help.Help"
+            android:exported="false" />
         <activity
             android:name=".Create.createactivity.QRImageActivity"
             android:exported="false" />
@@ -51,10 +67,12 @@
         <activity
             android:name=".Scan.ResultScan"
             android:exported="false" />
-        <activity android:name=".Setting.Feebback"
-            android:exported="false"/>
-        <activity android:name=".Setting.Main_introduction"
-            android:exported="false"/>
+        <activity
+            android:name=".Setting.Feebback"
+            android:exported="false" />
+        <activity
+            android:name=".Setting.Main_introduction"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

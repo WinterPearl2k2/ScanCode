@@ -17,6 +17,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
 
 import com.example.scancode.R;
+import com.example.scancode.Setting.Help.Help;
 
 import java.util.Locale;
 
@@ -36,6 +37,7 @@ public class Fragment_Setting extends PreferenceFragmentCompat {
         Language();
         Introduction();
         Feedback();
+        Help();
     }
     public void initUI(){
         sw_beep     = findPreference("sound");
@@ -159,6 +161,17 @@ public class Fragment_Setting extends PreferenceFragmentCompat {
                     editor.putBoolean("beep",false);
                     editor.commit();
                 }
+                return true;
+            }
+        });
+    }
+
+    public void Help() {
+        p_help.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(@NonNull Preference preference) {
+                Intent intent = new Intent(getContext(), Help.class);
+                startActivity(intent);
                 return true;
             }
         });

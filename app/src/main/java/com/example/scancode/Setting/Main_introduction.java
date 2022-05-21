@@ -79,6 +79,9 @@ public class Main_introduction extends AppCompatActivity {
                         finish();
                     }
                 });
+            } else {
+                next.setEnabled(false);
+                next.setVisibility(View.GONE);
             }
         }
 

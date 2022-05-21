@@ -68,8 +68,6 @@ public class ResultScan extends AppCompatActivity {
     private TextClock txtClock;
     private Intent intent;
     private LinearLayout llAddContact, button, lnShareImage, lnShareResult;
-    private HistoryRecycleViewAdapter adapter;
-    private List<History> historyList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -775,35 +773,55 @@ public class ResultScan extends AppCompatActivity {
                         }
                     }).show();
         } else {
-            builder.setMessage("Chuyển hướng đến mạng Wifi: " + S
-                    + ". \nMật khẩu của bạn đã được sao chép, ấn OK để chuyển hướng đến cài đặt.")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent wifi = new Intent(Settings.ACTION_WIFI_SETTINGS);
-                            startActivity(wifi);
-                            copyTextToClipboard(P);
-                            WifiConfiguration conf = new WifiConfiguration();
-                            conf.SSID = "\"" + S + "\"";
-                            conf.wepKeys[0] = "\"" + P + "\"";
+            if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+                builder.setMessage("Kết nối đến mạng Wifi")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                WifiConfiguration conf = new WifiConfiguration();
+                                conf.SSID = "\"" + S + "\"";
+                                conf.wepKeys[0] = "\"" + P + "\"";
 
-                            WifiManager manager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-                            int netWorkID = manager.addNetwork(conf);
-                            if(netWorkID == -1) {
-                                conf.wepKeys[0] = P;
-                                netWorkID = manager.addNetwork(conf);
+                                conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+                                conf.allowedGroupCiphers.set(WifiConfiguration.AuthAlgorithm.OPEN);
+                                conf.allowedGroupCiphers.set(WifiConfiguration.AuthAlgorithm.SHARED);
+
+                                WifiManager manager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+                                int netWorkID = manager.addNetwork(conf);
+                                if (netWorkID == -1) {
+                                    conf.wepKeys[0] = P;
+                                    netWorkID = manager.addNetwork(conf);
+                                }
+                                manager.disconnect();
+                                manager.enableNetwork(netWorkID, true);
+                                manager.reconnect();
                             }
-                            manager.disconnect();
-                            manager.enableNetwork(netWorkID, true);
-                            manager.reconnect();
-                        }
-                    })
-                    .setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.cancel();
-                        }
-                    }).show();
+                        })
+                        .setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.cancel();
+                            }
+                        }).show();
+            } else {
+                builder.setTitle("Các thiết bị Android 10 trở lên cần kết nối Wifi một cách thủ công.")
+                        .setMessage("Chuyển hướng đến mạng Wifi: " + S
+                        + ". \nMật khẩu của bạn đã được sao chép, ấn OK để chuyển hướng đến cài đặt.")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent wifi = new Intent(Settings.ACTION_WIFI_SETTINGS);
+                                startActivity(wifi);
+                                copyTextToClipboard(P);
+                            }
+                        })
+                        .setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.cancel();
+                            }
+                        }).show();
+            }
         }
     }
 
