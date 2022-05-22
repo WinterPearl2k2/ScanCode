@@ -16,7 +16,7 @@
             android:layout_marginRight="8dp"
             app:startIconDrawable="@drawable/ic_contact_24"
             app:startIconTint="@color/pink_bold"
-            android:hint="Surname">
+            android:hint="@string/contact_surname">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputSurname"
@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_span="2"
-            android:hint="Name">
+            android:hint="@string/contact_name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputName"
@@ -48,7 +48,7 @@
             android:layout_marginRight="8dp"
             app:startIconDrawable="@drawable/ic_job_24"
             app:startIconTint="@color/pink_bold"
-            android:hint="Company">
+            android:hint="@string/contact_company">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputCompany"
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_span="2"
             app:startIconTint="@color/pink_bold"
-            android:hint="Job">
+            android:hint="@string/contact_job">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputJob"
@@ -82,7 +82,7 @@
             android:layout_span="6"
             app:startIconDrawable="@drawable/ic_call_24"
             app:startIconTint="@color/pink_bold"
-            android:hint="Phone">
+            android:hint="@string/contact_phone">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputPhoneNumber"
@@ -102,7 +102,7 @@
             android:layout_span="6"
             app:startIconDrawable="@drawable/ic_mail_24"
             app:startIconTint="@color/pink_bold"
-            android:hint="Email">
+            android:hint="@string/create_email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputContactEmail"
@@ -121,7 +121,7 @@
             android:layout_span="6"
             app:startIconDrawable="@drawable/ic_location_on_24"
             app:startIconTint="@color/pink_bold"
-            android:hint="Address">
+            android:hint="@string/contact_address">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputContactAddress"
@@ -140,7 +140,7 @@
             android:layout_span="6"
             app:startIconDrawable="@drawable/ic_global_24"
             app:startIconTint="@color/pink_bold"
-            android:hint="Website">
+            android:hint="@string/contact_website">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputWeb"
@@ -149,6 +149,4 @@
         </com.google.android.material.textfield.TextInputLayout>
 
     </TableRow>
-
-
 </TableLayout>

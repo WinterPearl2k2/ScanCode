@@ -24,9 +24,7 @@ import java.util.List;
 
 public class Fragment_Create extends Fragment {
     CreateRecycleViewAdapter adapter;
-    ListView lvCreate;
     RecyclerView recyclerView;
-    Intent intent;
     List<Create> createList;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -55,17 +53,27 @@ public class Fragment_Create extends Fragment {
     private void InitArray(){
         createList = new ArrayList<>();
 
-        createList.add(new Create("Text", R.drawable.ic_document_24));
-        createList.add(new Create("Wifi", R.drawable.ic_wifi_48));
-        createList.add(new Create("Contact", R.drawable.ic_contact_24));
-        createList.add(new Create("SMS", R.drawable.ic_sms_24));
-        createList.add(new Create("Email", R.drawable.ic_mail_24));
-        createList.add(new Create("URL", R.drawable.ic_global_48));
+        createList.add(new Create(getString(R.string.create_text), R.drawable.ic_document_24));
+        createList.add(new Create( getString(R.string.create_wifi), R.drawable.ic_wifi_48));
+        createList.add(new Create(getString(R.string.create_contact), R.drawable.ic_contact_24));
+        createList.add(new Create(getString(R.string.create_sms), R.drawable.ic_sms_24));
+        createList.add(new Create(getString(R.string.create_email), R.drawable.ic_mail_24));
+        createList.add(new Create(getString(R.string.create_url), R.drawable.ic_global_48));
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        InitArray();
+        recyclerView.setAdapter(adapter);
+        adapter.setData(getActivity(), createList);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        createList.clear();
+        adapter.notifyDataSetChanged();
     }
 
     @Override

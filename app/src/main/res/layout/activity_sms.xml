@@ -16,7 +16,7 @@
         android:layout_alignParentEnd="true"
         app:startIconDrawable="@drawable/ic_contact_24"
         app:startIconTint="@color/pink_bold"
-        android:hint="Recipient">
+        android:hint="@string/sms_recipient">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputRecipient"
@@ -34,7 +34,7 @@
         android:layout_below="@+id/emailAddress"
         app:startIconDrawable="@drawable/ic_message_24"
         app:startIconTint="@color/pink_bold"
-        android:hint="Text Message">
+        android:hint="@string/sms_message">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputMessage"

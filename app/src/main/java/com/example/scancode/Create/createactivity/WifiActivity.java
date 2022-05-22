@@ -105,15 +105,15 @@ public class WifiActivity extends AppCompatActivity {
     private boolean CheckNull(){
         boolean check = true;
         if( edSSID.getText().toString().length() == 0 ) {
-            edSSID.setError("Field is required!");
+            edSSID.setError(getString(R.string.required_field));
             check = false;
         }
         if( edPass.getText().toString().length() == 0 && txtPass.getVisibility() == View.VISIBLE) {
-            edPass.setError("Field is required!");
+            edPass.setError(getString(R.string.required_field));
             check = false;
         }
         if( typeWifi.getText().toString().equals(adapter.getItem(0).toString()) && edPass.getText().toString().length() < 8){
-            edPass.setError("This field must have 8 characters or more!");
+            edPass.setError(getString(R.string.required_quantity));
             check = false;
         }
         if(check)

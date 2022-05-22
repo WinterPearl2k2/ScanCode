@@ -2,6 +2,7 @@ package com.example.scancode.Create.createactivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -21,7 +22,7 @@ public class ContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
-        getSupportActionBar().setTitle("Contact");
+        getSupportActionBar().setTitle(getString(R.string.create_contact));
         InitMenu();
         AnhXa();
 
@@ -106,8 +107,12 @@ public class ContactActivity extends AppCompatActivity {
     }
     private boolean CheckNull(){
         boolean check = true;
-        if( edSurname.getText().toString().length() == 0) {
-            edSurname.setError("Field is required!");
+        if( edSurname.getText().toString().isEmpty()) {
+            edSurname.setError(getString(R.string.required_field));
+            check = false;
+        }
+        if (!edEmail.getText().toString().isEmpty() && !Patterns.EMAIL_ADDRESS.matcher(edEmail.getText()).matches()){
+            edEmail.setError(getString(R.string.email_validation));
             check = false;
         }
         if(check)

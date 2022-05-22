@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         app:startIconDrawable="@drawable/round_drive_file_rename_outline_24"
         app:startIconTint="@color/pink_bold"
-        android:hint="Text">
+        android:hint="@string/create_text">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputText"

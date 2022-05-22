@@ -18,7 +18,7 @@ public class SMSActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sms);
-        getSupportActionBar().setTitle("SMS");
+        getSupportActionBar().setTitle(getString(R.string.create_sms));
         InitMenu();
         AnhXa();
     }
@@ -68,11 +68,11 @@ public class SMSActivity extends AppCompatActivity {
     private boolean CheckNull(){
         boolean check = true;
         if( edRecipient.getText().toString().length() == 0 ) {
-            edRecipient.setError("Field is required!");
+            edRecipient.setError(getString(R.string.required_field));
             check = false;
         }
         if( edMess.getText().toString().length() == 0 ) {
-            edMess.setError("Field is required!");
+            edMess.setError(getString(R.string.required_field));
             check = false;
         }
         if(check)

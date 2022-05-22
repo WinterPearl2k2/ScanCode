@@ -25,7 +25,7 @@ public class LinkActivity extends AppCompatActivity {
 
     private void InitActionBar() {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("URL");
+        actionBar.setTitle(getString(R.string.create_url));
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
@@ -68,7 +68,7 @@ public class LinkActivity extends AppCompatActivity {
     private boolean CheckNull(){
         boolean check = true;
         if( edURL.getText().toString().length() == 0 ) {
-            edURL.setError("Field is required!");
+            edURL.setError(getString(R.string.required_field));
             check = false;
         }
         if(check)

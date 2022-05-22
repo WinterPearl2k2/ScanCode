@@ -17,7 +17,7 @@
         android:layout_alignParentEnd="true"
         app:startIconDrawable="@drawable/ic_contact_24"
         app:startIconTint="@color/pink_bold"
-        android:hint="Email">
+        android:hint="@string/email_to">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputContactEmail"
@@ -35,7 +35,7 @@
         android:layout_below="@+id/emailAddress"
         app:startIconDrawable="@drawable/ic_title_24"
         app:startIconTint="@color/pink_bold"
-        android:hint="Title">
+        android:hint="@string/email_title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputEmailTitle"
@@ -51,7 +51,7 @@
         android:layout_below="@+id/emailTitle"
         app:startIconDrawable="@drawable/ic_message_24"
         app:startIconTint="@color/pink_bold"
-        android:hint="Message">
+        android:hint="@string/email_message">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputEmailMessage"

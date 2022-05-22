@@ -2,6 +2,8 @@ package com.example.scancode.Create.createactivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -26,7 +28,7 @@ public class EmailActivity extends AppCompatActivity {
 
     private void InitActionBar() {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Email");
+        actionBar.setTitle(getString(R.string.create_email));
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
@@ -73,7 +75,11 @@ public class EmailActivity extends AppCompatActivity {
     private boolean CheckNull(){
         boolean check = true;
         if( edEmail.getText().toString().length() == 0 ) {
-            edEmail.setError("Field is required!");
+            edEmail.setError(getString(R.string.required_field));
+            check = false;
+        }
+        if (!edEmail.getText().toString().isEmpty() && !Patterns.EMAIL_ADDRESS.matcher(edEmail.getText().toString()).matches()){
+            edEmail.setError(getString(R.string.email_validation));
             check = false;
         }
         if(check)

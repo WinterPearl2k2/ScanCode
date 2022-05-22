@@ -17,7 +17,7 @@
         android:layout_alignParentEnd="true"
         app:startIconDrawable="@drawable/ic_wifi_24"
         app:startIconTint="@color/pink_bold"
-        android:hint="SSID">
+        android:hint="@string/wifi_id">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputSSID"
@@ -34,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/emailAddress">
+
 
         <AutoCompleteTextView
             android:id="@+id/dropdownTypeWifi"
@@ -54,7 +55,7 @@
         android:layout_below="@+id/typeSecurity"
         app:startIconDrawable="@drawable/ic_lock_24"
         app:startIconTint="@color/pink_bold"
-        android:hint="Password"
+        android:hint="@string/wifi_pass"
         app:helperTextEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText

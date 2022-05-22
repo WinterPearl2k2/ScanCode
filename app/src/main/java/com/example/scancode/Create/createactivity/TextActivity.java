@@ -19,7 +19,7 @@ public class TextActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text);
-        getSupportActionBar().setTitle("Text");
+        getSupportActionBar().setTitle(getString(R.string.create_text));
         AnhXa();
 
         ActionBar actionBar = getSupportActionBar();
@@ -40,7 +40,7 @@ public class TextActivity extends AppCompatActivity {
                 return true;
             case R.id.icon_accept:
                 if( edtxt.getText().toString().length() == 0 )
-                    edtxt.setError( "Please enter text!" );
+                    edtxt.setError( getString(R.string.required_field));
                 else {
                     Intent intent = new Intent(TextActivity.this, QRImageActivity.class);
                     Bundle mBundle = new Bundle();

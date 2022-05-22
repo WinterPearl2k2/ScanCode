@@ -1,4 +1,4 @@
-<resources>
+    <resources>
     <string name="app_name">ScanCode</string>
     <string name="menu_scan">Quét</string>
     <string name="menu_create">Tạo</string>
@@ -24,7 +24,7 @@
     <string-array name="strings_type_internet_dropdown">
         <item>WPA/ WPA2</item>
         <item>WEP</item>
-        <item>None</item>
+        <item>@string/wifi_type</item>
     </string-array>
 
     //Ni là của Dương
@@ -41,6 +41,7 @@
     <string name="setting_huongdan">Hướng dẫn</string>
     <string name="setting_on">Tắt</string>
     <string name="setting_off">Bật</string>
+
     <string name="feedback_edit">Hãy cho chúng tôi biết vấn đề mà bạn đã gặp</string>
     <string name="feeback1">Quét không hoạt động</string>
     <string name="feedback2">Cần thêm thông tin khi quét</string>
@@ -48,5 +49,37 @@
     <string name="feedbackedit">Vui lòng cho chúng tôi biết thêm chi tiết để chúng tôi có thể giải quết vấn đề của bạn nhanh hơn.</string>
     <string name="feebackbtn">Gửi đi</string>
     <string name="settings_feedback">Feedback</string>
+    <string name="create_text">Văn bản</string>
+    <string name="create_wifi">Wifi</string>
+    <string name="create_contact">Liên lạc</string>
+    <string name="create_sms">Tin nhắn</string>
+    <string name="create_email">E-mail</string>
+    <string name="create_url">Trang web</string>
+        //
+    <string name="wifi_id">Tên mạng</string>
+    <string name="wifi_pass">Mật khẩu</string>
+    <string name="wifi_type">Không</string>
+        //
+
+    <string name="required_field">Trường này là bắt buộc!</string>
+
+    <string name="sms_recipient">Người nhận</string>
+    <string name="sms_message">Tin nhắn</string>
+
+    <string name="email_to">E-mail</string>
+    <string name="email_title">Tiêu đề</string>
+    <string name="email_message">Tin nhắn</string>
+
+    <string name="contact_surname">Họ</string>
+    <string name="contact_name">Tên</string>
+    <string name="contact_company">Công ty</string>
+    <string name="contact_job">Công việc</string>
+    <string name="contact_phone">Điện thoại</string>
+    <string name="contact_address">Địa chỉ</string>
+    <string name="contact_website">Trang web</string>
+    <string name="email_validation">Nhập đúng định dạng E-mail!</string>
+
+
+        <string name="required_quantity">Bắt buộc 8 kí tự hoặc hơn!</string>
 
 </resources>

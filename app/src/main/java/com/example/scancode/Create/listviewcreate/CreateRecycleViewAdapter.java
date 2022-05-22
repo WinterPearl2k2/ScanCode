@@ -53,46 +53,47 @@ public class CreateRecycleViewAdapter extends RecyclerView.Adapter<CreateRecycle
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (create.getNameItem()){
-                    case "Contact":
-                        intent = new Intent(context , ContactActivity.class);
-                        break;
-                    case "Text":
+                switch (holder.getAdapterPosition()){
+                    case 0:
                         intent = new Intent(context, TextActivity.class);
                         break;
-                    case "Wifi":
+                    case 1:
                         intent = new Intent(context, WifiActivity.class);
                         break;
-                    case "URL":
-                        intent = new Intent(context, LinkActivity.class);
+                    case 2:
+                        intent = new Intent(context , ContactActivity.class);
                         break;
-                    case "Email":
+                    case 3:
+                        intent = new Intent(context, SMSActivity.class);
+                        break;
+                    case 4:
                         intent = new Intent(context, EmailActivity.class);
                         break;
-                    case "SMS":
-                        intent = new Intent(context, SMSActivity.class);
+                    case 5:
+                        intent = new Intent(context, LinkActivity.class);
                         break;
                 }
                 context.startActivity(intent);
             }
         });
-        switch (create.getNameItem()) {
-            case "Text":
+
+        switch (holder.getAdapterPosition()) {
+            case 0:
                 holder.ivIcon.setImageResource(R.drawable.ic_document_24);
                 break;
-            case "Wifi":
+            case 1:
                 holder.ivIcon.setImageResource(R.drawable.ic_wifi_24);
                 break;
-            case "Contact":
+            case 2:
                 holder.ivIcon.setImageResource(R.drawable.ic_contact_24);
                 break;
-            case "SMS":
+            case 3:
                 holder.ivIcon.setImageResource(R.drawable.ic_sms_24);
                 break;
-            case "Email":
+            case 4:
                 holder.ivIcon.setImageResource(R.drawable.ic_mail_24);
                 break;
-            case "URL":
+            case 5:
                 holder.ivIcon.setImageResource(R.drawable.ic_global_24);
                 break;
 
