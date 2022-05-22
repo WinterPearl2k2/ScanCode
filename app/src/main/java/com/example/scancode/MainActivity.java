@@ -1,5 +1,6 @@
 package com.example.scancode;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.scancode.Adapter.MenuAdapter;
+import com.example.scancode.Setting.Main_introduction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Locale;
@@ -24,18 +26,32 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView navigation;
     public static ViewPager2 viewPager2;
     MenuAdapter menuAdapter;
-   Locale locale;
+    Locale locale;
+    boolean introduce = true;
+    SharedPreferences.Editor editor;
+    SharedPreferences preferences;
+    private static final String MY_PREF = "MyPrefsFile";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        preferences = getSharedPreferences(MY_PREF, MODE_PRIVATE);
+        introduce = preferences.getBoolean("noIntroduce", true);
         ORM(); //Ánh xạ
         SetUpViewPager2(); //Cài đặt View
         EventButtonNavigation(); //Bắt sự kiện của button navigation
         DarkMode();//darkmode
+        Introduce();
+    }
+
+    private void Introduce() {
+        if(introduce) {
+            Intent intent = new Intent(MainActivity.this, Main_introduction.class);
+            startActivity(intent);
+        }
     }
 
     private void EventButtonNavigation() {

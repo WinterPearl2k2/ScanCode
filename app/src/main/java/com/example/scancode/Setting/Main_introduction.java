@@ -1,5 +1,6 @@
 package com.example.scancode.Setting;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -21,6 +22,7 @@ public class Main_introduction extends AppCompatActivity {
     private Slide_layout slide_layout;
     private ImageView next;
     private  int mcurrent;
+    private static final String MY_PREF = "MyPrefsFile";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,9 @@ public class Main_introduction extends AppCompatActivity {
         slide_Viewpaper.setAdapter(slide_layout);
         addDot(0);
         slide_Viewpaper.addOnPageChangeListener(viewListner);
+        SharedPreferences.Editor editor = getSharedPreferences(MY_PREF, MODE_PRIVATE).edit();
+        editor.putBoolean("noIntroduce", false);
+        editor.apply();
 
     }
 
