@@ -11,6 +11,7 @@
         android:id="@+id/btn_problem"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        style="@style/Mybutton"
         android:background="@drawable/cusbutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

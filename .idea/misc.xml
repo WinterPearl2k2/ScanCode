@@ -3,15 +3,28 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/cus_result.xml" value="0.1115" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/customcheck.xml" value="0.1115" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/background_feebback.xml" value="0.1115" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/check.xml" value="0.1" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/check3.xml" value="0.1" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/copy_241.xml" value="0.1" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/cusbutton.xml" value="0.1115" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/cuscheck.xml" value="0.1115" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/customcheck.xml" value="0.1115" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_contact.xml" value="0.17552083333333332" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_email.xml" value="0.17552083333333332" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_feebback.xml" value="0.14666666666666667" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_help.xml" value="0.1" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_link.xml" value="0.17552083333333332" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_main.xml" value="0.1638888888888889" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_main_introduction.xml" value="0.1" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_result_scan.xml" value="0.1638888888888889" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_text.xml" value="0.17552083333333332" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/fragment_create.xml" value="0.1" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/fragment_history.xml" value="0.1638888888888889" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/history_item_recycleview.xml" value="0.17552083333333332" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/list_item_dropdown.xml" value="0.17552083333333332" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/slide_layout.xml" value="0.1" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/xml/root_preference.xml" value="0.22" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_btn_per.xml" value="0.26614583333333336" />
@@ -39,25 +52,12 @@
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_zoom_in_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/plus_frame.xml" value="0.26614583333333336" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/shadow_image.xml" value="0.26614583333333336" />
-        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/cus_item_tip.xml" value="0.1215" />
-        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/cus_item_tip2.xml" value="0.206" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/cus_navigation.xml" value="0.26205128205128203" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/ic_baseline_format_shapes_24.xml" value="0.169" />
-        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/ic_baseline_link_off_24.xml" value="0.169" />
-        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/ic_baseline_qr_code_24.xml" value="0.169" />
-        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/ic_baseline_wifi_off_24.xml" value="0.169" />
-        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/ic_outline_emoji_objects_24.xml" value="0.169" />
-        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_cant_access_wifi.xml" value="0.25" />
-        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_cant_read_qr.xml" value="0.25" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_ean_scan.xml" value="0.25" />
-        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_error_link.xml" value="0.25" />
-        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_feebback.xml" value="0.176" />
-        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_help.xml" value="0.15989583333333332" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_main_introduction.xml" value="0.15989583333333332" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_qrimage.xml" value="0.4" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_result_scan.xml" value="0.264" />
-        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_tips.xml" value="0.27640156453715775" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/dialog_save_image.xml" value="0.1421875" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/fragment__history.xml" value="0.2359375" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/fragment__scan__home.xml" value="0.25" />
@@ -65,13 +65,10 @@
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/fragment_history.xml" value="0.25" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/fragment_scan_history.xml" value="0.25" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/fragment_scan_home.xml" value="0.25" />
-        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/fragment_setting.xml" value="0.15989583333333332" />
-        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/list_item_help.xml" value="0.2" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/slide_layout.xml" value="0.1421875" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/menu/navigation.xml" value="0.24635416666666668" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.26205128205128203" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.26205128205128203" />
-        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/xml/root_preference.xml" value="0.15989583333333332" />
       </map>
     </option>
   </component>
