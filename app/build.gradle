@@ -4,14 +4,16 @@ plugins {
 
 android {
     compileSdk 32
-
+    dataBinding {
+        enabled = true
+    }
     defaultConfig {
         applicationId "com.example.scancode"
         minSdk 21
         targetSdk 32
         versionCode 1
         versionName "1.0"
-        resConfigs "en", "hi", "kn"
+        resConfigs "en", "vi"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -34,7 +36,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation 'com.budiyev.android:code-scanner:2.1.0'
     implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
-
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha03'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'

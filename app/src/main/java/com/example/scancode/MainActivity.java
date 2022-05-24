@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.SeekBar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     public static ViewPager2 viewPager2;
     MenuAdapter menuAdapter;
     Locale locale;
+    SeekBar seekBar;
     boolean introduce = true;
     SharedPreferences.Editor editor;
     SharedPreferences preferences;
@@ -37,14 +38,15 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
+
+        Language();
         setContentView(R.layout.activity_main);
-        preferences = getSharedPreferences(MY_PREF, MODE_PRIVATE);
-        introduce = preferences.getBoolean("noIntroduce", true);
+
         ORM(); //Ánh xạ
         SetUpViewPager2(); //Cài đặt View
         EventButtonNavigation(); //Bắt sự kiện của button navigation
         DarkMode();//darkmode
-        Introduce();
+
     }
 
     private void Introduce() {
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                         viewPager2.setCurrentItem(3, false);
                         break;
                 }
-                return true;
+                return false;
             }
         });
     }
@@ -117,32 +119,43 @@ public class MainActivity extends AppCompatActivity {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         else
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        Language();
+        //Language();
     }
     public void Language(){
 
         SharedPreferences sharedPreferences1 = getSharedPreferences("language",0);
         int item = sharedPreferences1.getInt("language",1);
-        if(item == 1){
-            locale = new Locale("vi","VN");
-            ChangeLanguage(locale);
+        switch (item) {
+            case 0:
+                Locale localeEN = new Locale("en");
+                setLocale(localeEN);
+                break;
+            case 1:
+                Locale localeHU = new Locale("vi");
+                setLocale(localeHU);
+                break;
+
         }
-        else {
-            locale = new Locale("en","US");
-            ChangeLanguage(locale);
-        }
-
     }
-    public void ChangeLanguage(Locale locale) {
-        Resources resources = this.getResources();
-        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
-        Configuration configuration = new Configuration(resources.getConfiguration());
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
-            configuration.setLocale(locale);
-        else
-            configuration.setLocale(locale);
-        resources.updateConfiguration(configuration, displayMetrics);
 
-
+    public void setLocale(Locale locale) {
+        Locale.setDefault(locale);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = locale;
+        res.updateConfiguration(conf, dm);
+        //recreate();
+        //finish();
+        //startActivity(getIntent());
+        //if these are not commented, main activity wont show at start at all
     }
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        // refresh your views here
+        super.onConfigurationChanged(newConfig);
+    }
+
+
+
 }
