@@ -4,69 +4,177 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Setting.Fragment_Setting">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="10dp"
         android:orientation="vertical">
+
         <TextView
-            android:text="@string/setting_chung"
-            android:textStyle="bold"
-            android:textSize="17dp"
-            android:textColor="@color/green"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:text="@string/setting_chung"
+            android:textColor="@color/green"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
         <TableLayout
-            android:layout_marginTop="10dp"
-            android:background="@drawable/background_setting"
             android:layout_width="match_parent"
-            android:stretchColumns="1,2"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_setting"
+            android:padding="10dp"
+            android:stretchColumns="*">
 
             <TableRow
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-                <ImageView
-                    android:src="@drawable/dark_241"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:textSize="18dp"
+                android:layout_marginBottom="10dp"
+                android:paddingBottom="10dp">
 
-                    android:text="@string/setting_ligthdark"
-                    android:layout_marginLeft="20dp"
+                <ImageView
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="1"
+                    android:src="@drawable/dark_241" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_column="1"
-                    android:layout_height="match_parent"/>
+                    android:layout_span="6"
+                    android:text="@string/setting_ligthdark"
+                    android:textSize="18dp" />
 
                 <Switch
-                    android:layout_gravity="center_horizontal"
                     android:id="@+id/sw_light"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_span="1" />
             </TableRow>
+
             <TableRow
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:paddingBottom="10dp">
 
                 <ImageView
-                    android:src="@drawable/language_241"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_span="1"
+                    android:src="@drawable/language_241" />
+
                 <TextView
                     android:id="@+id/tv"
-                    android:textSize="18dp"
-                    android:text="@string/setting_language"
-                    android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_column="1"
-                    android:layout_height="match_parent" />
+                    android:layout_span="6"
+                    android:text="@string/setting_language"
+                    android:textSize="18dp" />
 
             </TableRow>
         </TableLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+
+            android:layout_marginTop="10dp"
+            android:text="@string/settings_control"
+            android:textColor="@color/green"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/background_setting"
+            android:padding="10dp"
+            android:stretchColumns="*">
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="1"
+                    android:src="@drawable/sound_241" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_column="1"
+                    android:layout_span="6"
+                    android:text="@string/setting_sound"
+                    android:textSize="18dp" />
+
+                <Switch
+                    android:id="@+id/sw_sound"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_span="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="1"
+                    android:src="@drawable/vibrate_241" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_column="1"
+                    android:layout_span="6"
+                    android:text="@string/setting_vibrate"
+                    android:textSize="18dp" />
+
+                <Switch
+                    android:id="@+id/sw_vibrate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_span="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingBottom="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="1"
+                    android:src="@drawable/copy_241" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_column="1"
+                    android:layout_span="6"
+                    android:text="@string/setting_copy"
+                    android:textSize="18dp" />
+
+                <Switch
+                    android:id="@+id/sw_copy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_span="1" />
+            </TableRow>
+        </TableLayout>
 
     </LinearLayout>
 
