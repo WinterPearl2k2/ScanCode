@@ -382,7 +382,6 @@ public class ResultScan extends AppCompatActivity {
                             Json += result.charAt(j);
                         }
                             if(Json.equals("T")) {
-                                T = "HAAAAAAAAAAAAAAa";
                                 for (int j = i + 1; j < result.length(); j++) {
                                     if(result.charAt(j) == ';') {
                                         i = j;
