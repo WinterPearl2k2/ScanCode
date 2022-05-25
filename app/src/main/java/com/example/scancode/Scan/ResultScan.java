@@ -817,7 +817,7 @@ public class ResultScan extends AppCompatActivity {
 //                                conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
 
                                 int netWorkID = manager.addNetwork(conf);
-//                                if (netWorkID == -1) {
+//                                if (netWorkID == -1) {s
 //                                    conf.wepKeys[0] = P;
 //                                    netWorkID = manager.addNetwork(conf);
 //                                }
