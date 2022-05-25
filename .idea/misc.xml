@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/cus_btn_per.xml" value="0.121" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/cus_shadow_image.xml" value="0.1" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/customcheck.xml" value="0.1115" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable-v24/ic_home_black_24dp.xml" value="0.1" />
@@ -15,14 +14,8 @@
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/cusbutton.xml" value="0.1115" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/cuscheck.xml" value="0.1115" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/customcheck.xml" value="0.1115" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/dark_241.xml" value="0.236" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/feedback.xml" value="0.1" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/help_241.xml" value="0.1" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/introduction_241.xml" value="0.121" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/language_241.xml" value="0.236" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/sound_241.xml" value="0.236" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/version_242.xml" value="0.121" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/drawable/vibrate_241.xml" value="0.2555" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_contact.xml" value="0.1" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_email.xml" value="0.1" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/activity_feebback.xml" value="0.14666666666666667" />
@@ -37,11 +30,9 @@
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/fragment_history.xml" value="0.1" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/fragment_scan_history.xml" value="0.12158054711246201" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/fragment_scan_home.xml" value="0.1" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/fragment_setting.xml" value="0.2450638792102207" />
+        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/fragment_setting.xml" value="0.2116788321167883" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/layout/slide_layout.xml" value="0.1" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/menu/accept_nav.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/menu/navigation.xml" value="0.10989583333333333" />
-        <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/menu/share_menu.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/ScanCode/app/src/main/res/xml/root_preference.xml" value="0.14666666666666667" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_btn_per.xml" value="0.26614583333333336" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_btn_result.xml" value="0.26614583333333336" />
