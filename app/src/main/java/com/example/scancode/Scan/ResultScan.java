@@ -798,6 +798,7 @@ public class ResultScan extends AppCompatActivity {
                         }
                     }).show();
         } else {
+            WifiManager manager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
             if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
                 builder.setMessage("Kết nối đến mạng Wifi")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -806,8 +807,8 @@ public class ResultScan extends AppCompatActivity {
                                 WifiConfiguration conf = new WifiConfiguration();
                                 conf.SSID = "\"" + S + "\"";
                                 conf.preSharedKey = "\"" + P + "\"";
-                                conf.wepKeys[0] = "\"" + P + "\"";
-                                conf.wepTxKeyIndex = 0;
+//                                conf.wepKeys[0] = "\"" + P + "\"";
+//                                conf.wepTxKeyIndex = 0;
 //                                conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
 //                                conf.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP40);
 //                                conf.allowedGroupCiphers.set(WifiConfiguration.AuthAlgorithm.OPEN);
@@ -815,7 +816,6 @@ public class ResultScan extends AppCompatActivity {
 //
 //                                conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
 
-                                WifiManager manager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
                                 int netWorkID = manager.addNetwork(conf);
 //                                if (netWorkID == -1) {
 //                                    conf.wepKeys[0] = P;
@@ -825,6 +825,7 @@ public class ResultScan extends AppCompatActivity {
                                     manager.disconnect();
                                     manager.enableNetwork(netWorkID, true);
                                     manager.reconnect();
+                                startActivity(new Intent("android.settings.panel.action.INTERNET_CONNECTIVITY"));
                             }
                         })
                         .setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
