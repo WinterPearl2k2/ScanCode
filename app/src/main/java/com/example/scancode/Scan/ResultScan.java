@@ -805,15 +805,15 @@ public class ResultScan extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 WifiConfiguration conf = new WifiConfiguration();
                                 conf.SSID = "\"" + S + "\"";
+                                conf.preSharedKey = "\"" + P + "\"";
                                 conf.wepKeys[0] = "\"" + P + "\"";
                                 conf.wepTxKeyIndex = 0;
-                                conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
-                                conf.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP40);
-                                conf.allowedGroupCiphers.set(WifiConfiguration.AuthAlgorithm.OPEN);
-                                conf.allowedGroupCiphers.set(WifiConfiguration.AuthAlgorithm.SHARED);
-
-                                conf.preSharedKey = "\"" + P + "\"";
-                                conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+//                                conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+//                                conf.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP40);
+//                                conf.allowedGroupCiphers.set(WifiConfiguration.AuthAlgorithm.OPEN);
+//                                conf.allowedGroupCiphers.set(WifiConfiguration.AuthAlgorithm.SHARED);
+//
+//                                conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
 
                                 WifiManager manager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
                                 int netWorkID = manager.addNetwork(conf);
