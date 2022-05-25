@@ -556,7 +556,7 @@ public class ResultScan extends AppCompatActivity {
                             } else if(Json.equals("ADR") || Json.equals("ADR;TYPE=HOME")) {
                                 String string = "";
                                 for(int j = i + 1; j < result.length(); j++) {
-                                    if(result.charAt(j-1) == '\n') {
+                                    if(result.charAt(j - 1) == '\n') {
                                         i = j;
                                         count++;
                                         break;
@@ -572,6 +572,7 @@ public class ResultScan extends AppCompatActivity {
                                     }
                                     string += result.charAt(j);
                                 }
+                                i--;
                             } else if(Json.equals("TEL;WORK;VOICE") || Json.equals("TEL;TYPE=WORK,VOICE")) {
                                 for(int j = i + 1; j < result.length(); j++) {
                                     if(result.charAt(j) == '\n') {
