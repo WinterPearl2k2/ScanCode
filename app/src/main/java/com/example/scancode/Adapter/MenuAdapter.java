@@ -3,14 +3,12 @@ package com.example.scancode.Adapter;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.scancode.Create.Fragment_Create;
 import com.example.scancode.History.Fragment_History;
 import com.example.scancode.Scan.Fragment_Scan_Home;
-import com.example.scancode.Setting.Fragment_Setting;
+import com.example.scancode.Setting.Setting;
 
 public class MenuAdapter extends FragmentStateAdapter {
     public MenuAdapter(@NonNull FragmentActivity fragmentActivity) {
@@ -28,7 +26,7 @@ public class MenuAdapter extends FragmentStateAdapter {
             case 2:
                 return new Fragment_History();
             case 3:
-                return new Fragment_Setting();
+                return new Setting();
             default:
                 return new Fragment_Scan_Home();
         }

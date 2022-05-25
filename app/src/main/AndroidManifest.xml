@@ -29,78 +29,66 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ScanCode">
         <activity
+            android:name=".Setting.Setting"
+            android:exported="false" />
+        <activity
             android:name=".Setting.Help.ErrorLink"
-
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
             android:name=".Setting.Help.CantAccessWifi"
-
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
             android:name=".Setting.Help.CantReadQR"
-
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
-
-            android:configChanges="locale|layoutDirection"
             android:name=".Setting.Help.Tips"
+            android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
             android:name=".Setting.Help.Help"
-
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
             android:name=".Create.createactivity.QRImageActivity"
-
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
             android:name=".Create.createactivity.EmailActivity"
-
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
             android:name=".Create.createactivity.SMSActivity"
-
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
             android:name=".Create.createactivity.WifiActivity"
-
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
             android:name=".Create.createactivity.LinkActivity"
-
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
             android:name=".Create.createactivity.ContactActivity"
-
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
             android:name=".Create.createactivity.TextActivity"
-
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
             android:name=".Scan.ResultScan"
-
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
             android:name=".Setting.Feebback"
-
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
             android:name=".Setting.Main_introduction"
-
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity

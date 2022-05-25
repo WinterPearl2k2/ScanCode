@@ -11,6 +11,7 @@
         <item name="android:actionBarStyle">@style/Myactionbar</item>
         <!-- Support library compatibility -->
         <item name="actionBarStyle">@style/Myactionbar</item>
+        <item name="android:textColor">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/icon</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>

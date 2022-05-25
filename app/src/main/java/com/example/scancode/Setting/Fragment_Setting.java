@@ -21,7 +21,8 @@ import com.example.scancode.Setting.Help.Help;
 import java.util.Locale;
 
 public class Fragment_Setting extends PreferenceFragmentCompat {
-    static  Locale locale;
+
+      Locale locale;
     SwitchPreference sw_ligth,sw_beep,sw_copy,sw_vibrate;
     Preference p_language,p_introduction,p_help,p_feedback;
     SharedPreferences sp_ligth,sp_beep,sp_copy,sp_vibrate,sp_language;

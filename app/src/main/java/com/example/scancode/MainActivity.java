@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         ORM(); //Ánh xạ
         SetUpViewPager2(); //Cài đặt View
         EventButtonNavigation(); //Bắt sự kiện của button navigation
-        DarkMode();//darkmode
+        //DarkMode();//darkmode
 
     }
 

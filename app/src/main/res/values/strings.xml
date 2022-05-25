@@ -1,4 +1,4 @@
-    <resources>
+<resources>
     <string name="app_name">ScanCode</string>
     <string name="menu_scan">Quét</string>
     <string name="menu_create">Tạo</string>
@@ -55,11 +55,11 @@
     <string name="create_sms">Tin nhắn</string>
     <string name="create_email">E-mail</string>
     <string name="create_url">Trang web</string>
-        //
+    //
     <string name="wifi_id">Tên mạng</string>
     <string name="wifi_pass">Mật khẩu</string>
     <string name="wifi_type">Không</string>
-        //
+    //
 
     <string name="required_field">Trường này là bắt buộc!</string>
 
@@ -80,6 +80,6 @@
     <string name="email_validation">Nhập đúng định dạng E-mail!</string>
 
 
-        <string name="required_quantity">Bắt buộc 8 kí tự hoặc hơn!</string>
+    <string name="required_quantity">Bắt buộc 8 kí tự hoặc hơn!</string>
 
 </resources>
