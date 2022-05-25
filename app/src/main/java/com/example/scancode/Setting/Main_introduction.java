@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.scancode.R;
@@ -22,10 +23,12 @@ public class Main_introduction extends AppCompatActivity {
     private Slide_layout slide_layout;
     private ImageView next;
     private  int mcurrent;
+    private  SharedPreferences.Editor editor;
     private static final String MY_PREF = "MyPrefsFile";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main_introduction);
@@ -37,10 +40,19 @@ public class Main_introduction extends AppCompatActivity {
         slide_Viewpaper.setAdapter(slide_layout);
         addDot(0);
         slide_Viewpaper.addOnPageChangeListener(viewListner);
-        SharedPreferences.Editor editor = getSharedPreferences(MY_PREF, MODE_PRIVATE).edit();
+        introduce();
+
+    }
+
+    private void introduce() {
+        editor = getSharedPreferences(MY_PREF, MODE_PRIVATE).edit();
         editor.putBoolean("noIntroduce", false);
         editor.apply();
+    }
 
+    @Override
+    public void recreate() {
+        super.recreate();
     }
 
     private void initUI() {

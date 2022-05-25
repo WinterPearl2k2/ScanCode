@@ -781,20 +781,25 @@ public class ResultScan extends AppCompatActivity {
                                 WifiConfiguration conf = new WifiConfiguration();
                                 conf.SSID = "\"" + S + "\"";
                                 conf.wepKeys[0] = "\"" + P + "\"";
-
+                                conf.wepTxKeyIndex = 0;
                                 conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+                                conf.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP40);
                                 conf.allowedGroupCiphers.set(WifiConfiguration.AuthAlgorithm.OPEN);
                                 conf.allowedGroupCiphers.set(WifiConfiguration.AuthAlgorithm.SHARED);
 
+                                conf.preSharedKey = "\"" + P + "\"";
+                                conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+
                                 WifiManager manager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
                                 int netWorkID = manager.addNetwork(conf);
-                                if (netWorkID == -1) {
-                                    conf.wepKeys[0] = P;
-                                    netWorkID = manager.addNetwork(conf);
-                                }
-                                manager.disconnect();
-                                manager.enableNetwork(netWorkID, true);
-                                manager.reconnect();
+//                                if (netWorkID == -1) {
+//                                    conf.wepKeys[0] = P;
+//                                    netWorkID = manager.addNetwork(conf);
+//                                }
+
+                                    manager.disconnect();
+                                    manager.enableNetwork(netWorkID, true);
+                                    manager.reconnect();
                             }
                         })
                         .setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {

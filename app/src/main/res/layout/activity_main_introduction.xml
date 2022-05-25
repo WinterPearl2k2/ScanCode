@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pink_light"
+    android:forceDarkAllowed="false"
     tools:context=".Setting.Main_introduction">
 
     <androidx.viewpager.widget.ViewPager

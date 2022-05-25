@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.scancode.Adapter.MenuAdapter;
+import com.example.scancode.Scan.ResultScan;
+import com.example.scancode.Setting.Help.Help;
 import com.example.scancode.Setting.Main_introduction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -46,12 +48,14 @@ public class MainActivity extends AppCompatActivity {
         SetUpViewPager2(); //Cài đặt View
         EventButtonNavigation(); //Bắt sự kiện của button navigation
         //DarkMode();//darkmode
-
+        Introduce();
     }
 
     private void Introduce() {
+        preferences = getSharedPreferences(MY_PREF, MODE_PRIVATE);
+        introduce = preferences.getBoolean("noIntroduce", true);
+        Intent intent = new Intent(MainActivity.this, Main_introduction.class);
         if(introduce) {
-            Intent intent = new Intent(MainActivity.this, Main_introduction.class);
             startActivity(intent);
         }
     }
