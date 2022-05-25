@@ -798,10 +798,9 @@ public class ResultScan extends AppCompatActivity {
                         }
                     }).show();
         } else {
-//            Intent intent = new Intent(Settings.ACTION_WIFI_ADD_NETWORKS);
+            Intent wifi = new Intent(Settings.ACTION_WIFI_SETTINGS);
             WifiManager manager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
             if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
-                Intent intent = new Intent(Settings.ACTION_WIFI_ADD_NETWORKS);
                 builder.setMessage("Kết nối đến mạng Wifi")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
@@ -809,25 +808,13 @@ public class ResultScan extends AppCompatActivity {
                                 WifiConfiguration conf = new WifiConfiguration();
                                 conf.SSID = "\"" + S + "\"";
                                 conf.preSharedKey = "\"" + P + "\"";
-//                                conf.wepKeys[0] = "\"" + P + "\"";
-//                                conf.wepTxKeyIndex = 0;
-//                                conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
-//                                conf.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP40);
-//                                conf.allowedGroupCiphers.set(WifiConfiguration.AuthAlgorithm.OPEN);
-//                                conf.allowedGroupCiphers.set(WifiConfiguration.AuthAlgorithm.SHARED);
-//
-//                                conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
 
                                 int netWorkID = manager.addNetwork(conf);
-//                                if (netWorkID == -1) {s
-//                                    conf.wepKeys[0] = P;
-//                                    netWorkID = manager.addNetwork(conf);
-//                                }
 
                                     manager.disconnect();
                                     manager.enableNetwork(netWorkID, true);
                                     manager.reconnect();
-                                startActivity(intent);
+                                startActivity(wifi);
                             }
                         })
                         .setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
@@ -843,7 +830,6 @@ public class ResultScan extends AppCompatActivity {
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                Intent wifi = new Intent(Settings.ACTION_WIFI_SETTINGS);
                                 startActivity(wifi);
                                 copyTextToClipboard(P);
                             }
