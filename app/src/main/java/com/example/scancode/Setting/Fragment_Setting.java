@@ -99,22 +99,17 @@ public class Fragment_Setting extends PreferenceFragmentCompat {
                         {
                             locale = new Locale("vi");ChangeLanguage(locale);
                             editor.putInt("language",1);
-
                         }
                         else
                         {
                             locale = new Locale("en");ChangeLanguage(locale);
                             editor.putInt("language",0);
-
                         }
                         editor.commit();
 
 
                  }
-              });
-
-                AlertDialog alert = builder.show();
-
+              }).show();
                 return true;
             }
         });
