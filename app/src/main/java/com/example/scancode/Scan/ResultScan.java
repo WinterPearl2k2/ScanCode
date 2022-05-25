@@ -374,23 +374,48 @@ public class ResultScan extends AppCompatActivity {
                 case "WIFI": title = "Wifi";
                     txtTitleResult.setText(title);
                     for(int i = d + 1 ; i < result.length() ; i++) {
-                        if(result.charAt(i) == ':') {
-                            for(int j = i + 1 ; j < result.length() ; j++) {
-                                if(result.charAt(j) == ';') {
-                                    d = j;
-                                    count++;
-                                    break;
-                                }
-                                if(count == 0)
-                                    T += result.charAt(j);
-                                else if (count == 1)
-                                    S += result.charAt(j);
-                                else if (count == 2)
-                                    P += result.charAt(j);
-                                else if(count == 3)
-                                    H += result.charAt(j);
+                        for(int j = i ; j < result.length() ; j++) {
+                            if (result.charAt(j) == ':') {
+                                i = j;
+                                break;
                             }
-                        }else d = i;
+                            Json += result.charAt(j);
+                        }
+                            if(Json.equals("T")) {
+                                T = "HAAAAAAAAAAAAAAa";
+                                for (int j = i + 1; j < result.length(); j++) {
+                                    if(result.charAt(j) == ';') {
+                                        i = j;
+                                        break;
+                                    }
+                                    T += result.charAt(j);
+                                }
+                            } else if (Json.equals("S")) {
+                                for (int j = i + 1; j < result.length(); j++) {
+                                    if (result.charAt(j) == ';') {
+                                        i = j;
+                                        break;
+                                    }
+                                    S += result.charAt(j);
+                                }
+                            } else if (Json.equals("P")) {
+                                for (int j = i + 1; j < result.length(); j++) {
+                                    if (result.charAt(j) == ';') {
+                                        i = j;
+                                        break;
+                                    }
+                                    P += result.charAt(j);
+                                }
+                            } else if(Json.equals("H")) {
+                                for (int j = i + 1; j < result.length(); j++) {
+                                    if (result.charAt(j) == ';') {
+                                        i = j;
+                                        break;
+                                    }
+                                    H += result.charAt(j);
+                                }
+                            }
+                        Json = "";
                     }
                     txtSearch.setText("Chuyển hướng tới mạng Wifi");
                     imgSearch.setImageResource(R.drawable.ic_baseline_wifi_36);
