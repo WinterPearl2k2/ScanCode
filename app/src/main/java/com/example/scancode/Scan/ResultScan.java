@@ -798,8 +798,10 @@ public class ResultScan extends AppCompatActivity {
                         }
                     }).show();
         } else {
+//            Intent intent = new Intent(Settings.ACTION_WIFI_ADD_NETWORKS);
             WifiManager manager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
             if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+                Intent intent = new Intent(Settings.ACTION_WIFI_ADD_NETWORKS);
                 builder.setMessage("Kết nối đến mạng Wifi")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
@@ -825,7 +827,7 @@ public class ResultScan extends AppCompatActivity {
                                     manager.disconnect();
                                     manager.enableNetwork(netWorkID, true);
                                     manager.reconnect();
-                                startActivity(new Intent("android.settings.panel.action.INTERNET_CONNECTIVITY"));
+                                startActivity(intent);
                             }
                         })
                         .setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
