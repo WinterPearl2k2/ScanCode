@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.scancode.R;
-import com.example.scancode.Setting.Help.HelpItem;
+import com.example.scancode.setting.help.HelpItem;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.scancode.Setting;
+package com.example.scancode.setting;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,7 +20,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 import com.example.scancode.R;
-import com.example.scancode.Setting.Help.Help;
+import com.example.scancode.setting.help.Help;
 
 import java.util.Locale;
 

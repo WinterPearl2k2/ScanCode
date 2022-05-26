@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Setting.Help.ErrorLink">
+    tools:context=".setting.help.ErrorLink">
     <TextView
         android:id="@+id/txt_Error_Link"
         android:text="content"

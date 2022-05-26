@@ -1,5 +1,7 @@
 package com.example.scancode.Scan;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -40,7 +42,9 @@ import com.budiyev.android.codescanner.DecodeCallback;
 import com.example.scancode.History.listviewhistory.CreateHistoryDatabase;
 import com.example.scancode.History.listviewhistory.History;
 import com.example.scancode.History.listviewhistory.HistoryRecycleViewAdapter;
+import com.example.scancode.MainActivity;
 import com.example.scancode.R;
+import com.example.scancode.setting.Main_introduction;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.mlkit.vision.barcode.BarcodeScanner;
@@ -80,6 +84,9 @@ public class Fragment_Scan_Home extends Fragment {
     private CodeScannerView scannerView;
     private HistoryRecycleViewAdapter adapter;
     private List<History> historyList;
+    SharedPreferences preferences;
+    boolean introduce = true;
+    private static final String MY_PREF = "MyPrefsFile";
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
@@ -89,6 +96,7 @@ public class Fragment_Scan_Home extends Fragment {
                              @Nullable Bundle savedInstanceState) {
        // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         view = inflater.inflate(R.layout.fragment_scan_home, container, false);
+        Introduce();
         ORM();
         EventCam();
         EventGallery();
@@ -104,7 +112,14 @@ public class Fragment_Scan_Home extends Fragment {
         }
         return view;
     }
-
+    private void Introduce() {
+        preferences = getActivity().getSharedPreferences(MY_PREF, MODE_PRIVATE);
+        introduce = preferences.getBoolean("noIntroduce", true);
+        Intent intent = new Intent(getActivity(), Main_introduction.class);
+        if(introduce) {
+            startActivity(intent);
+        }
+    }
     private void ScanGallery() {
         btn_Scan_Gallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -495,14 +510,14 @@ public class Fragment_Scan_Home extends Fragment {
 
 
     public static void saveToPreferences(Context context, String key, Boolean allowed) {
-        SharedPreferences mPrefs = context.getSharedPreferences(CAMERA_PREF, Context.MODE_PRIVATE);
+        SharedPreferences mPrefs = context.getSharedPreferences(CAMERA_PREF, MODE_PRIVATE);
         SharedPreferences.Editor prefersEditor = mPrefs.edit();
         prefersEditor.putBoolean(key, allowed);
         prefersEditor.commit();
     }
 
     public static Boolean getFromPref(Context context, String key) {
-        SharedPreferences mPrefs = context.getSharedPreferences(CAMERA_PREF, Context.MODE_PRIVATE);
+        SharedPreferences mPrefs = context.getSharedPreferences(CAMERA_PREF, MODE_PRIVATE);
         return (mPrefs.getBoolean(key, false));
     }
 

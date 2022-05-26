@@ -29,26 +29,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ScanCode">
         <activity
-            android:name=".Setting.Setting"
+            android:name=".setting.Setting"
             android:exported="false" />
         <activity
-            android:name=".Setting.Help.ErrorLink"
+            android:name=".setting.help.ErrorLink"
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
-            android:name=".Setting.Help.CantAccessWifi"
+            android:name=".setting.help.CantAccessWifi"
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
-            android:name=".Setting.Help.CantReadQR"
+            android:name=".setting.help.CantReadQR"
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
-            android:name=".Setting.Help.Tips"
+            android:name=".setting.help.Tips"
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
-            android:name=".Setting.Help.Help"
+            android:name=".setting.help.Help"
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
@@ -84,11 +84,11 @@
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
-            android:name=".Setting.Feebback"
+            android:name=".setting.Feebback"
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity
-            android:name=".Setting.Main_introduction"
+            android:name=".setting.Main_introduction"
             android:configChanges="locale|layoutDirection"
             android:exported="false" />
         <activity

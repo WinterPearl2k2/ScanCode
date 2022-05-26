@@ -1,4 +1,4 @@
-package com.example.scancode.Setting.Help;
+package com.example.scancode.setting.help;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -12,11 +12,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.scancode.Adapter.HelpAdapter;
 import com.example.scancode.R;
-import com.example.scancode.Setting.Feebback;
+import com.example.scancode.setting.Feebback;
 
 import java.util.ArrayList;
 

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Setting.Fragment_Setting">
+    tools:context=".setting.Fragment_Setting">
 
     <ScrollView
         android:layout_width="match_parent"

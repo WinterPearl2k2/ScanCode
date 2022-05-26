@@ -1,4 +1,4 @@
-package com.example.scancode.Setting;
+package com.example.scancode.setting;
 
 import android.content.Context;
 import android.view.LayoutInflater;

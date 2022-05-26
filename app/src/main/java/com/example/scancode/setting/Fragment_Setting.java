@@ -1,4 +1,4 @@
-package com.example.scancode.Setting;
+package com.example.scancode.setting;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,7 +16,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
 
 import com.example.scancode.R;
-import com.example.scancode.Setting.Help.Help;
+import com.example.scancode.setting.help.Help;
 
 import java.util.Locale;
 

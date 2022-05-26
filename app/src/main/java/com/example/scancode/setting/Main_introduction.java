@@ -1,4 +1,6 @@
-package com.example.scancode.Setting;
+package com.example.scancode.setting;
+
+import static java.lang.Boolean.getBoolean;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;

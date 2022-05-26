@@ -1,4 +1,4 @@
-package com.example.scancode.Setting.Help;
+package com.example.scancode.setting.help;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;

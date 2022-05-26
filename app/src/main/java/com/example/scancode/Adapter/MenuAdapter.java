@@ -8,7 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.scancode.Create.Fragment_Create;
 import com.example.scancode.History.Fragment_History;
 import com.example.scancode.Scan.Fragment_Scan_Home;
-import com.example.scancode.Setting.Setting;
+import com.example.scancode.setting.Setting;
 
 public class MenuAdapter extends FragmentStateAdapter {
     public MenuAdapter(@NonNull FragmentActivity fragmentActivity) {

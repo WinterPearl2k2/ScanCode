@@ -1,4 +1,4 @@
-package com.example.scancode.Setting.Help;
+package com.example.scancode.setting.help;
 
 public class HelpItem {
     public String content;
