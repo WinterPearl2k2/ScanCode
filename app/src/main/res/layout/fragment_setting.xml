@@ -179,6 +179,7 @@
             </TableLayout>
 
             <TextView
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -207,6 +208,7 @@
                         android:src="@drawable/introduction_241" />
 
                     <TextView
+                        android:id="@+id/introduction"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_column="1"
@@ -226,6 +228,7 @@
                         android:src="@drawable/feedback" />
 
                     <TextView
+                        android:id="@+id/feedback"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_column="1"
@@ -264,6 +267,7 @@
                         android:src="@drawable/help_241" />
 
                     <TextView
+                        android:id="@+id/help"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_column="1"

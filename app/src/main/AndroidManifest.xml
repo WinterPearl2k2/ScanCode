@@ -28,9 +28,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ScanCode">
-        <activity
-            android:name=".setting.Setting"
-            android:exported="false" />
+
         <activity
             android:name=".setting.help.ErrorLink"
             android:configChanges="locale|layoutDirection"
