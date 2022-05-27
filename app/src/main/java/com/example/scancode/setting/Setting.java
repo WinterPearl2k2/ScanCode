@@ -79,11 +79,16 @@ public class Setting extends Fragment {
 
     public void Beep(){
         SharedPreferences sp_beep = getContext().getSharedPreferences("beep",0);
-        setCheck(sp_beep,"beep",false);
+       // setCheck(sp_beep,"beep",false);
+        boolean check = sp_beep.getBoolean("beep",false);
+        if(check==true)
+            sw_beep.setChecked(true);
+        else
+            sw_beep.setChecked(false);
         sw_beep.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(sw_beep.isChecked()==true){
+                if(b){
                     Sharepreference(sp_beep,"beep",true);
                 }
                 else{
@@ -94,7 +99,11 @@ public class Setting extends Fragment {
     }
     public void Copy(){
         SharedPreferences sp_copy = getContext().getSharedPreferences("copy",0);
-        setCheck(sp_copy,"copy",false);
+        boolean check = sp_copy.getBoolean("copy",false);
+        if(check==true)
+            sw_copy.setChecked(true);
+        else
+            sw_copy.setChecked(false);
         sw_copy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -109,11 +118,15 @@ public class Setting extends Fragment {
     }
     public void Vibrate(){
         SharedPreferences sp_vibrate = getContext().getSharedPreferences("vibrate",0);
-        setCheck(sp_vibrate,"vibrate",false);
+        boolean check = sp_vibrate.getBoolean("vibrate",false);
+        if(check==true)
+            sw_vibrate.setChecked(true);
+        else
+            sw_vibrate.setChecked(false);
         sw_vibrate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(sw_vibrate.isChecked()==true){
+                if(b){
                     Sharepreference(sp_vibrate,"vibrate",true);
                 }
                 else{
