@@ -36,17 +36,17 @@ public class Feebback extends AppCompatActivity {
 
     }
     public String Check(){
-        String t = "\n";
+        String t = "";
         
         if(check1.isChecked())
         {
-            t=t+check1.getText().toString()+"\n";
+            t = t + check1.getText().toString() + "\n";
         }
 
         if(check2.isChecked())
-            t=t+check2.getText().toString()+"\n";
+            t = t + check2.getText().toString() + "\n";
         if(check3.isChecked())
-            t=t+check3.getText().toString()+"\n";
+            t = t + edit.getText().toString() + "\n";
         return t;
 
     }
@@ -56,14 +56,13 @@ public class Feebback extends AppCompatActivity {
             public void onClick(View view) {
                 String  check;
                 check = Check();
-                String finalFeedback = edit.getText().toString();
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
                 emailIntent.setType("text/html");
                 String aEmailList[] = {"hothianhduong16112002@gmail.com"};
                 emailIntent.setData(Uri.parse("mailto:")); // only email apps should handle this
                 emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, aEmailList);
-                String feedback_msg = finalFeedback + check;
-                emailIntent.putExtra(Intent.EXTRA_TEXT,   finalFeedback + "\n"+Check());
+                String feedback_msg = check;
+                emailIntent.putExtra(Intent.EXTRA_TEXT,   check);
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback's customer about Scancode");
 
                 PackageManager packageManager = Feebback.this.getPackageManager();
