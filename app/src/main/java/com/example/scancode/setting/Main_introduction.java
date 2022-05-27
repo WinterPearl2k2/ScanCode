@@ -1,6 +1,5 @@
 package com.example.scancode.setting;
 
-import static java.lang.Boolean.getBoolean;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.scancode.R;
@@ -30,7 +28,6 @@ public class Main_introduction extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main_introduction);

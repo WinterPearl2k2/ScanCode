@@ -26,12 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView navigation;
     public static ViewPager2 viewPager2;
     MenuAdapter menuAdapter;
-    Locale locale;
-    SeekBar seekBar;
-    boolean introduce = true;
-    SharedPreferences.Editor editor;
-    SharedPreferences preferences;
-    private static final String MY_PREF = "MyPrefsFile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +40,6 @@ public class MainActivity extends AppCompatActivity {
         SetUpViewPager2(); //Cài đặt View
         EventButtonNavigation(); //Bắt sự kiện của button navigation
         DarkMode();//darkmode
-//        Introduce();
-    }
-
-    private void Introduce() {
-        preferences = getSharedPreferences(MY_PREF, MODE_PRIVATE);
-        introduce = preferences.getBoolean("noIntroduce", true);
-        Intent intent = new Intent(MainActivity.this, Main_introduction.class);
-        if(introduce) {
-            startActivity(intent);
-        }
     }
 
     private void EventButtonNavigation() {

@@ -12,13 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
+import com.example.scancode.BuildConfig;
 import com.example.scancode.R;
 import com.example.scancode.setting.help.Help;
 
@@ -27,6 +30,7 @@ import java.util.Locale;
 public class Setting extends Fragment {
     Switch sw_ligth,sw_beep,sw_vibrate,sw_copy;
     TextView languague,help,introduc,feedback;
+    TableRow btn_Verison;
     static Locale locale;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -44,8 +48,20 @@ public class Setting extends Fragment {
         Introduction();
         Feedback();
         Help();
+        Version();
         return view;
     }
+
+    private void Version() {
+        btn_Verison.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Versions " + BuildConfig.VERSION_NAME +
+                        " " +BuildConfig.VERSION_CODE, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     public void initUI(View view){
         sw_ligth = view.findViewById(R.id.sw_light);
         languague = view.findViewById(R.id.tv);
@@ -55,6 +71,7 @@ public class Setting extends Fragment {
         introduc = view.findViewById(R.id.introduction);
         help = view.findViewById(R.id.help);
         feedback = view.findViewById(R.id.feedback);
+        btn_Verison = view.findViewById(R.id.version);
     }
     public void Sharepreference(SharedPreferences sharedPreferences,String name, Boolean value){
        // sharedPreferences = getActivity().getSharedPreferences(name,0);
