@@ -69,7 +69,7 @@ public class Feebback extends AppCompatActivity {
                 PackageManager packageManager = Feebback.this.getPackageManager();
                 boolean isIntentSafe = emailIntent.resolveActivity(packageManager) != null;
                 try {
-                    startActivity(emailIntent);
+                    startActivity(Intent.createChooser(emailIntent, "Send Email"));
                 } catch (android.content.ActivityNotFoundException ex){
                     Toast.makeText(Feebback.this, "Email not installed", Toast.LENGTH_SHORT).show();
                 }
