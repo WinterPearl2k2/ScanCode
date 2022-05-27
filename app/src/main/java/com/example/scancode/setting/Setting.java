@@ -26,7 +26,7 @@ import java.util.Locale;
 
 public class Setting extends Fragment {
     Switch sw_ligth,sw_beep,sw_vibrate,sw_copy;
-    TextView languague,help,introduc;
+    TextView languague,help,introduc,feedback;
     static Locale locale;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -38,13 +38,23 @@ public class Setting extends Fragment {
         initUI(view);
         DarkMode();
         Language();
-
+        Beep();
+        Vibrate();
+        Copy();
+        Introduction();
+        Feedback();
+        Help();
         return view;
     }
     public void initUI(View view){
         sw_ligth = view.findViewById(R.id.sw_light);
         languague = view.findViewById(R.id.tv);
-
+        sw_vibrate = view.findViewById(R.id.sw_vibrate);
+        sw_beep = view.findViewById(R.id.sw_sound);
+        sw_copy =view.findViewById(R.id.sw_copy);
+        introduc = view.findViewById(R.id.introduction);
+        help = view.findViewById(R.id.help);
+        feedback = view.findViewById(R.id.feedback);
     }
     public void Sharepreference(SharedPreferences sharedPreferences,String name, Boolean value){
        // sharedPreferences = getActivity().getSharedPreferences(name,0);
@@ -82,7 +92,21 @@ public class Setting extends Fragment {
             }
         });
     }
+    public void Copy(){
+        SharedPreferences sp_copy = getContext().getSharedPreferences("copy",0);
+        setCheck(sp_copy,"copy",false);
+        sw_copy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    Sharepreference(sp_copy,"copy",true);
+                }
+                else
+                    Sharepreference(sp_copy,"copy",false);
+            }
+        });
 
+    }
     public void Vibrate(){
         SharedPreferences sp_vibrate = getContext().getSharedPreferences("vibrate",0);
         setCheck(sp_vibrate,"vibrate",false);
@@ -117,7 +141,15 @@ public class Setting extends Fragment {
            }
        });
     }
-
+    public  void Feedback(){
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Feebback.class);
+                startActivity(intent);
+            }
+        });
+    }
     public void DarkMode(){
         SharedPreferences sp_ligth = getActivity().getSharedPreferences("darkmode",0);
         setCheck(sp_ligth,"darkmode",false);
