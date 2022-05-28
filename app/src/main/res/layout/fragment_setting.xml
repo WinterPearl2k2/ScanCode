@@ -34,6 +34,7 @@
                 android:stretchColumns="*">
 
                 <TableRow
+                    android:id="@+id/tb_light"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp">
 
@@ -52,6 +53,7 @@
                         android:textSize="18dp" />
 
                     <Switch
+                        android:clickable="false"
                         android:id="@+id/sw_light"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -60,6 +62,7 @@
                 </TableRow>
 
                 <TableRow
+                    android:id="@+id/tv"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp">
 
@@ -70,7 +73,7 @@
                         android:src="@drawable/language_241" />
 
                     <TextView
-                        android:id="@+id/tv"
+
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_column="1"
@@ -100,6 +103,7 @@
                 android:stretchColumns="*">
 
                 <TableRow
+                    android:id="@+id/tb_sound"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp">
 
@@ -118,6 +122,7 @@
                         android:textSize="18dp" />
 
                     <Switch
+                        android:clickable="false"
                         android:id="@+id/sw_sound"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -126,6 +131,7 @@
                 </TableRow>
 
                 <TableRow
+                    android:id="@+id/tb_vibrate"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp">
 
@@ -144,6 +150,7 @@
                         android:textSize="18dp" />
 
                     <Switch
+                        android:clickable="false"
                         android:id="@+id/sw_vibrate"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -152,6 +159,7 @@
                 </TableRow>
 
                 <TableRow
+                    android:id="@+id/tb_copy"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp">
 
@@ -172,9 +180,10 @@
                     <Switch
                         android:id="@+id/sw_copy"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:layout_span="1" />
+                        android:layout_span="1"
+                        android:clickable="false" />
                 </TableRow>
             </TableLayout>
 
@@ -198,6 +207,7 @@
                 android:stretchColumns="*">
 
                 <TableRow
+                    android:id="@+id/introduction"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp">
 
@@ -208,7 +218,7 @@
                         android:src="@drawable/introduction_241" />
 
                     <TextView
-                        android:id="@+id/introduction"
+
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_column="1"
@@ -218,6 +228,7 @@
                 </TableRow>
 
                 <TableRow
+                    android:id="@+id/feedback"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp">
 
@@ -228,7 +239,7 @@
                         android:src="@drawable/feedback" />
 
                     <TextView
-                        android:id="@+id/feedback"
+
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_column="1"
@@ -258,6 +269,7 @@
 
                 </TableRow>
                 <TableRow
+                    android:id="@+id/help"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp">
 
@@ -268,7 +280,7 @@
                         android:src="@drawable/help_241" />
 
                     <TextView
-                        android:id="@+id/help"
+
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_column="1"

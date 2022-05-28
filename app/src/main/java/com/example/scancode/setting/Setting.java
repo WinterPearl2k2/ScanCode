@@ -10,10 +10,8 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -29,9 +27,9 @@ import java.util.Locale;
 
 public class Setting extends Fragment {
     Switch sw_ligth,sw_beep,sw_vibrate,sw_copy;
-    TextView languague,help,introduc,feedback;
-    TableRow btn_Verison;
-    static Locale locale;
+    TableRow languague,help,introduc,feedback;
+    TableRow btn_Verison,tb_dark,tb_sound,tb_vibrate,tb_copy;
+    static Locale locale;static boolean touched=false;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -63,15 +61,19 @@ public class Setting extends Fragment {
     }
 
     public void initUI(View view){
-        sw_ligth = view.findViewById(R.id.sw_light);
-        languague = view.findViewById(R.id.tv);
-        sw_vibrate = view.findViewById(R.id.sw_vibrate);
-        sw_beep = view.findViewById(R.id.sw_sound);
-        sw_copy =view.findViewById(R.id.sw_copy);
-        introduc = view.findViewById(R.id.introduction);
-        help = view.findViewById(R.id.help);
-        feedback = view.findViewById(R.id.feedback);
-        btn_Verison = view.findViewById(R.id.version);
+        tb_vibrate   = view.findViewById(R.id.tb_vibrate);
+        tb_sound     = view.findViewById(R.id.tb_sound);
+        tb_copy      = view.findViewById(R.id.tb_copy);
+        tb_dark      = view.findViewById(R.id.tb_light);
+        sw_ligth     = view.findViewById(R.id.sw_light);
+        languague    = view.findViewById(R.id.tv);
+        sw_vibrate   = view.findViewById(R.id.sw_vibrate);
+        sw_beep      = view.findViewById(R.id.sw_sound);
+        sw_copy      =view.findViewById(R.id.sw_copy);
+        introduc     = view.findViewById(R.id.introduction);
+        help         = view.findViewById(R.id.help);
+        feedback     = view.findViewById(R.id.feedback);
+        btn_Verison  = view.findViewById(R.id.version);
     }
     public void Sharepreference(SharedPreferences sharedPreferences,String name, Boolean value){
        // sharedPreferences = getActivity().getSharedPreferences(name,0);
@@ -86,72 +88,65 @@ public class Setting extends Fragment {
         editor.putInt(name,value);
         editor.commit();
     }
-    public void setCheck(SharedPreferences sharedPreferences,String name, Boolean value){
-        boolean check = sharedPreferences.getBoolean(name,value);
-        if(check==true)
-            sw_ligth.setChecked(true);
-        else
-            sw_ligth.setChecked(false);
-    }
+
 
     public void Beep(){
-        SharedPreferences sp_beep = getContext().getSharedPreferences("beep",0);
-       // setCheck(sp_beep,"beep",false);
-        boolean check = sp_beep.getBoolean("beep",false);
+        SharedPreferences sp_sound = getActivity().getSharedPreferences("beep", 0);
+        boolean check = sp_sound.getBoolean("beep",false);
         if(check==true)
+        {
             sw_beep.setChecked(true);
+        }
         else
+        {
             sw_beep.setChecked(false);
-        sw_beep.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        }
+        tb_sound.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    Sharepreference(sp_beep,"beep",true);
-                }
-                else{
-                    Sharepreference(sp_beep,"beep",false);
-                }
+            public void onClick(View view) {
+                setCheck_switch(sw_beep,sp_sound,"beep");
             }
         });
     }
     public void Copy(){
-        SharedPreferences sp_copy = getContext().getSharedPreferences("copy",0);
+        SharedPreferences sp_copy = getActivity().getSharedPreferences("copy", 0);
         boolean check = sp_copy.getBoolean("copy",false);
         if(check==true)
+        {
             sw_copy.setChecked(true);
+        }
         else
+        {
             sw_copy.setChecked(false);
-        sw_copy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        }
+        tb_copy.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    Sharepreference(sp_copy,"copy",true);
-                }
-                else
-                    Sharepreference(sp_copy,"copy",false);
+            public void onClick(View view) {
+                setCheck_switch(sw_copy,sp_copy,"copy");
             }
         });
 
     }
     public void Vibrate(){
-        SharedPreferences sp_vibrate = getContext().getSharedPreferences("vibrate",0);
+        SharedPreferences sp_vibrate = getActivity().getSharedPreferences("vibrate", 0);
         boolean check = sp_vibrate.getBoolean("vibrate",false);
         if(check==true)
+        {
             sw_vibrate.setChecked(true);
+        }
         else
+        {
             sw_vibrate.setChecked(false);
-        sw_vibrate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        }
+        tb_vibrate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    Sharepreference(sp_vibrate,"vibrate",true);
-                }
-                else{
-                    Sharepreference(sp_vibrate,"vibrate",false);
-                }
+            public void onClick(View view) {
+                setCheck_switch(sw_vibrate,sp_vibrate,"vibrate");
             }
         });
-
     }
     public void Introduction(){
         introduc.setOnClickListener(new View.OnClickListener() {
@@ -180,26 +175,54 @@ public class Setting extends Fragment {
             }
         });
     }
-    public void DarkMode(){
-        SharedPreferences sp_ligth = getActivity().getSharedPreferences("darkmode",0);
-        setCheck(sp_ligth,"darkmode",false);
-       sw_ligth.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-           @Override
-           public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-               if(sw_ligth.isChecked()==true)
-               {
-                   AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                   Sharepreference(sp_ligth,"darkmode",true);
-               }
-
-               else
-               {
-                   AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                   Sharepreference(sp_ligth,"darkmode",false);
-               }
-           }
-       });
+    public void setCheck_switch(Switch sw,SharedPreferences sharedPreferences,String name ){
+        boolean check = sharedPreferences.getBoolean(name,false);
+        if(check==false){
+            sw.setChecked(true);
+            Sharepreference(sharedPreferences,name,true);
+        }
+        else{
+            sw.setChecked(false);
+            Sharepreference(sharedPreferences,name,false);
+        }
     }
+    public void setCheck(SharedPreferences sharedPreferences){
+        boolean check = sharedPreferences.getBoolean("darkmode",false);
+
+            if(check==false)
+            {
+                sw_ligth.setChecked(true);
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                Sharepreference(sharedPreferences,"darkmode",true);//true
+            }
+            else
+            {
+                sw_ligth.setChecked(false);
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                Sharepreference(sharedPreferences,"darkmode",false);
+            }
+    }
+    public void DarkMode() {
+        SharedPreferences sp_ligth = getActivity().getSharedPreferences("darkmode", 0);
+        boolean check = sp_ligth.getBoolean("darkmode",false);
+        if(check==true)
+        {
+            sw_ligth.setChecked(true);
+        }
+        else
+        {
+            sw_ligth.setChecked(false);
+
+        }
+        tb_dark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setCheck(sp_ligth);
+            }
+        });
+    }
+
+
     public void Language(){
 
         SharedPreferences sp_languague = getActivity().getSharedPreferences("language",0);

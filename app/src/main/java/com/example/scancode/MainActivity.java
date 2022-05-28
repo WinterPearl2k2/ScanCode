@@ -1,6 +1,5 @@
 package com.example.scancode;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -8,7 +7,6 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.Window;
-import android.widget.SeekBar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +14,6 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.scancode.Adapter.MenuAdapter;
-import com.example.scancode.setting.Main_introduction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Locale;
