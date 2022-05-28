@@ -6,16 +6,21 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="navi">#303030</color>
+    <color name="navi">#D71E1E1E</color>
     <color name="teal_900">#026766</color>
+    <color name="darkpink">#555B6A</color>
+    <color name="pinkligth">#C8FFD5E3</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="primary_icon">#F06292</color>
+    <color name="darknavi">#3D3D45</color>
     <color name="icon">#4db6ac</color>
     <color name="primary_color">#FFFFFFFF</color>
     <color name="grey">#804B5660</color>
     <color name="pink_light">#FFB6D0</color>
     <color name="pink_bold">#F06292</color>
     <color name="green">#4db6ac</color>
+    <color name="orange">#ffad3b</color>
+    <color name="darkblue">#214d7c</color>
     <color name="green_light">#B7EFEA</color>
 </resources>
