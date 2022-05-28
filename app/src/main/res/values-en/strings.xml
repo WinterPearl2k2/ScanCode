@@ -44,5 +44,16 @@
 
     <string name="required_field">Field is required!</string>
     <string name="required_quantity">This field must have 8 characters or more!</string>
+    <string name="showper_cancel">Cancel</string>
+    <string name="showper_allow">Allow</string>
+    <string name="SECONDARY_EMAIL_TYPE">Home</string>
+    <string name="SECONDARY_PHONE_TYPE">Office</string>
+    <string name="TERTIARY_PHONE_TYPE">Fax</string>
+    <string name="feedback_edit">"Tell me the "</string>
+    <string name="feeback1">Sanning not working</string>
+    <string name="feedback2">Nees information after scanning</string>
+    <string name="feedback3">Others</string>
+    <string name="feebackbtn">Send</string>
+    <string name="settings_feedback">Feedback</string>
 
 </resources>
