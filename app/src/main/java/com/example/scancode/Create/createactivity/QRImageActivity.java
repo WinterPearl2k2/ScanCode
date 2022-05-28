@@ -26,11 +26,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.scancode.History.listviewhistory.CreateHistoryDatabase;
-import com.example.scancode.History.listviewhistory.HistoryRecycleViewAdapter;
-import com.example.scancode.History.listviewhistory.History;
+import com.example.scancode.History.recycleviewhistory.CreateHistoryDatabase;
+import com.example.scancode.History.recycleviewhistory.HistoryRecycleViewAdapter;
+import com.example.scancode.History.recycleviewhistory.History;
 import com.example.scancode.R;
-import com.example.scancode.Scan.ResultScan;
 import com.google.zxing.WriterException;
 
 import java.io.File;

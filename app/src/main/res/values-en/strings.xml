@@ -98,6 +98,4 @@
     <string name="notice_unable_to_scan_image">Unable to scan image</string>
     <string name="btn_scan_by_camera">Scan using the camera</string>
     <string name="btn_scan_by_image">Scan the code by image</string>
-    <string name="showper_title">" Not yet granted permission"</string>
-    <string name="showper_message">Please grant the camera permission to use the scan feature</string>
 </resources>

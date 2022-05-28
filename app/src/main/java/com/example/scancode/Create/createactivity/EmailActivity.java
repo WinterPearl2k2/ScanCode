@@ -27,9 +27,11 @@ public class EmailActivity extends AppCompatActivity {
     }
 
     private void InitActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(getString(R.string.create_email));
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getString(R.string.create_email));
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override

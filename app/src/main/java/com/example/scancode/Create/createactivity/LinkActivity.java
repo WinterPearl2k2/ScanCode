@@ -24,9 +24,11 @@ public class LinkActivity extends AppCompatActivity {
     }
 
     private void InitActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(getString(R.string.create_url));
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getString(R.string.create_url));
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override

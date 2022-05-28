@@ -1,4 +1,4 @@
-package com.example.scancode.History.listviewhistory;
+package com.example.scancode.History.recycleviewhistory;
 
 import androidx.room.Dao;
 import androidx.room.Delete;

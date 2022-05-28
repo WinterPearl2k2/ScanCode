@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.scancode.R;
-import com.example.scancode.Scan.ResultScan;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class SMSActivity extends AppCompatActivity {
@@ -18,14 +17,16 @@ public class SMSActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sms);
-        getSupportActionBar().setTitle(getString(R.string.create_sms));
-        InitMenu();
+        InitActionBar();
         AnhXa();
     }
 
-    private void InitMenu() {
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+    private void InitActionBar() {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getString(R.string.create_sms));
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override

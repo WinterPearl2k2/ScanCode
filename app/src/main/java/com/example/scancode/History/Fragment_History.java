@@ -12,17 +12,14 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.example.scancode.Create.listviewcreate.CreateRecycleViewAdapter;
-import com.example.scancode.History.listviewhistory.CreateHistoryDatabase;
-import com.example.scancode.History.listviewhistory.HistoryRecycleViewAdapter;
-import com.example.scancode.History.listviewhistory.History;
+import com.example.scancode.History.recycleviewhistory.CreateHistoryDatabase;
+import com.example.scancode.History.recycleviewhistory.HistoryRecycleViewAdapter;
+import com.example.scancode.History.recycleviewhistory.History;
 import com.example.scancode.R;
 
 import java.util.ArrayList;
