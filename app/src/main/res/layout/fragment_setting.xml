@@ -90,7 +90,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/settings_control"
-                android:textColor="@color/green"
+                android:textColor="@color/darkblue"
                 android:textSize="17dp"
                 android:textStyle="bold" />
 

@@ -5,7 +5,6 @@
         <item name="colorPrimary">@color/primary_icon</item>
         <item name="colorPrimaryVariant">@color/navi</item><!--ta sua-->
         <item name="colorOnPrimary">@color/primary_icon</item>
-
         <item name="android:windowBackground">@color/navi</item>
         <!--Actionbar-->
         <item name="android:actionBarStyle">@style/Myactionbar</item>
@@ -19,9 +18,8 @@
         <!-- set icon checked       -->
         <item name="cus_check_incustext">@color/white</item>
         <item name="cus_incustext">@color/orange</item>
-        <item name="bottomNavigationStyle">@color/navi</item>
         <item name="back_blabla">@color/darkpink</item>
-
+    <item name="bottomNavigationStyle">@style/Mybackground</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/primary_icon</item>
         <!-- Status bar color. -->
@@ -31,6 +29,10 @@
         <item name="android:buttonStyle">@style/Mybutton</item>
         <item name="buttonStyle">@style/Mybutton</item>
 
+        <!--  Gradiant in settings darkmode      -->
+        <item name="startnavi">@color/startnavidark</item>
+        <item name="midnavi">@color/endnavidark</item>
+        <item name="endnavi">@color/darkpink</item>
     </style>
 
     <style name="Myactionbar" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
@@ -40,10 +42,10 @@
         <item name="background">@color/primary_icon</item>
     </style>
     <style name="Mybackground" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/darkblue</item>
+        <item name="android:background">@color/navi</item>
 
         <!-- Support library compatibility -->
-        <item name="background">@color/darkblue</item>
+        <item name="background">@color/navi</item>
     </style>
     <style name="Mybutton" parent="Widget.AppCompat.Button">
         <item name="android:textColor">@color/white</item>

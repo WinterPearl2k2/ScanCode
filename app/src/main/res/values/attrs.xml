@@ -4,5 +4,8 @@
         <attr name="cus_check_incustext" format="color"></attr>
         <attr name="cus_incustext" format="color"></attr>
         <attr name="back_blabla" format="color"></attr>
+        <attr name="startnavi" format="color"></attr>
+        <attr name="endnavi" format="color"></attr>
+        <attr name="midnavi" format="color"></attr>
     </declare-styleable>
 </resources>
