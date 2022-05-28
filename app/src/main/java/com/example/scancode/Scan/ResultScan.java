@@ -6,7 +6,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaScannerConnection;
@@ -32,6 +35,7 @@ import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
@@ -50,6 +54,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 import androidmads.library.qrgenearator.QRGContents;
@@ -77,6 +82,7 @@ public class ResultScan extends AppCompatActivity {
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_icon)));
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Language();
         setContentView(R.layout.activity_result_scan);
         ORM();
         actionBar.setTitle(intent.getStringExtra("QRtitle"));
@@ -87,19 +93,49 @@ public class ResultScan extends AppCompatActivity {
         txtResult.setMovementMethod(new ScrollingMovementMethod());
     }
 
+    public void Language(){
+
+        SharedPreferences sharedPreferences1 = getSharedPreferences("language",0);
+        int item = sharedPreferences1.getInt("language",1);
+        switch (item) {
+            case 0:
+                Locale localeEN = new Locale("en");
+                setLocale(localeEN);
+                break;
+            case 1:
+                Locale localeHU = new Locale("vi");
+                setLocale(localeHU);
+                break;
+
+        }
+    }
+
+    public void setLocale(Locale locale) {
+        Locale.setDefault(locale);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = locale;
+        res.updateConfiguration(conf, dm);
+        //recreate();
+        //finish();
+        //startActivity(getIntent());
+        //if these are not commented, main activity wont show at start at all
+    }
+
     private void SaveImage() {
         qrCodeIV.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ResultScan.this);
-                    builder.setMessage("Bạn có muốn lưu ảnh về máy không?")
-                            .setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    builder.setMessage(getString(R.string.question_save_image))
+                            .setNegativeButton(getString(R.string.No), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     dialogInterface.dismiss();
                                 }
                             })
-                            .setPositiveButton("Chấp nhận", new DialogInterface.OnClickListener() {
+                            .setPositiveButton(getString(R.string.Yes), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     String root = Environment.getExternalStoragePublicDirectory(
@@ -129,7 +165,7 @@ public class ResultScan extends AppCompatActivity {
                                                     Log.i("ExternalStorage", "-> uri=" + uri);
                                                 }
                                             });
-                                    Toast.makeText(ResultScan.this, "Save successfully", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ResultScan.this, getString(R.string.save_successfully), Toast.LENGTH_SHORT).show();
                                 }
                             }).show();
                 return true;
@@ -178,7 +214,7 @@ public class ResultScan extends AppCompatActivity {
                     startActivity(Intent.createChooser(share, "Share image"));
                 } else {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(ResultScan.this);
-                    dialog.setMessage("Xin lỗi phiên bản android hiện tại của bạn không hổ trợ tính năng này :'(")
+                    dialog.setMessage(getString(R.string.no_support_version))
                             .setNegativeButton("Ok", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -324,12 +360,12 @@ public class ResultScan extends AppCompatActivity {
                 case "HTTPS": count++;
                 case "WWW": count++;
                 case "HTTP": count++;
-                    title = "URL";
+                    title = getString(R.string.link);
                     txtTitleResult.setText(title);
                     for(int i = d ; i < result.length() ; i++) {
                         link += result.charAt(i);
                     }
-                    txtSearch.setText("Truy cập liên kết");
+                    txtSearch.setText(getString(R.string.access_link));
                     imgSearch.setImageResource(R.drawable.ic_baseline_insert_link_36);
                     txtResult.setText(result);
                     String protocol = null;
@@ -358,7 +394,7 @@ public class ResultScan extends AppCompatActivity {
                             }
                         }else d = i;
                     }
-                    txtSearch.setText("Gửi email từ " + TO);
+                    txtSearch.setText(getString(R.string.send_email) + TO);
                     imgSearch.setImageResource(R.drawable.ic_baseline_email_36);
                     txtResult.setText((TO.length() > 0 ? ("To: " + TO): "")
                             + (SUB.length() > 0 ? ("\nSubject: " + SUB): "")
@@ -416,7 +452,7 @@ public class ResultScan extends AppCompatActivity {
                             }
                         Json = "";
                     }
-                    txtSearch.setText("Chuyển hướng tới mạng Wifi");
+                    txtSearch.setText(getString(R.string.acces_wifi));
                     imgSearch.setImageResource(R.drawable.ic_baseline_wifi_36);
                     txtResult.setText((S.length() > 0 ? ("Network Name: " + S): "")
                             + (P.length() > 0 ? ("\nPassword: " + P): "")
@@ -430,14 +466,14 @@ public class ResultScan extends AppCompatActivity {
                         }
                     });
                     break;
-                case "TEL": title = "TELEPHONE";
+                case "TEL": title = getString(R.string.telephone);
                     txtTitleResult.setText(title);
                     for(int i = d + 1 ; i < result.length() ; i++) {
                         TEL += result.charAt(i);
                     }
-                    txtSearch.setText("Quay số");
+                    txtSearch.setText(getString(R.string.dial));
                     imgSearch.setImageResource(R.drawable.ic_baseline_local_phone_36);
-                    txtAddContact.setText("Thêm liên hệ");
+                    txtAddContact.setText(getString(R.string.add_contact));
                     imgAddContact.setImageResource(R.drawable.ic_baseline_add_ic_call_36);
                     llAddContact.setVisibility(View.VISIBLE);
                     llAddContact.setOnClickListener(new View.OnClickListener() {
@@ -454,7 +490,7 @@ public class ResultScan extends AppCompatActivity {
                     });
                     txtResult.setText((TEL.length() > 0 ? ("Phone: " + TEL): ""));
                     break;
-                case "SMSTO": title = "SMS";
+                case "SMSTO": title = getString(R.string.sms);
                     txtTitleResult.setText(title);
                     for(int i = d + 1 ; i < result.length() ; i++) {
                         if(result.charAt(i) == ':') {
@@ -466,9 +502,9 @@ public class ResultScan extends AppCompatActivity {
                         else if (count == 1)
                             SMS += result.charAt(i);
                     }
-                    txtSearch.setText("Gửi tin nhắn");
+                    txtSearch.setText(getString(R.string.send_mess));
                     imgSearch.setImageResource(R.drawable.ic_baseline_sms_36);
-                    txtAddContact.setText("Thêm liên hệ");
+                    txtAddContact.setText(getString(R.string.add_contact));
                     imgAddContact.setImageResource(R.drawable.ic_baseline_add_ic_call_36);
                     llAddContact.setVisibility(View.VISIBLE);
                     llAddContact.setOnClickListener(new View.OnClickListener() {
@@ -486,7 +522,7 @@ public class ResultScan extends AppCompatActivity {
                         }
                     });
                     break;
-                case "GEO" : title = "GEO";
+                case "GEO" : title = getString(R.string.geo);
                     txtTitleResult.setText(title);
                     for(int i = d + 1 ; i < result.length() ; i++) {
                         if(result.charAt(i) == ',') {
@@ -498,7 +534,7 @@ public class ResultScan extends AppCompatActivity {
                         else if (count == 1)
                             LONGITUDE += result.charAt(i);
                     }
-                    txtSearch.setText("Truy cập vị trí");
+                    txtSearch.setText(getString(R.string.access_position));
                     imgSearch.setImageResource(R.drawable.ic_baseline_map_36);
                     txtResult.setText((LATITUDE.length() > 0 ? ("LATITUDE: " + LATITUDE): "")
                             + (LONGITUDE.length() > 0 ? ("\nLONGITUDE: " + LONGITUDE): ""));
@@ -642,7 +678,7 @@ public class ResultScan extends AppCompatActivity {
                                 + (EMAIL1.length() > 0 ? ("\nEmail: " + EMAIL1): "")
                                 + (EMAIL2.length() > 0 ? ("\nEmail: " + EMAIL2): "")
                                 + (URL.length() > 0 ? ("\nLink: " + URL): "")) ;
-                        txtAddContact.setText("Thêm liên hệ");
+                        txtAddContact.setText(getString(R.string.add_contact));
                         imgAddContact.setImageResource(R.drawable.ic_baseline_add_ic_call_36);
                         llAddContact.setVisibility(View.VISIBLE);
                         llAddContact.setOnClickListener(new View.OnClickListener() {
@@ -652,7 +688,7 @@ public class ResultScan extends AppCompatActivity {
                             }
                         });
                     } else if(Json.equals("VEVENT")) {
-                        title = "EVENT";
+                        title = getString(R.string.event);
                         txtTitleResult.setText(title);
                         Json = "";
                         for(int i = 0; i < result.length(); i++) {
@@ -714,12 +750,12 @@ public class ResultScan extends AppCompatActivity {
                             Json = "";
                         }
 
-                        txtResult.setText((SUMMARY.length() > 0 ? ("Tiêu đề: " + SUMMARY): "")
-                                + (DTSTART.length() > 0 ? ("\nNgày bắt đầu: " + DTSTART): "")
-                                + (DTEND.length() > 0 ? ("\nNgày kết thúc: " + DTEND): "")
-                                + (LOCATION.length() > 0 ? ("\nĐịa điểm: " + LOCATION): "")
-                                + (DESCRIPTION.length() > 0 ? ("\nMô tả: " + DESCRIPTION): ""));
-                        txtAddContact.setText("Thêm lịch trình");
+                        txtResult.setText((SUMMARY.length() > 0 ? ("Title: " + SUMMARY): "")
+                                + (DTSTART.length() > 0 ? ("\nStart day: " + DTSTART): "")
+                                + (DTEND.length() > 0 ? ("\nEnd date: " + DTEND): "")
+                                + (LOCATION.length() > 0 ? ("\nLocation: " + LOCATION): "")
+                                + (DESCRIPTION.length() > 0 ? ("\nDescription: " + DESCRIPTION): ""));
+                        txtAddContact.setText(getString(R.string.add_calender));
                         imgAddContact.setImageResource(R.drawable.ic_baseline_edit_calendar_36);
                         llAddContact.setVisibility(View.VISIBLE);
                         llAddContact.setOnClickListener(new View.OnClickListener() {
@@ -742,7 +778,7 @@ public class ResultScan extends AppCompatActivity {
                     button.setVisibility(View.GONE);
                     break;
                 default: txtTitleResult.setText("Text");
-                    title = "Text";
+                    title = getString(R.string.text);
                     txtResult.setText(result);
                     button.setVisibility(View.GONE);
                     break;
@@ -755,10 +791,10 @@ public class ResultScan extends AppCompatActivity {
                 ss += s.charAt(i);
             }
             if (ss.equals("EAN") || ss.equals("UPC")) {
-                txtTitleResult.setText("Product");
+                txtTitleResult.setText(getString(R.string.product));
                 ClickLink("https://www.google.com/search?q=" + result);
             } else {
-                txtTitleResult.setText("Text");
+                txtTitleResult.setText(R.string.text);
                 button.setVisibility(View.GONE);
             }
             txtResult.setText(result);
@@ -790,7 +826,7 @@ public class ResultScan extends AppCompatActivity {
     private void accessToWifi() {
         AlertDialog.Builder builder = new AlertDialog.Builder(ResultScan.this);
         if(T.equals("WEP")) {
-            builder.setMessage("Rất tiếc, phương pháp mã hoá WEP không còn được Google hỗ trợ kể từ phiên bản Android 10 :(")
+            builder.setMessage(getString(R.string.wep))
                     .setNegativeButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -801,7 +837,7 @@ public class ResultScan extends AppCompatActivity {
             Intent wifi = new Intent(Settings.ACTION_WIFI_SETTINGS);
             WifiManager manager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
             if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
-                builder.setMessage("Kết nối đến mạng Wifi")
+                builder.setMessage(getString(R.string.connect_wifi))
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -817,16 +853,16 @@ public class ResultScan extends AppCompatActivity {
                                 startActivity(wifi);
                             }
                         })
-                        .setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.cancel();
                             }
                         }).show();
             } else {
-                builder.setTitle("Các thiết bị Android 10 trở lên cần kết nối Wifi một cách thủ công.")
-                        .setMessage("Chuyển hướng đến mạng Wifi: " + S
-                        + ". \nMật khẩu của bạn đã được sao chép, ấn OK để chuyển hướng đến cài đặt.")
+                builder.setTitle(getString(R.string.notice_adr10))
+                        .setMessage(getString(R.string.acces_wifi)+ ": " + S
+                        + ". \n" + getString(R.string.has_been_copied))
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -834,7 +870,7 @@ public class ResultScan extends AppCompatActivity {
                                 copyTextToClipboard(P);
                             }
                         })
-                        .setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.cancel();
@@ -856,7 +892,7 @@ public class ResultScan extends AppCompatActivity {
         ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clipData = ClipData.newPlainText("label", text);
         clipboardManager.setPrimaryClip(clipData);
-        Toast.makeText(ResultScan.this, "Copy success!!!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ResultScan.this, getString(R.string.copy_success), Toast.LENGTH_SHORT).show();
     }
 
     private void addContact(String phoneNumber) {
@@ -911,7 +947,7 @@ public class ResultScan extends AppCompatActivity {
         boolean check = sharedPreferences.getBoolean("copy",false);
         if(check==true){
             doCopy();
-            Toast.makeText(this, "Copy success", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.copy_success), Toast.LENGTH_SHORT).show();
         }
 
     }

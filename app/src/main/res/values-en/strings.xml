@@ -45,4 +45,46 @@
     <string name="required_field">Field is required!</string>
     <string name="required_quantity">This field must have 8 characters or more!</string>
 
+
+    //Đông lê
+    <string name="showper_title">Camera permission is not granted</string>
+    <string name="showper_message">Please grant permission to the camera to use the scan feature</string>
+    <string name="showsetting_message">Scanning with camera is only possible when permission is granted, please go to settings to grant camera permission.</string>
+    <string name="settings">SETTINGS</string>
+
+    <string name="question_save_image">Do you want to save pictures of your computer?</string>
+    <string name="No">No</string>
+    <string name="Yes">Accept</string>
+    <string name="save_successfully">Save successfully</string>
+    <string name="no_support_version">Sorry your current version of Android version does not support this feature :\'\(</string>
+    <string name="access_link">Access link</string>
+    <string name="send_email">Email from </string>
+    <string name="acces_wifi">Shift towards wifi network</string>
+    <string name="send_mess">Send Message</string>
+    <string name="add_contact">Add contact</string>
+    <string name="access_position">Access position</string>
+    <string name="add_calender">Add schedule</string>
+    <string name="dial">Dial</string>
+    <string name="wep">Unfortunately, WEP encryption method is no longer supported by Google since the Android 10 version :\'\(</string>
+    <string name="connect_wifi">Connect to Wifi network</string>
+    <string name="cancel">Canel</string>
+    <string name="notice_adr10">Android devices and above need to connect to wifi manually.</string>
+    <string name="has_been_copied">Your password has been copied, press OK to change to settings.</string>
+    <string name="copy_success">Copy success!!!</string>
+    <string name="search_product">Search product</string>
+    <string name="share_qr">Share QR code</string>
+    <string name="share_result">Share scan results</string>
+
+    <string name="product">Product</string>
+    <string name="text">Text</string>
+    <string name="link">Link</string>
+    <string name="telephone">Telephone</string>
+    <string name="sms">SMS</string>
+    <string name="geo">GEO</string>
+    <string name="event">Event</string>
+
+    <string name="notice_unable_to_scan">Unable to scan</string>
+    <string name="notice_unable_to_scan_image">Unable to scan image</string>
+    <string name="btn_scan_by_camera">Scan using the camera</string>
+    <string name="btn_scan_by_image">Scan the code by image</string>
 </resources>

@@ -7,7 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.scancode.setting.Setting;
 import com.example.scancode.Create.Fragment_Create;
 import com.example.scancode.History.Fragment_History;
-import com.example.scancode.Scan.Fragment_Scan_Home;
+import com.example.scancode.Scan.FragmentScanHome;
 
 public class MenuAdapter extends FragmentStateAdapter {
     public MenuAdapter(@NonNull FragmentActivity fragmentActivity) {
@@ -19,7 +19,7 @@ public class MenuAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                return new Fragment_Scan_Home();
+                return new FragmentScanHome();
             case 1:
                 return new Fragment_Create();
             case 2:
@@ -27,7 +27,7 @@ public class MenuAdapter extends FragmentStateAdapter {
             case 3:
                 return new Setting();
             default:
-                return new Fragment_Scan_Home();
+                return new FragmentScanHome();
         }
     }
 
