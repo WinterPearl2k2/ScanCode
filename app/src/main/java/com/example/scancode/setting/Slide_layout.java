@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.example.scancode.BuildConfig;
 import com.example.scancode.R;
 
 public class Slide_layout extends PagerAdapter {
@@ -20,11 +21,14 @@ public class Slide_layout extends PagerAdapter {
     {
         this.context=context;
     }
-    public int[] slide_image={ R.drawable.in1,R.drawable.in2,R.drawable.in3};
+    public int[] slide_image={ R.drawable.img_phone_qr,R.drawable.img_protect,R.drawable.img_gift};
 
     public  String [] slide_text={
         "Scan QR code and Barcode.","Avoid common mistakes when scanning barcodes.","No advertising and free."
     };
+
+    public String [] slideTitle = {"Scan QR App", "", ""};
+    public String [] slideVersion = {"Version: " + BuildConfig.VERSION_NAME, "", ""};
 
     @Override
     public int getCount() {
@@ -43,9 +47,12 @@ public class Slide_layout extends PagerAdapter {
         View view = layoutInflater.inflate(R.layout.slide_layout,container,false);
         ImageView slideimgae= view.findViewById(R.id.imageview1);
         TextView sildetext= view.findViewById(R.id.textview1);
-
+        TextView txtTitleIntro = view.findViewById(R.id.txtTitleIntro);
+        TextView txtVer = view.findViewById(R.id.txtVersion);
         slideimgae.setImageResource(slide_image[position]);
         sildetext.setText(slide_text[position]);
+        txtTitleIntro.setText(slideTitle[position]);
+        txtVer.setText(slideVersion[position]);
 
         container.addView(view);
         return view;

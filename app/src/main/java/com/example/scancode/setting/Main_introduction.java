@@ -11,9 +11,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.scancode.R;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Main_introduction extends AppCompatActivity {
 
@@ -21,13 +24,14 @@ public class Main_introduction extends AppCompatActivity {
     private LinearLayout mDolayout;
     private TextView[] mDots;
     private Slide_layout slide_layout;
-    private ImageView next;
+    private CircleImageView next;
     private  int mcurrent;
     private  SharedPreferences.Editor editor;
     private static final String MY_PREF = "MyPrefsFile";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main_introduction);
@@ -67,7 +71,7 @@ public class Main_introduction extends AppCompatActivity {
             mDots[i] = new TextView(this);
             mDots[i].setText(Html.fromHtml("&#8226;"));
             mDots[i].setTextSize(35);
-            mDots[i].setTextColor(getResources().getColor(R.color.pink_light));
+            mDots[i].setTextColor(getResources().getColor(R.color.pink_bold));
             mDolayout.addView(mDots[i]);
         }
         if(mDots.length>0)
@@ -87,7 +91,7 @@ public class Main_introduction extends AppCompatActivity {
             if (mcurrent == 2) {
                 next.setEnabled(true);
                 next.setVisibility(View.VISIBLE);
-                next.setImageResource(R.drawable.check3);
+                next.setImageResource(R.drawable.ic_baseline_navigate_next_24);
 
                 next.setOnClickListener(new View.OnClickListener() {
                     @Override
