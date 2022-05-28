@@ -1,9 +1,8 @@
-package com.example.scancode.History.listviewhistory;
+package com.example.scancode.History.recycleviewhistory;
 
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "CreateHistory")

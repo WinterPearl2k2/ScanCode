@@ -1,4 +1,4 @@
-package com.example.scancode.History.listviewhistory;
+package com.example.scancode.History.recycleviewhistory;
 
 import android.content.Context;
 

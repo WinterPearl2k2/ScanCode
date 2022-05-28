@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scancode.R;
-import com.example.scancode.Scan.ResultScan;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class ContactActivity extends AppCompatActivity {
@@ -22,21 +21,16 @@ public class ContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
-        getSupportActionBar().setTitle(getString(R.string.create_contact));
-        InitMenu();
+        InitActionBar();
         AnhXa();
-
-
-
     }
 
-    public void InitMenu() {
+    public void InitActionBar() {
         if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getString(R.string.create_contact));
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-//            ActionBar actionBar = getSupportActionBar();
-//            actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -55,17 +49,6 @@ public class ContactActivity extends AppCompatActivity {
                 if(CheckNull()) {
                     Intent intent = new Intent(ContactActivity.this, QRImageActivity.class);
                     Bundle mBundle = new Bundle();
-//                    "BEGIN:VCARD"
-//                    "\nVERSION:2.1"
-//                        "\nN:" + name + ";" + Ho + ""
-//                    "\nFN:" + Ho + ten
-//                    "\nORG:" + Sun
-//                    "\nTITLE:" + Dev
-//                    "\nTEL:" + 0846608456
-//                    "\nEMAIL:" + nlbien.22@gmail.com
-//                    "\nADR:;;"LongBien 123 + ";"
-//                    "\nURL:" + Facebook.com
-//                    "\nEND:VCARD"
                     String Qrtxt =
                         "BEGIN:VCARD" +
                         "\nVERSION:2.1" +

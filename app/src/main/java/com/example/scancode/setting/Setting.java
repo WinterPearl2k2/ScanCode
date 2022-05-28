@@ -230,8 +230,8 @@ public class Setting extends Fragment {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setTitle("Language");
-                final String [] listlanguage={"English","VietNam"};
+                builder.setTitle(R.string.settings_language);
+                final String [] listlanguage={getString(R.string.settings_language_en),getString(R.string.settings_language_vn)};
                 int check  = sp_languague.getInt("language",1);
 
                 builder.setSingleChoiceItems(listlanguage, check, new DialogInterface.OnClickListener() {

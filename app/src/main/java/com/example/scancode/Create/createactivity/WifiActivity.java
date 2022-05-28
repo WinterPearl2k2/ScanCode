@@ -10,11 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scancode.R;
-import com.example.scancode.Scan.ResultScan;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -27,22 +25,12 @@ public class WifiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wifi);
-        getSupportActionBar().setTitle("Wifi");
+        InitActionBar();
         AnhXa();
-        init();
-
-
-
+        InitWifiAdapter();
     }
 
-    public void init() {
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setHomeButtonEnabled(true);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-
+    private void InitWifiAdapter() {
         adapter = new ArrayAdapter<CharSequence>(
                 WifiActivity.this,
                 getAdapterItemLayout(),
@@ -59,6 +47,14 @@ public class WifiActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void InitActionBar() {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(R.string.create_wifi);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
     public int getAdapterItemLayout() {
         return R.layout.list_item_dropdown;

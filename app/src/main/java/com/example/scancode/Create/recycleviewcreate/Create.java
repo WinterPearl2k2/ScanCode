@@ -1,4 +1,4 @@
-package com.example.scancode.Create.listviewcreate;
+package com.example.scancode.Create.recycleviewcreate;
 
 public class Create {
     private String nameItem;

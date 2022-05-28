@@ -1,7 +1,6 @@
-package com.example.scancode.History.listviewhistory;
+package com.example.scancode.History.recycleviewhistory;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,15 +9,11 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.scancode.Create.createactivity.QRImageActivity;
-import com.example.scancode.Create.listviewcreate.CreateRecycleViewAdapter;
 import com.example.scancode.R;
 import com.example.scancode.Scan.ResultScan;
 
