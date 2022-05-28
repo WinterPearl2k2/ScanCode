@@ -82,7 +82,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Tìm kiếm sản phẩm"
+                    android:text="@string/search_product"
                     android:textSize="16sp"
                     android:textColor="@android:color/white"
                     android:layout_marginLeft="20dp"
@@ -135,15 +135,16 @@
                     android:src="@drawable/ic_baseline_share_36"
                     android:layout_marginLeft="30dp"
                     android:gravity="center"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Chia sẻ mã QR"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/white"
                     android:layout_marginLeft="20dp"
-                    android:gravity="center_vertical"/>
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/share_qr"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -162,15 +163,16 @@
                     android:src="@drawable/ic_baseline_format_shapes_24"
                     android:layout_marginLeft="30dp"
                     android:gravity="center"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Chia sẻ kết quả quét"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/white"
                     android:layout_marginLeft="20dp"
-                    android:gravity="center_vertical"/>
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/share_result"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <ImageView

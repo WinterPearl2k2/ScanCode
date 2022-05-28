@@ -6,19 +6,55 @@
     <string name="menu_setting">Cài đặt</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    //Ni là của Đông
+    //Class ResultScan
     <string name="showper_title">Chưa cấp quyền cam</string>
     <string name="showper_message">Vui lòng cấp quyền cho camera để sử dụng tín năng quét</string>
-    <string name="showper_cancel">Từ chối</string>
-    <string name="showper_allow">Cho phép</string>
-    <string name="showsetting_title">Chưa cấp quyền cam</string>
     <string name="showsetting_message">Chỉ có thể quét bằng camera khi được cấp quyền, vui lòng truy cập vào cài đặt để cấp quyền camera.</string>
+    <string name="settings">Cài đặt</string> //SETTINGS
 
     <string name="SECONDARY_EMAIL_TYPE">Nhà riêng</string>
     <string name="SECONDARY_PHONE_TYPE">Cơ quan</string>
     <string name="TERTIARY_PHONE_TYPE">Số fax cơ quan</string>
 
+    <string name="question_save_image">Bạn có muốn lưu ảnh về máy không?</string> // Do you want to save pictures of your computer?
+    <string name="No">Không</string> //No
+    <string name="Yes">Chấp nhận</string> // Accept
+    <string name="save_successfully">Lưu thành công</string> //Save successfully
+    <string name="no_support_version">Xin lỗi phiên bản android hiện tại của bạn không hổ trợ tính năng này :\'\(</string> //Sorry your current version of Android version does not support this feature :'\\(
+    <string name="access_link">Truy cập liên kết</string> //Access link
+    <string name="send_email">Gửi email từ </string> // Email from
+    <string name="acces_wifi">Chuyển hướng tới mạng Wifi</string> //Shift towards wifi network
+    <string name="send_mess">Gửi tin nhắn</string> // Send Message
+    <string name="add_contact">Thêm liên hệ</string> // Add contact
+    <string name="access_position">Truy cập vị trí</string> //Access position
+    <string name="add_calender">Thêm lịch trình</string> //Add schedule
+    <string name="dial">Quay số</string> //Dial
+    <string name="wep">Rất tiếc, phương pháp mã hoá WEP không còn được Google hỗ trợ kể từ phiên bản Android 10 :\'\(</string> //Unfortunately, WEP encryption method is no longer supported by Google since the Android 10 version :\'\(
+    <string name="connect_wifi">Kết nối đến mạng Wifi</string> //Connect to Wifi network
+    <string name="cancel">Huỷ</string> //Canel
+    <string name="notice_adr10">Các thiết bị Android 10 trở lên cần kết nối Wifi một cách thủ công.</string> //Android devices and above need to connect to wifi manually.
+    <string name="has_been_copied">Mật khẩu của bạn đã được sao chép, ấn OK để chuyển hướng đến cài đặt.</string> //Your password has been copied, press OK to change to settings.
+    <string name="copy_success">Sao chép thành công!!!</string> //Copy success!!!
+    <string name="search_product">Tìm kiếm sản phẩm</string> //Search product
+    <string name="share_qr">Chia sẽ mã QR</string> //Share QR code
+    <string name="share_result">Chia sẽ kết quả quét</string> //Share scan results
+    
+    <string name="product">Sản phẩm</string> //Product
+    <string name="text">Văn bản</string> //Text
+    <string name="link">Liên kết</string> //Link
+    <string name="telephone">Số điện thoại</string> //Telephone
+    <string name="sms">Tin nhắn</string> //SMS
+    <string name="geo">Vị trí</string> //GEO
+    <string name="event">Sự kiện</string> //Event
+    
+    //Class FragmentScanHome
+    <string name="notice_unable_to_scan">Không thể quét</string> // Unable to scan
+    <string name="notice_unable_to_scan_image">Không thể quét hình ảnh</string> // Unable to scan image
+    <string name="btn_scan_by_camera">Quét bằng camera</string> // Scan using the camera
+    <string name="btn_scan_by_image">Quét bằng hình ảnh</string> // Scan the code by image
 
+    //-------------------------------------------
     //Ni là của Biên
 
     <string-array name="strings_type_internet_dropdown">

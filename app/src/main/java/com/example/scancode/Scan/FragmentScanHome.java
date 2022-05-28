@@ -9,6 +9,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.AudioManager;
@@ -18,6 +20,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.provider.Settings;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +45,6 @@ import com.budiyev.android.codescanner.DecodeCallback;
 import com.example.scancode.History.listviewhistory.CreateHistoryDatabase;
 import com.example.scancode.History.listviewhistory.History;
 import com.example.scancode.History.listviewhistory.HistoryRecycleViewAdapter;
-import com.example.scancode.MainActivity;
 import com.example.scancode.R;
 import com.example.scancode.setting.Main_introduction;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -60,13 +62,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_Scan_Home} factory method to
+ * Use the {@link FragmentScanHome} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_Scan_Home extends Fragment {
+public class FragmentScanHome extends Fragment {
 
     private final static int REQUEST_PER = 100;
     public final static String ALLOW_KEY = "ALLOWED";
@@ -95,6 +98,7 @@ public class Fragment_Scan_Home extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
        // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        Language();
         view = inflater.inflate(R.layout.fragment_scan_home, container, false);
         Introduce();
         ORM();
@@ -112,6 +116,37 @@ public class Fragment_Scan_Home extends Fragment {
         }
         return view;
     }
+
+    public void Language(){
+
+        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("language",0);
+        int item = sharedPreferences1.getInt("language",1);
+        switch (item) {
+            case 0:
+                Locale localeEN = new Locale("en");
+                setLocale(localeEN);
+                break;
+            case 1:
+                Locale localeHU = new Locale("vi");
+                setLocale(localeHU);
+                break;
+
+        }
+    }
+
+    public void setLocale(Locale locale) {
+        Locale.setDefault(locale);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = locale;
+        res.updateConfiguration(conf, dm);
+        //recreate();
+        //finish();
+        //startActivity(getIntent());
+        //if these are not commented, main activity wont show at start at all
+    }
+
     private void Introduce() {
         preferences = getActivity().getSharedPreferences(MY_PREF, MODE_PRIVATE);
         introduce = preferences.getBoolean("noIntroduce", true);
@@ -190,7 +225,7 @@ public class Fragment_Scan_Home extends Fragment {
                             intent.putExtra("QRtitle", result.getBarcodeFormat().toString());
                             startActivity(intent);
                         } else {
-                            Toast.makeText(getActivity(), "Unable to scan", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), getString(R.string.notice_unable_to_scan), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -316,6 +351,7 @@ public class Fragment_Scan_Home extends Fragment {
         }
 
     }
+
     private void RotateCamera() {
         btn_Rotate_Cam.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -342,12 +378,10 @@ public class Fragment_Scan_Home extends Fragment {
                     mCodeScanner.setFlashEnabled(true);
                     mFlash = false;
                     btn_Flash.setImageResource(R.drawable.ic_flash_off);
-                    Toast.makeText(getActivity(), "Flash on", Toast.LENGTH_SHORT).show();
                 }else {
                     mCodeScanner.setFlashEnabled(false);
                     mFlash = true;
                     btn_Flash.setImageResource(R.drawable.ic_flash_on);
-                    Toast.makeText(getActivity(), "Flash off", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -609,9 +643,8 @@ public class Fragment_Scan_Home extends Fragment {
                             intent.putExtra("QRinfor", rawValue);
                             intent.putExtra("QRtitle", title);
                             startActivity(intent);
-                            Toast.makeText(getActivity(), "Image scan successful", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(getActivity(), "Unable to scan image", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(),getString(R.string.notice_unable_to_scan_image), Toast.LENGTH_SHORT).show();
                         }
                         // [END get_barcodes]
                         // [END_EXCLUDE]
@@ -688,13 +721,13 @@ public class Fragment_Scan_Home extends Fragment {
     public void showPer() {
         new AlertDialog.Builder(getActivity()).setCancelable(false).setTitle(R.string.showper_title)//hello
                 .setMessage(R.string.showper_message)
-                .setNegativeButton(R.string.showper_cancel, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();
                     }
                 })
-                .setPositiveButton(R.string.showper_allow, new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 //                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, requestPer);
@@ -705,15 +738,15 @@ public class Fragment_Scan_Home extends Fragment {
     }
 
     private void showSetting() {
-        new AlertDialog.Builder(getActivity()).setCancelable(false).setTitle(R.string.showsetting_title)
+        new AlertDialog.Builder(getActivity()).setCancelable(false).setTitle(R.string.showper_title)
                 .setMessage(R.string.showsetting_message)
-                .setNegativeButton(R.string.showper_cancel, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();
                     }
                 })
-                .setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.settings), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
