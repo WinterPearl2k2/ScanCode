@@ -98,4 +98,7 @@
     <string name="notice_unable_to_scan_image">Unable to scan image</string>
     <string name="btn_scan_by_camera">Scan using the camera</string>
     <string name="btn_scan_by_image">Scan the code by image</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_language_en">English</string>
+    <string name="settings_language_vn">Vietnamese</string>
 </resources>

@@ -28,9 +28,6 @@ public class WifiActivity extends AppCompatActivity {
         InitActionBar();
         AnhXa();
         InitWifiAdapter();
-
-
-
     }
 
     private void InitWifiAdapter() {

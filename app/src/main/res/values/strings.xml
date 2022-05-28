@@ -118,4 +118,7 @@
 
     <string name="required_quantity">Bắt buộc 8 kí tự hoặc hơn!</string>
 
+    <string name="settings_language">Ngôn ngữ</string>
+    <string name="settings_language_en">Tiếng Anh</string>
+    <string name="settings_language_vn">Tiếng Việt</string>
 </resources>
