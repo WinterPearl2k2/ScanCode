@@ -74,6 +74,8 @@
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_btn_scanqr.xml" value="0.26614583333333336" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_btn_scanqr2.xml" value="0.26614583333333336" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_result.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/cus_shadow_image.xml" value="0.206" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/customcheck.xml" value="0.206" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_add_image.xml" value="0.26614583333333336" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_baseline_add_ic_call_36.xml" value="0.26614583333333336" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_baseline_camera_alt_24.xml" value="0.26614583333333336" />
@@ -87,16 +89,39 @@
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_baseline_share_36.xml" value="0.26614583333333336" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_baseline_sms_36.xml" value="0.26614583333333336" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_baseline_wifi_36.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_copy_24.xml" value="0.206" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_dashboard_black_24dp.xml" value="0.206" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_flash_off.xml" value="0.26614583333333336" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_flash_on.xml" value="0.26614583333333336" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_minus_frame.xml" value="0.26614583333333336" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_rotate_cam.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_sex_24.xml" value="0.206" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_title_24.xml" value="0.206" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/ic_zoom_in_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/outline_settings_24.xml" value="0.206" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/plus_frame.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/round_drive_file_rename_outline_24.xml" value="0.206" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/round_history_24.xml" value="0.206" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable-v24/shadow_image.xml" value="0.26614583333333336" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/cus_dark_setting.xml" value="0.206" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/cus_item_tip2.xml" value="0.206" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/cus_navigation.xml" value="0.26205128205128203" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/cusbutton.xml" value="0.206" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/cusbutton_setting.xml" value="0.1215" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/cuscheck.xml" value="0.206" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/dark_241.xml" value="0.206" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/feedback.xml" value="0.206" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/ic_baseline_create_24.xml" value="0.206" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/ic_baseline_format_shapes_24.xml" value="0.169" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/ic_baseline_history_24.xml" value="0.206" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/ic_contact_mail_24.xml" value="0.206" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/introduction_241.xml" value="0.206" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/language_241.xml" value="0.206" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/sound_241.xml" value="0.206" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/uncheck.xml" value="0.206" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/version_241.xml" value="0.206" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/version_242.xml" value="0.206" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/vibrate_241.xml" value="0.206" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_ean_scan.xml" value="0.25" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_main_introduction.xml" value="0.16614583333333333" />

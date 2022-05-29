@@ -23,7 +23,9 @@
     <color name="pink_light">#FFB6D0</color>
     <color name="pink_bold">#F06292</color>
     <color name="green">#4db6ac</color>
-    <color name="orange">#ffad3b</color>
-    <color name="darkblue">#214d7c</color>
+    <color name="orange">#FFAD3A</color>
+    <color name="darkblue">#165FAC</color>
     <color name="green_light">#B7EFEA</color>
+    <color name="pink_light_2">#FBCDDE</color>
+    <color name="pink_light_3">#FAE4EC</color>
 </resources>

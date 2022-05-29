@@ -15,11 +15,15 @@
         <item name="colorOnSecondary">@color/black</item>
         <item name="android:navigationBarColor">@color/white</item>
         <!--  Gradiant in settings darkmode      -->
-        <item name="startnavi">@color/pinkligth</item>
-        <item name="midnavi">@color/pinkligth</item>
-        <item name="endnavi">@color/pinkligth</item>
+        <item name="startnavi">@color/pink_light</item>
+        <item name="midnavi">@color/pink_light_2</item>
+        <item name="endnavi">@color/pink_light_3</item>
+        <!-- Text title       -->
+        <item name="subtitleTextColor">@color/green</item>
+        <item name="titleTextColor">@color/primary_icon</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/pink_light</item>
         <!-- Customize your theme here. -->
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
 </resources>

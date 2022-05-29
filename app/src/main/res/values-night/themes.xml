@@ -33,6 +33,9 @@
         <item name="startnavi">@color/startnavidark</item>
         <item name="midnavi">@color/endnavidark</item>
         <item name="endnavi">@color/darkpink</item>
+        <!-- Text title       -->
+        <item name="subtitleTextColor">@color/darkblue</item>
+        <item name="titleTextColor">@color/orange</item>
     </style>
 
     <style name="Myactionbar" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
