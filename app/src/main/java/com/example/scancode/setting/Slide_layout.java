@@ -23,13 +23,6 @@ public class Slide_layout extends PagerAdapter {
     }
     public int[] slide_image={ R.drawable.img_phone_qr,R.drawable.img_protect,R.drawable.img_gift};
 
-    public  String [] slide_text={
-        "Scan QR code and Barcode.","Avoid common mistakes when scanning barcodes.","No advertising and free."
-    };
-
-    public String [] slideTitle = {"Scan QR App", "", ""};
-    public String [] slideVersion = {"Version: " + BuildConfig.VERSION_NAME, "", ""};
-
     @Override
     public int getCount() {
         return 3;
@@ -43,6 +36,12 @@ public class Slide_layout extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
+        String [] slide_text={
+                context.getString(R.string.intro_scan), context.getString(R.string.intro_avoid_mistakes), context.getString(R.string.intro_free)
+        };
+
+        String [] slideTitle = {context.getString(R.string.intro_title), "", ""};
+        String [] slideVersion = {context.getString(R.string.version) + BuildConfig.VERSION_NAME, "", ""};
         layoutInflater =(LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.slide_layout,container,false);
         ImageView slideimgae= view.findViewById(R.id.imageview1);

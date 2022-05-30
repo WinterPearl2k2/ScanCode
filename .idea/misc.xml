@@ -123,11 +123,14 @@
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/version_242.xml" value="0.206" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/drawable/vibrate_241.xml" value="0.206" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_ean_scan.xml" value="0.25" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_help.xml" value="0.25" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_main_introduction.xml" value="0.16614583333333333" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_qrimage.xml" value="0.4" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_result_scan.xml" value="0.264" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_setting.xml" value="0.16614583333333333" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_text.xml" value="0.25" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/activity_tips.xml" value="0.25" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/dialog_save_image.xml" value="0.1421875" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/fragment__history.xml" value="0.2359375" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/fragment__scan__home.xml" value="0.25" />
@@ -136,6 +139,7 @@
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/fragment_scan_history.xml" value="0.25" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/fragment_scan_home.xml" value="0.25" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/fragment_setting.xml" value="0.16614583333333333" />
+        <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/list_item_help.xml" value="0.25" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/layout/slide_layout.xml" value="0.1421875" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/menu/navigation.xml" value="0.24635416666666668" />
         <entry key="..\:/Lap trinh/ScanCode/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.26205128205128203" />

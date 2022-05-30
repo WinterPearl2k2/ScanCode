@@ -54,7 +54,7 @@ public class Setting extends Fragment {
         btn_Verison.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Versions " + BuildConfig.VERSION_NAME +
+                Toast.makeText(getActivity(), getString(R.string.version) + BuildConfig.VERSION_NAME +
                         " " +BuildConfig.VERSION_CODE, Toast.LENGTH_SHORT).show();
             }
         });

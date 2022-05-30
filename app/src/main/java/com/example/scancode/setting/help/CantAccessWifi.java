@@ -28,12 +28,14 @@ public class CantAccessWifi extends AppCompatActivity {
 
         txtCantAccess = findViewById(R.id.txt_Cant_Wifi);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            txtCantAccess.setText(Html.fromHtml("<p>1. Hãy đảm bảo rằng bạn đang<strong> nằm trong vùng phủ sóng Wifi," +
-                    " tên người dùng và mật khẩu chính xác. </strong></p>" +
-                    "<p><br>Nếu vẫn không thể kết nối bạn vui lòng <strong>hỏi nhà cung " +
-                    "cấp dịch vụ của bạn và hỏi xem mã đã được thay đổi chưa.</strong></p>" +
-                    "<p><br>2. Nếu kết quả hiển thị dưới dạng văn bản, bạn vui lòng <strong>kết nối vào Wifi </strong>" +
-                    "bằng cách thủ công với các thiết bị <strong>android 10 trở lên, do giới hạn hệ thống.</strong></p>", Html.FROM_HTML_MODE_COMPACT));
+            txtCantAccess.setText(Html.fromHtml("<p>" + getString(R.string.cant_access_wifi_1) +
+                    "<strong>" + getString(R.string.cant_access_wifi_2) + "</strong></p>" +
+                    "<p><br>" + getString(R.string.cant_access_wifi_3) +
+                    "<strong>" + getString(R.string.cant_access_wifi_4) + "</strong></p>" +
+                    "<p><br>" + getString(R.string.cant_access_wifi_5) +
+                    "<strong>" + getString(R.string.cant_access_wifi_6) + "</strong>" +
+                    getString(R.string.cant_access_wifi_7) +
+                    "<strong>" + getString(R.string.cant_access_wifi_8) + "</strong></p>", Html.FROM_HTML_MODE_COMPACT));
         }
     }
 

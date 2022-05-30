@@ -28,16 +28,22 @@ public class ErrorLink extends AppCompatActivity {
 
         txtErrorLink = findViewById(R.id.txt_Error_Link);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            txtErrorLink.setText(Html.fromHtml("<p>1. Ứng dụng không thể thay đổi nội dung của mã, " +
-                    "nếu trang web không hoạt động khả năng cao là <strong>do bên sở hữu trang web.</strong> " +
-                    "Rất tiếc chúng tôi không thể hỗ trợ cho bạn vấn đề này.</p>" +
-                    "<p><br>2. Có thể là do <strong>người tạo mã QR này đã nhập sai liên kết</strong>" +
-                    "  dẫn tới <strong>đường liên kết đến sai địa chỉ.</strong> Hoặc cũng có thể là do mã" +
-                    " <strong>QR đã hết hạn</strong>, trường hợp này <strong>bạn vui lòng liên hệ với người cung cấp" +
-                    " mã</strong> để của bạn để xác nhận rõ.</p>" +
-                    "<p><br>3. Với một số trường hợp, một số trang web cần <strong>mở ở một điều kiện đặc biệt,</strong> " +
-                    "ví dụ như mở bằng một <strong>ứng dụng nhất định.</strong> Với thường hợp này bạn vui lòng " +
-                    "<strong>làm theo các bước hướng dẫn của nhà cung cấp QR cho bạn.</strong></p>", Html.FROM_HTML_MODE_COMPACT));
+            txtErrorLink.setText(Html.fromHtml("<p>" + getString(R.string.erro_link_1) +
+                    "<strong>" + getString(R.string.erro_link_2) +
+                    "</strong> " + getString(R.string.erro_link_3) + "</p>" +
+                    "<p><br>" + getString(R.string.erro_link_4) +
+                    " <strong>" + getString(R.string.erro_link_5) + "</strong> " +
+                    getString(R.string.erro_link_6) +
+                    " <strong>" + getString(R.string.erro_link_7) + "</strong>" +
+                    getString(R.string.erro_link_8) +
+                    " <strong> " + getString(R.string.erro_link_9) + "</strong>" +
+                    getString(R.string.erro_link_10) + " </p>" +
+                    "<p><br>" +getString(R.string.erro_link_11) +
+                    "<strong>" + getString(R.string.erro_link_12) + "</strong> " +
+                    getString(R.string.erro_link_13) +
+                    "<strong>" + getString(R.string.erro_link_14) + "</strong>" +
+                    getString(R.string.erro_link_15) +
+                    "<strong>" + getString(R.string.erro_link_16) + "</strong></p>", Html.FROM_HTML_MODE_COMPACT));
         }
     }
 

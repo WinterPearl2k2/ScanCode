@@ -27,18 +27,21 @@ public class CantReadQR extends AppCompatActivity {
         setContentView(R.layout.activity_cant_read_qr);
         txtCantRead = findViewById(R.id.txt_Cant_Read);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            txtCantRead.setText(Html.fromHtml("<b>1. Để có được kết quả quét chính xác bạn cần làm theo các bước sau:</b>" +
-                    "<p>\ta. Đảm bảo độ tương phản và không bị mờ.</p>" +
-                    "<p>\tb. Hình ảnh không bị hắc sáng hoặc bị che bóng</p>" +
-                    "<p>\tc. Hình ảnh không bị che khuyết.</p>" +
-                    "<p>\td. Khi quét không được zoom quá gần.</p>" +
-                    "<b><br>2. Đối với các điện thoại đời cũ," +
-                    "độ phân giải máy ảnh sẽ ảnh hưởng đến quá trình quét mã.</b>" +
-                    "<b><br><br>Để giải quyết chúng tôi khuyên bạn nên sử dụng hình ảnh từ thư viện " +
-                    "để có thể tối ưu hơn trong quá trình quét mã.</b>" +
-                    "<b><br><br>3. Nếu vẫn không thể quét được vui lòng</b> <u>phản hồi</u> <b> chúng tôi qua email, " +
-                    "chúng tôi sẽ giải quyết vấn đề của bạn trong thời gian sớm nhất.</b>", Html.FROM_HTML_MODE_COMPACT));
+            txtCantRead.setText(Html.fromHtml("<b>" + getString(R.string.help_can_read_qr_1) + "</b>" +
+                    "<p>\t" + getString(R.string.help_can_read_qr_2) + "</p>" +
+                    "<p>\t" + getString(R.string.help_can_read_qr_3) + "</p>" +
+                    "<p>\t" + getString(R.string.help_can_read_qr_4) + "</p>" +
+                    "<p>\t" + getString(R.string.help_can_read_qr_5) + "</p>" +
+                    "<b><br>" + getString(R.string.help_can_read_qr_6) +
+                    getString(R.string.help_can_read_qr_7) + "</b>" +
+                    "<b><br><br>" + getString(R.string.help_can_read_qr_8) +
+                    getString(R.string.help_can_read_qr_9) + "</b>" +
+                    "<b><br><br>" + getString(R.string.help_can_read_qr_10) +
+                    "</b> <u>" + getString(R.string.help_can_read_qr_11) +
+                    "</u> <b> " + getString(R.string.help_can_read_qr_12) +
+                    getString(R.string.help_can_read_qr_13) + "</b>", Html.FROM_HTML_MODE_COMPACT));
         }
+
     }
 
     @Override
