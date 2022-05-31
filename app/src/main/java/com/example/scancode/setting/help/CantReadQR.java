@@ -19,7 +19,7 @@ public class CantReadQR extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Can't read QR code");
+        actionBar.setTitle(getString(R.string.code_cant_be_read));
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_icon)));
         actionBar.setElevation(0);
         actionBar.setDisplayHomeAsUpEnabled(true);

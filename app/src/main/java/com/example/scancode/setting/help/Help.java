@@ -29,7 +29,7 @@ public class Help extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Help");
+        actionBar.setTitle(getString(R.string.help));
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_icon)));
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -38,10 +38,10 @@ public class Help extends AppCompatActivity {
         AnhXa();
         otherProblem();
 
-        helpItems.add(new HelpItem("Mẹo quét", R.drawable.ic_outline_emoji_objects_24));
-        helpItems.add(new HelpItem("Không thể đọc được mã", R.drawable.ic_baseline_qr_code_24));
-        helpItems.add(new HelpItem("Không thể kết nối wifi", R.drawable.ic_baseline_wifi_off_24));
-        helpItems.add(new HelpItem("Liên kết bị lỗi", R.drawable.ic_baseline_link_off_24));
+        helpItems.add(new HelpItem(getString(R.string.tips), R.drawable.ic_outline_emoji_objects_24));
+        helpItems.add(new HelpItem(getString(R.string.code_cant_be_read), R.drawable.ic_baseline_qr_code_24));
+        helpItems.add(new HelpItem(getString(R.string.cant_connect_to_wifi), R.drawable.ic_baseline_wifi_off_24));
+        helpItems.add(new HelpItem(getString(R.string.link_is_broken), R.drawable.ic_baseline_link_off_24));
         listView.setAdapter(helpAdapter);
 
         ClickItem();

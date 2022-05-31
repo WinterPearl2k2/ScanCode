@@ -19,7 +19,7 @@ public class ErrorLink extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Error link");
+        actionBar.setTitle(getString(R.string.link_is_broken));
         actionBar.setElevation(0);
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_icon)));
         actionBar.setDisplayHomeAsUpEnabled(true);

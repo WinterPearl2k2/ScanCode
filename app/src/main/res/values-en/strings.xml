@@ -138,4 +138,20 @@
     <string name="erro_link_14">"with a certain application. "</string>
     <string name="erro_link_15">"In this case, please "</string>
     <string name="erro_link_16">follow the step-by-step instructions given to you by your QR provider.</string>
+    <string name="tips">Tips</string>
+    <string name="code_cant_be_read">Code can\'t be read</string>
+    <string name="cant_connect_to_wifi">Can\'t connect to Wifi</string>
+    <string name="link_is_broken">Link is broken</string>
+    <string name="help">Help</string>
+    <string name="other_problems">Other problems</string>
+    <string name="should">"Should: "</string>
+    <string name="should_not">"Should Not: "</string>
+    <string name="direction_0">Direction 0°</string>
+    <string name="direction_90">Direction 90°</string>
+    <string name="direction_180">Direction 180°</string>
+    <string name="turn_on_the_led">Turn on the LED light when dark</string>
+    <string name="other_direction">Other direction</string>
+    <string name="turn_on_the_led_2">Turn on the LED light when light</string>
+    <string name="faint_img">Faint image</string>
+    <string name="low_contrast">Low Contrast</string>
 </resources>

@@ -19,7 +19,7 @@ public class CantAccessWifi extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Can't connect to Wi-Fi");
+        actionBar.setTitle(getString(R.string.cant_connect_to_wifi));
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_icon)));
         getSupportActionBar().setElevation(0);
         actionBar.setDisplayHomeAsUpEnabled(true);

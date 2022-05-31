@@ -19,7 +19,7 @@
             android:stretchColumns="1">
             <TableRow>
                 <TextView
-                    android:text="Nên: "
+                    android:text="@string/should"
                     android:layout_marginLeft="20dp"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -33,8 +33,8 @@
                     android:elevation="8dp">
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:text="Hướng 0°"
+                        android:layout_height="40dp"
+                        android:text="@string/direction_0"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:gravity="center"/>
@@ -58,8 +58,8 @@
                     android:elevation="8dp">
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:text="Hướng 90°"
+                        android:layout_height="40dp"
+                        android:text="@string/direction_90"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:gravity="center"/>
@@ -86,8 +86,8 @@
                     android:elevation="8dp">
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:text="Hướng 180°"
+                        android:layout_height="40dp"
+                        android:text="@string/direction_180"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:gravity="center"/>
@@ -112,8 +112,8 @@
                     android:elevation="8dp">
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:text="Bật đèn khi tối"
+                        android:layout_height="40dp"
+                        android:text="@string/turn_on_the_led"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:gravity="center"/>
@@ -145,7 +145,7 @@
 
             <TableRow>
                 <TextView
-                    android:text="Không nên: "
+                    android:text="@string/should_not"
                     android:layout_marginLeft="20dp"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -160,8 +160,8 @@
                     android:elevation="8dp">
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:text="Hướng khác"
+                        android:layout_height="40dp"
+                        android:text="@string/other_direction"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:gravity="center"/>
@@ -186,8 +186,8 @@
                     android:elevation="8dp">
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:text="Bật đèn khi sáng"
+                        android:layout_height="40dp"
+                        android:text="@string/turn_on_the_led_2"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:gravity="center"/>
@@ -225,8 +225,8 @@
                     android:elevation="8dp">
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:text="Hình ảnh mờ/ nhạt"
+                        android:layout_height="40dp"
+                        android:text="@string/faint_img"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:gravity="center"/>
@@ -251,8 +251,8 @@
                     android:elevation="8dp">
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:text="Tương phản thấp"
+                        android:layout_height="40dp"
+                        android:text="@string/low_contrast"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:gravity="center"/>

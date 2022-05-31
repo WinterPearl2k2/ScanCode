@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textSize="16sp"
-        android:text="Các vấn đề khác"/>
+        android:text="@string/other_problems"/>
 
     <ListView
         android:id="@+id/list_item_help"

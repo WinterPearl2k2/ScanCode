@@ -15,7 +15,7 @@ public class Tips extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Tips");
+        actionBar.setTitle(getString(R.string.tips));
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primary_icon)));
         actionBar.setElevation(0);
         actionBar.setDisplayHomeAsUpEnabled(true);
