@@ -13,6 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
+
             android:orientation="vertical">
 
             <TextView
@@ -27,16 +28,20 @@
 
             <TableLayout
                 android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/cus_dark_setting"
-                android:padding="10dp"
+
                 android:stretchColumns="*">
 
                 <TableRow
                     android:id="@+id/tb_light"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:background="@drawable/cus_bottom_afterclick2"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="10dp">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -53,18 +58,23 @@
                         android:textSize="18dp" />
 
                     <Switch
-                        android:clickable="false"
+                        android:paddingRight="20dp"
                         android:id="@+id/sw_light"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
-                        android:layout_span="1" />
+                        android:layout_span="1"
+                        android:clickable="false" />
                 </TableRow>
 
                 <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:id="@+id/tv"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:background="@drawable/cus_buttom_afterclick"
+
+                    android:paddingTop="10dp"
+                    android:paddingBottom="20dp">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -73,7 +83,6 @@
                         android:src="@drawable/language_241" />
 
                     <TextView
-
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_column="1"
@@ -90,7 +99,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/settings_control"
-                android:textColor="@color/darkblue"
+                android:textColor="@color/green"
                 android:textSize="17dp"
                 android:textStyle="bold" />
 
@@ -99,13 +108,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/cus_dark_setting"
-                android:padding="10dp"
+
                 android:stretchColumns="*">
 
                 <TableRow
+
                     android:id="@+id/tb_sound"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cus_bottom_afterclick2"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="10dp">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -122,18 +135,20 @@
                         android:textSize="18dp" />
 
                     <Switch
-                        android:clickable="false"
+                        android:paddingRight="20dp"
                         android:id="@+id/sw_sound"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:layout_span="1" />
+                        android:layout_span="1"
+                        android:clickable="false" />
                 </TableRow>
 
                 <TableRow
+                    android:background="@drawable/cus_bottom_afterclick1"
                     android:id="@+id/tb_vibrate"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -150,6 +165,7 @@
                         android:textSize="18dp" />
 
                     <Switch
+                        android:paddingRight="20dp"
                         android:clickable="false"
                         android:id="@+id/sw_vibrate"
                         android:layout_width="wrap_content"
@@ -159,9 +175,10 @@
                 </TableRow>
 
                 <TableRow
+                    android:background="@drawable/cus_buttom_afterclick"
                     android:id="@+id/tb_copy"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:paddingTop="10dp"
+                    android:paddingBottom="25dp">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -178,6 +195,7 @@
                         android:textSize="18dp" />
 
                     <Switch
+                        android:paddingRight="20dp"
                         android:id="@+id/sw_copy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -188,7 +206,6 @@
             </TableLayout>
 
             <TextView
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -202,14 +219,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/cus_dark_setting"
-                android:padding="10dp"
+
                 android:layout_marginBottom="30dp"
                 android:stretchColumns="*">
 
                 <TableRow
-                    android:id="@+id/introduction"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cus_bottom_afterclick2"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="10dp"
+                    android:id="@+id/introduction">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -218,9 +238,8 @@
                         android:src="@drawable/introduction_241" />
 
                     <TextView
-
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_column="1"
                         android:layout_span="7"
                         android:text="@string/setiing_intro"
@@ -228,9 +247,10 @@
                 </TableRow>
 
                 <TableRow
+                    android:background="@drawable/cus_bottom_afterclick1"
                     android:id="@+id/feedback"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -239,7 +259,6 @@
                         android:src="@drawable/feedback" />
 
                     <TextView
-
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_column="1"
@@ -247,11 +266,11 @@
                         android:text="@string/settings_feedback"
                         android:textSize="18dp" />
                 </TableRow>
-
                 <TableRow
+                    android:background="@drawable/cus_bottom_afterclick1"
                     android:id="@+id/version"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -269,9 +288,10 @@
 
                 </TableRow>
                 <TableRow
+                    android:background="@drawable/cus_buttom_afterclick"
                     android:id="@+id/help"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:paddingTop="15dp"
+                    android:paddingBottom="25dp">
 
                     <ImageView
                         android:layout_width="wrap_content"

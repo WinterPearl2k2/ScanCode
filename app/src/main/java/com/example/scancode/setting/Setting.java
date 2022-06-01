@@ -1,5 +1,6 @@
 package com.example.scancode.setting;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -168,6 +169,7 @@ public class Setting extends Fragment {
     }
     public  void Feedback(){
         feedback.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), Feebback.class);
@@ -186,7 +188,7 @@ public class Setting extends Fragment {
             Sharepreference(sharedPreferences,name,false);
         }
     }
-    public void setCheck(SharedPreferences sharedPreferences){
+    public void setCheckforDarkmode(SharedPreferences sharedPreferences){
         boolean check = sharedPreferences.getBoolean("darkmode",false);
 
             if(check==false)
@@ -217,7 +219,7 @@ public class Setting extends Fragment {
         tb_dark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setCheck(sp_ligth);
+                setCheckforDarkmode(sp_ligth);
             }
         });
     }

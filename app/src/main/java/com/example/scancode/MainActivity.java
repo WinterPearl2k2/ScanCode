@@ -29,10 +29,8 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
-
         Language();
         setContentView(R.layout.activity_main);
-
         ORM(); //Ánh xạ
         SetUpViewPager2(); //Cài đặt View
         EventButtonNavigation(); //Bắt sự kiện của button navigation
@@ -114,10 +112,9 @@ public class MainActivity extends AppCompatActivity {
                 setLocale(localeEN);
                 break;
             case 1:
-                Locale localeHU = new Locale("vi");
-                setLocale(localeHU);
+                Locale localeVN = new Locale("vi");
+                setLocale(localeVN);
                 break;
-
         }
     }
 
@@ -133,12 +130,4 @@ public class MainActivity extends AppCompatActivity {
         //startActivity(getIntent());
         //if these are not commented, main activity wont show at start at all
     }
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        // refresh your views here
-        super.onConfigurationChanged(newConfig);
-    }
-
-
-
 }

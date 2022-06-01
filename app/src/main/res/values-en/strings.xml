@@ -154,4 +154,8 @@
     <string name="turn_on_the_led_2">Turn on the LED light when light</string>
     <string name="faint_img">Faint image</string>
     <string name="low_contrast">Low Contrast</string>
+    <string name="feedbackedit">Please give us more details so we can resolve your issue faster.</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_language_en">English</string>
+    <string name="settings_language_vn">Vietnamese</string>
 </resources>

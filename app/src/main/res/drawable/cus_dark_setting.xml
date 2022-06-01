@@ -5,4 +5,5 @@
      android:endColor="?attr/endnavi"
      android:angle="90"/>
   <corners android:radius="30dp"/>
+
 </shape>

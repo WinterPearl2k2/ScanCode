@@ -37,12 +37,10 @@ public class Feebback extends AppCompatActivity {
     }
     public String Check(){
         String t = "";
-        
         if(check1.isChecked())
         {
             t = t + check1.getText().toString() + "\n";
         }
-
         if(check2.isChecked())
             t = t + check2.getText().toString() + "\n";
         if(check3.isChecked())
@@ -58,7 +56,7 @@ public class Feebback extends AppCompatActivity {
                 check = Check();
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
                 emailIntent.setType("text/html");
-                String aEmailList[] = {"hothianhduong16112002@gmail.com"};
+                String aEmailList[] = {"Scancodeservice@gmail.com"};
                 emailIntent.setData(Uri.parse("mailto:")); // only email apps should handle this
                 emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, aEmailList);
                 String feedback_msg = check;
